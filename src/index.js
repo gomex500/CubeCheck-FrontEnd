@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {BrowserRouter} from 'react-router-dom';
+import Menu from './views/partials/Menu';
+import './css/main.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <h1>hola</h1>
+    <BrowserRouter>
+    <Menu/>
+    </BrowserRouter>
   </React.StrictMode>
 );
