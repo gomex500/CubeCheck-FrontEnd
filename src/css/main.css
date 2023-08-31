@@ -17,6 +17,23 @@ body{
     margin-left: 70px;
 }
 
+.btn{
+    width: 200px;
+    background-color: #4d82bc;
+    border: none;
+    text-decoration: none;
+    color: #fcffff;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.btn:hover{
+    background-color: #fcffff;
+    border: 1px solid #4d82bc;
+    color: #4d82bc;
+}
+
 @media screen and (max-width:400px){
     .seccion{
         margin-left: 0;

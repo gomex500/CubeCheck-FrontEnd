@@ -1,4 +1,5 @@
 import React from "react";
+import Btn1 from "../components/Btn1";
 import '../css/home.css'
 import logo from '../img/logo.png'
 
@@ -13,6 +14,11 @@ const Home = () =>{
                     </div>
                     <div className="col-12 col-md-4 col-lg-4 cont-2">
                         <img src={logo} alt="logo"/>
+                        <Btn1
+                            text={"Iniciar ahora"}
+                            cls={"btn"}
+                            url={"/"}
+                        />
                     </div>
                 </div>
             </div>

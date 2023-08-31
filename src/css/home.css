@@ -17,13 +17,18 @@
     font-size: 18px;
     text-align: justify;
     font-weight: 500;
+
 }
 
-.eslogan{
+.cont p{
+    color: #252522;
+}
+
+.cont .eslogan{
     font-size: 22px;
     color: #005187;
     font-weight: bold;
-    padding-top: 20px;
+    padding-top: 2  0px;
 }
 
 .cont-2{
@@ -35,6 +40,7 @@
     width: 190px;
     background-color: #fcffff;
     border-radius: 10%;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width:400px){
@@ -47,7 +53,7 @@
         font-weight: 500;
         padding-top: 10px;
     }
-    .eslogan{
+    .cont .eslogan{
         font-size: 18px;
         padding-top: 0px;
     }
