@@ -11,6 +11,7 @@
     box-shadow: 0 20px 35px rgba(27, 27, 27, 0.5);
     border-radius: 0 0 10px 0;
     font-weight: bold;
+    z-index: 1;
 }
 
 .nav1 .logo{
@@ -38,6 +39,7 @@
 .nav1{
     display: none;
     background-color: #4d82bc;
+    z-index: 1;
 }
 
 .nav1 a{
