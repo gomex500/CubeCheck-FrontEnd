@@ -20,19 +20,19 @@ const Navbar = () =>{
                                 <a className="nav-link" aria-current="page" href="/"><i class="fas fa-home"></i> Inico</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/beneficios"><i class="fas fa-user"></i> User</a>
+                                <a className="nav-link" href="/beneficios"><i class="fas fa-calculator"></i> Calculadora</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/proceso"><i class="bi bi-gear-fill"></i> Proceso</a>
+                                <a className="nav-link" href="/proceso"><i class="fa-solid fa-toolbox"></i> Herramietas</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/Juego"><i class="bi bi-controller"></i> Juego</a>
+                                <a className="nav-link" href="/Juego"><i class="fa-solid fa-briefcase"></i> Proyecto</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/ayuda"> <i class="bi bi-info-circle-fill"></i> Ayuda</a>
+                                <a className="nav-link" href="/ayuda"> <i class="fa-solid fa-shapes"></i> Materiales</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#footer"><i class="bi bi-telephone-fill"></i> Contactos</a>
+                                <a className="nav-link" href="#footer"><i class="fa-solid fa-user"></i> inicar Secion</a>
                             </li>
                         </ul>
                     </div>
@@ -49,49 +49,37 @@ const Navbar = () =>{
                 <li>
                     <a href="/">
                         <i className="fas fa-home"></i>
-                        <span className="nav-item">Home</span>
+                        <span className="nav-item">Inicio</span>
                     </a>
                 </li>
                 <li>
                     <a href="/">
-                        <i className="fas fa-user"></i>
-                        <span className="nav-item">User</span>
+                        <i className="fas fa-calculator"></i>
+                        <span className="nav-item">Calculadora</span>
                     </a>
                 </li>
                 <li>
                     <a href="/">
-                        <i className="fas fa-wallet"></i>
-                        <span className="nav-item">Wallet</span>
+                        <i className="fas fa-toolbox"></i>
+                        <span className="nav-item">Herramientas</span>
                     </a>
                 </li>
                 <li>
                     <a href="/">
-                        <i className="fas fa-chart-bar"></i>
-                        <span className="nav-item">Analytics</span>
+                        <i className="fas fa-briefcase"></i>
+                        <span className="nav-item">Proyectos</span>
                     </a>
                 </li>
                 <li>
                     <a href="/">
-                        <i className="fas fa-tasks"></i>
-                        <span className="nav-item">Tasks</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/">
-                        <i className="fas fa-cog"></i>
-                        <span className="nav-item">Settings</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/">
-                        <i className="fas fa-question-circle"></i>
-                        <span className="nav-item">Help</span>
+                        <i className="fas fa-shapes"></i>
+                        <span className="nav-item">Materiales</span>
                     </a>
                 </li>
                 <li>
                     <a href="/" className="logout">
-                        <i className="fas fa-sign-out-alt"></i>
-                        <span className="nav-item">Log out</span>
+                        <i className="fas fa-user"></i>
+                        <span className="nav-item">Inicar Secion</span>
                     </a>
                 </li>
             </ul>

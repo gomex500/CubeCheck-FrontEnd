@@ -14,5 +14,11 @@ body{
 }
 
 .seccion{
-    margin-left: 80px;
+    margin-left: 70px;
+}
+
+@media screen and (max-width:400px){
+    .seccion{
+        margin-left: 0;
+    }
 }

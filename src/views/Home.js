@@ -1,9 +1,12 @@
 import React from "react";
+import '../css/home.css'
 
 const Home = () =>{
     return(
         <div className="seccion">
-            {/* <h1>Home</h1> */}
+            <div className="jumbo">
+                
+            </div>
         </div>
     );
 }
