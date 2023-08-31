@@ -28,7 +28,7 @@
     font-size: 22px;
     color: #005187;
     font-weight: bold;
-    padding-top: 2  0px;
+    padding-top: 20px;
 }
 
 .cont-2{
@@ -39,8 +39,79 @@
 .cont-2 img{
     width: 190px;
     background-color: #fcffff;
-    border-radius: 10%;
+    border-radius: 20%;
     margin-bottom: 20px;
+}
+
+@media screen and (max-width:1100px){
+    .jumbo{
+        height: 400px;
+        background-position: 45%;
+    }
+
+    .cont-2{
+        padding-top: 20px;
+        padding-left: 9%;
+    }
+}
+
+@media screen and (max-width:900px){
+    .jumbo{
+        height: 450px;
+        background-position: 45%;
+    }
+
+    .cont{
+        padding-top: 20px;
+    }
+
+    .cont-2{
+        padding-top: 40px;
+        padding-left: 3%;
+    }
+}
+
+
+@media screen and (max-width:767px){
+    .jumbo{
+        height: 550px;
+        background-position: 45%;
+    }
+
+    .cont-2{
+        padding-top: 10px;
+        padding-left: 30%;
+    }
+    .cont{
+        font-size: 16px;
+        font-weight: 500;
+        padding-top: 20px;
+    }
+    .cont .eslogan{
+        font-size: 18px;
+        padding-top: 0px;
+    }
+}
+
+@media screen and (max-width:580px){
+    .jumbo{
+        height: 650px;
+        background-position: 45%;
+    }
+    .cont{
+        font-size: 14px;
+        font-weight: 500;
+        padding-top: 10px;
+    }
+    .cont .eslogan{
+        font-size: 18px;
+        padding-top: 0px;
+    }
+
+    .cont-2{
+        padding-top: 0px;
+        padding-left: 35%;
+    }
 }
 
 @media screen and (max-width:400px){

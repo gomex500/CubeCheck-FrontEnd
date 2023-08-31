@@ -18,6 +18,7 @@ body{
 }
 
 .btn{
+    display: block;
     width: 200px;
     background-color: #4d82bc;
     border: none;
@@ -34,7 +35,7 @@ body{
     color: #4d82bc;
 }
 
-@media screen and (max-width:400px){
+@media screen and (max-width:580px){
     .seccion{
         margin-left: 0;
     }

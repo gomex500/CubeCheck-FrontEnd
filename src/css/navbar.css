@@ -22,7 +22,7 @@
 
 .nav1 .logo img{
     width: 40px;
-    border-radius: 50%;
+    border-radius: 20%;
     padding: 2px;
     background-color: #fcffff;
 }
@@ -75,7 +75,7 @@
 .navbarr .logo img{
     width: 45px;
     height: 45px;
-    border-radius: 50%;
+    border-radius: 20%;
     margin: 10px 0 0 10px;
     background-color: #fcffff;
 }
@@ -131,7 +131,7 @@
     bottom: 0;
 }
 
-@media screen and (max-width:400px){
+@media screen and (max-width:580px){
     .navbarr {
         display: none;
     }
