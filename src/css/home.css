@@ -58,7 +58,6 @@
 @media screen and (max-width:900px){
     .jumbo{
         height: 450px;
-        background-position: 45%;
     }
 
     .cont{
@@ -75,7 +74,6 @@
 @media screen and (max-width:767px){
     .jumbo{
         height: 550px;
-        background-position: 45%;
     }
 
     .cont-2{
@@ -96,41 +94,29 @@
 @media screen and (max-width:580px){
     .jumbo{
         height: 650px;
-        background-position: 45%;
     }
     .cont{
         font-size: 14px;
-        font-weight: 500;
         padding-top: 10px;
     }
-    .cont .eslogan{
-        font-size: 18px;
-        padding-top: 0px;
-    }
-
     .cont-2{
         padding-top: 0px;
-        padding-left: 35%;
+        padding-left: 32%;
     }
 }
 
 @media screen and (max-width:400px){
     .jumbo{
         height: 650px;
-        background-position: 45%;
-    }
-    .cont{
-        font-size: 14px;
-        font-weight: 500;
-        padding-top: 10px;
-    }
-    .cont .eslogan{
-        font-size: 18px;
-        padding-top: 0px;
     }
 
     .cont-2{
         padding-top: 0px;
         padding-left: 25%;
+    }
+
+    .cont-2 img{
+        width: 140px;
+        margin-left: 10%;
     }
 }
