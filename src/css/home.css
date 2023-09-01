@@ -2,12 +2,13 @@
     width: 100%;
     height: 300px;
     background: linear-gradient(to bottom, rgba(196, 218, 250, 0.7), rgba(196, 218, 250, 0.7)),
-    url(https://intervila.es/wp-content/uploads/2019/10/materiales-construccion.jpg);
+    url('../img/jumbo.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
     overflow: hidden;
     border-radius: 0  0 5px 0;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
 }
 
 .cont{
