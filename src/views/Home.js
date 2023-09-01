@@ -23,11 +23,7 @@ const Home = () =>{
                     </div>
                 </div>
             </div>
-            <BtnChat
-                text={<i class="fa-solid fa-comments"></i>}
-                cls={"btnChat"}
-                func={console.log('hola')}
-            />
+            <BtnChat/>
         </div>
     );
 }
