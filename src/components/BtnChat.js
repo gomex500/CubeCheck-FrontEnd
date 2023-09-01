@@ -27,14 +27,14 @@ const BtnChat = () =>{
                     <form>
                         <Input
                             tp={"text"}
-                            cls={"input"}
-                            val={""}
-                            ph={"Ingrese pregunta"}
+                            cls={"form-control inputChat"}
+                            // val={""}
+                            ph={"Ingrese su pregunta"}
                             fuc={console.log("")}
                         />
                         <Btn2
                             tp={"submit"}
-                            cls={"btn"}
+                            cls={"btn btnSend"}
                             func={console.log("")}
                             text={<i class="fa-solid fa-paper-plane"></i>}
                         />

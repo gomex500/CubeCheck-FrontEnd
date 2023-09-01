@@ -17,7 +17,7 @@ const Home = () =>{
                         <img src={logo} alt="logo"/>
                         <Btn1
                             text={"Iniciar ahora"}
-                            cls={"btn"}
+                            cls={"btn btn1"}
                             url={"/"}
                         />
                     </div>

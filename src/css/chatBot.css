@@ -61,4 +61,25 @@
     height: 70px;
     background-color: #4d82bc;
     border-radius: 0 0 10px 10px;
+    padding: 10px 5px;
+}
+
+.chatfooter .inputChat{
+    width: 80%;
+    display: inline;
+}
+
+.chatfooter .btnSend{
+    width: 18%;
+    display: inline;
+    background-color: #fcffff;
+    color: #4d82bc;
+    height: 38px;
+    margin-left: 2%;
+}
+
+.btnSend:hover{
+    background-color: #4d82bc;
+    color: #fcffff;
+    border: 1px solid #fcffff;
 }
