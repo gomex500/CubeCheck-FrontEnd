@@ -1,8 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import logo from '../../img/logo.png'
 import '../../css/navbar.css';
 
 const Navbar = () =>{
+
+    const [btnN, setBtnN] = useState(true);
+
+    const btnNav = () =>{
+        setBtnN(!btnN)
+    }
+
     return(
         <div>
             <nav className="navbar navbar-expand-lg nav1">
@@ -38,13 +45,13 @@ const Navbar = () =>{
                     </div>
                 </div>
             </nav>
-            <nav className="navbarr">
+            <nav className="navbarr" style={btnN ? {width: "70px"} : {width: "240px"}}>
             <ul>
                 <li>
-                    <a href="/" className="logo">
+                    <button className="logo1" onClick={btnNav}>
                         <img src={logo} alt='logo'/>
                         <span className="nav-item">CubeCheck</span>
-                    </a>
+                    </button>
                 </li>
                 <li>
                     <a href="/">

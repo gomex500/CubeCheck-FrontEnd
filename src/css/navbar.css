@@ -5,13 +5,13 @@
     height: 100%;
     left: 0;
     background-color: #4d82bc;
-    width: 70px;
     overflow: hidden;
     transition: width 0.2s linear;
     box-shadow: 0 20px 35px rgba(27, 27, 27, 0.5);
     border-radius: 0 0 10px 0;
     font-weight: bold;
     z-index: 1;
+    transition: all 0.5s ease;
 }
 
 .nav1 .logo{
@@ -66,13 +66,14 @@
     margin-left: -40px;
 }
 
-.navbarr .logo{
+.navbarr .logo1{
     text-align: center;
     display: flex;
     transition: all 0.5s ease;
+    background-color: #4d82bc;
 }
 
-.navbarr .logo img{
+.navbarr .logo1 img{
     width: 45px;
     height: 45px;
     border-radius: 20%;
@@ -80,7 +81,7 @@
     background-color: #fcffff;
 }
 
-.navbarr .logo span{
+.navbarr .logo1 span{
     font-weight: bold;
     padding: 15px;
     font-size: 18px;
@@ -90,7 +91,7 @@
 }
 
 
-.navbarr a{
+.navbarr a, .logo1{
     text-decoration: none;
     position: relative;
     color: rgb(85, 83, 83);
@@ -116,15 +117,15 @@
     margin-left: 10px;
 }
 
-.navbarr a:hover{
+.navbarr a:hover, .logo1:hover{
     background-color: #fcffff;
     color: #4d82bc;
 }
 
-.navbarr:hover{
+/* .navbarr:hover{
     width: 240px;
     transition: all 0.5s ease;
-}
+} */
 
 .navbarr .logout{
     position: absolute;
