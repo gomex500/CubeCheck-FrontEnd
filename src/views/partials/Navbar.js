@@ -39,7 +39,7 @@ const Navbar = () =>{
                                 <a className="nav-link" href="/ayuda"> <i class="fa-solid fa-shapes"></i> Materiales</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#footer"><i class="fa-solid fa-user"></i> inicar Secion</a>
+                                <a className="nav-link" href="/login"><i class="fa-solid fa-user"></i> inicar Secion</a>
                             </li>
                         </ul>
                     </div>
@@ -84,7 +84,7 @@ const Navbar = () =>{
                     </a>
                 </li>
                 <li>
-                    <a href="/" className="logout">
+                    <a href="/login" className="logout">
                         <i className="fas fa-user"></i>
                         <span className="nav-item">Inicar Secion</span>
                     </a>

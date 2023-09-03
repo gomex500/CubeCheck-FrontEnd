@@ -18,7 +18,7 @@ const Home = () =>{
                         <Btn1
                             text={"Iniciar ahora"}
                             cls={"btn btn1"}
-                            url={"/"}
+                            url={"/login"}
                         />
                     </div>
                 </div>
