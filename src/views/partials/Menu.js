@@ -3,6 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 import Navbar from "./Navbar";
 import Home from '../Home';
 import Login from "../Login";
+import Footer from "./Footer";
 
 const Menu = () =>{
     return(
@@ -12,6 +13,7 @@ const Menu = () =>{
                 <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
             </Routes>
+            <Footer/>
         </div>
     );
 }

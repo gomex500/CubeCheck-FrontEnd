@@ -1,0 +1,55 @@
+footer{
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(to bottom, rgba(57, 108, 184, 0.9) ,rgba(151, 181, 226, 0.9));
+    color: #fcffff;
+    text-align: center;
+    margin-top: 100px;
+    border-radius: 0 10px 0 0;
+    font-weight: bold;
+}
+
+.cuadro{
+    width: 100%;
+    height: 20px;
+    background-color: #2b5c91;
+    border-radius: 0 5px 0 0;
+}
+
+footer .redes{
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+footer .redes .icon{
+    margin: 10px;
+    width: 32px;
+    height: 32px;
+    text-decoration: none;
+    color: #fcffff;
+    padding: 1px;
+    font-size: 30px;
+}
+
+footer .p{
+    font-size: 30px;
+}
+
+footer p{
+    margin-top: 10px;
+}
+
+@media screen and (max-width:700px){
+    footer{
+        border-radius: 5px 5px 0 0;
+    }
+
+    .cuadro{
+        border-radius: 5px 5px 0 0;
+    }
+
+    footer .p{
+        font-size: 18px;
+    }
+}
