@@ -4,7 +4,6 @@ import logo from '../img/logo.png';
 import Input from '../components/Input'
 import Btn2 from "../components/Btn2";
 import Btn1 from "../components/Btn1";
-import BtnChat from "../components/BtnChat";
 
 const Login = () =>{
     return(
@@ -17,7 +16,7 @@ const Login = () =>{
                     <div className="login-form">
                         <center>
                             <img src={logo} alt="logo"/>
-                            <h2>inicar Secion</h2>
+                            <h2>inicar Sesion</h2>
                             <form className="form">
                                 <Input
                                     tp={"email"}
@@ -43,14 +42,13 @@ const Login = () =>{
                                 <Btn1
                                     text={"Registrate ahora"}
                                     cls={"btn2"}
-                                    url={"/"}
+                                    url={"/sigup"}
                                 />
                             </p>
                         </center>
                     </div>
                 </div>
             </div>
-            <BtnChat/>
         </div>
     );
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import Btn1 from "../components/Btn1";
-import BtnChat from "../components/BtnChat";
 import '../css/home.css'
 import logo from '../img/logo.png';
 
@@ -23,7 +22,6 @@ const Home = () =>{
                     </div>
                 </div>
             </div>
-            <BtnChat/>
         </div>
     );
 }
