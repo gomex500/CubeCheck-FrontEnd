@@ -1,0 +1,101 @@
+.con-login{
+    margin: 0 auto;
+    width: 70%;
+    height: 500px;
+    margin-top: 40px;
+    background-color: #fcffff;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.3);
+    padding-left: 12px;
+}
+
+.login-img{
+    /* margin: 0 auto; */
+    width: 40%;
+    height: 500px;
+    background: linear-gradient(to bottom, rgba(57, 108, 184, 0.7), rgba(151, 181, 226, 0.7)),
+    url('../img/jumbo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 40% 50%;
+    border-top-right-radius: 60%;
+    border-bottom-right-radius: 60%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.login-form{
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 55%;
+    height: 480px;
+}
+
+.login-form img{
+    width: 20%;
+    height: 20%;
+    background-color: #fcffff;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+.login-form h2{
+    margin: 20px 0;
+    color: #4d82bc;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.form .input{
+    width: 80%;
+    margin-bottom: 20px;
+    border: 2px solid #4d82bc;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-radius: none;
+    color: #ccc;
+}
+
+.form .input:hover{
+    cursor: text;
+    border: 3px solid #4d82bc;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-radius: none;
+}
+
+.form .input:focus{
+    cursor: text;
+    border: 2px solid #4d82bc;
+    transition: all 0.3s ease;
+    color: #4d82bc;
+}
+
+.login-form p{
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.login-form p a{
+    margin-left: 5px;
+    background-color: #4d82bc;
+    text-decoration: none;
+    padding: 8px;
+    color: #fcffff;
+    border-radius: 5px;
+}
+
+.login-form p a:hover{
+    background-color: #fcffff;
+    color: #4d82bc;
+    border: 1px solid #4d82bc;
+}
+
+
+@media screen and (max-width:1200px){
+    .con-login{
+        width: 80%;
+    }
+}

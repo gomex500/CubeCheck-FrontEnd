@@ -27,6 +27,8 @@ body{
     padding: 10px;
     font-size: 18px;
     font-weight: 900;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 .btn1:hover{
