@@ -3,7 +3,7 @@
     width: 70%;
     height: 500px;
     margin-top: 40px;
-    background-color: #fcffff;
+    background-color: rgba(252, 255, 255, 0.);
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(27, 27, 27, 0.3);
     padding-left: 12px;
@@ -32,11 +32,9 @@
 }
 
 .login-form img{
-    width: 20%;
-    height: 20%;
-    background-color: #fcffff;
-    border-radius: 5px;
-    margin-top: 50px;
+    width: 30%;
+    height: 30%;
+    margin-top: 10px;
 }
 
 .login-form h2{
@@ -55,6 +53,7 @@
     border-top: none;
     border-radius: none;
     color: #ccc;
+    background-color: rgba(252, 255, 255, 0.1);
 }
 
 .form .input:hover{
@@ -97,5 +96,67 @@
 @media screen and (max-width:1200px){
     .con-login{
         width: 80%;
+
+    }
+}
+
+@media screen and (max-width:700px){
+    .con-login{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:590px){
+    .con-login{
+        width: 300px;
+        padding: 0;
+        margin-top: 30px;
+        background-color: #fcffff;
+    }
+
+    .login-img{
+        width: 300px;
+        height: 200px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 60%;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 60%;
+        margin-left: 12px;
+    }
+
+    .login-form{
+        width: 300px;
+        margin-top: 0;
+        margin-left: 0;
+        margin: 0 auto;
+    }
+
+    .login-form img{
+        width: 45%;
+        height: 45%;
+        padding: 10px;
+        background-color: #fcffff;
+        border-radius: 50%;
+        margin-top: -280px;
+    }
+
+    .login-form h2{
+        margin-top: -80px;
+        background-color: #fcffff;
+        border-top-right-radius: 100%;
+        border-top-left-radius: 100%;
+        padding: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .form .input{
+        width: 90%;
+        margin-top: -10px;
+        margin-bottom: 40px;
+    }
+
+    .login-form p{
+        font-size: 14px;
     }
 }

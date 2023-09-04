@@ -4,16 +4,17 @@ import logo from '../img/logo.png';
 import Input from '../components/Input'
 import Btn2 from "../components/Btn2";
 import Btn1 from "../components/Btn1";
+import BtnChat from "../components/BtnChat";
 
 const Login = () =>{
     return(
         <div className="seccion">
-            <div className="con-login">
+            <div className="con-login animate__animated animate__fadeInDown">
                 <div className="row">
-                    <div className="col-12 col-sm-6 col-md-6 login-img">
+                    <div className="login-img">
 
                     </div>
-                    <div className="col-12 col-sm-6 col-md-6 login-form">
+                    <div className="login-form">
                         <center>
                             <img src={logo} alt="logo"/>
                             <h2>inicar Secion</h2>
@@ -49,6 +50,7 @@ const Login = () =>{
                     </div>
                 </div>
             </div>
+            <BtnChat/>
         </div>
     );
 }
