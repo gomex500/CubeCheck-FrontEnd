@@ -108,14 +108,14 @@
 
 @media screen and (max-width:590px){
     .con-login{
-        width: 300px;
+        width: 320px;
         padding: 0;
         margin-top: 30px;
         background-color: #fcffff;
     }
 
     .login-img{
-        width: 300px;
+        width: 320px;
         height: 200px;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 60%;
@@ -158,5 +158,15 @@
 
     .login-form p{
         font-size: 14px;
+    }
+}
+
+@media screen and (max-width:320px){
+    .con-login{
+        width: 300px;
+    }
+
+    .login-img{
+        width: 300px;
     }
 }
