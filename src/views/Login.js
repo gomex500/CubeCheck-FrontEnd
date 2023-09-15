@@ -1,14 +1,15 @@
 import React, {useState} from "react";
+import Swal from 'sweetalert2'
+import axios from "axios";
 import '../css/login.css';
 import logo from '../img/logo.png';
 import Input from '../components/Input'
 import Btn2 from "../components/Btn2";
 import Btn1 from "../components/Btn1";
 
-const Login = () =>{
-
+const Login = (props) =>{
     const [user, setUser] = useState({
-        'correo':'',
+        'email':'',
         'password':''
     })
 
@@ -20,24 +21,52 @@ const Login = () =>{
         })
     }
 
+    const alertas = (icono, texto) =>{
+        Swal.fire({
+            // position: 'top-end',
+            icon: icono,
+            title: texto,
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
+
     const validarDatos = () =>{
-        if (user.correo !== '' && user.password !== '') {
+        if (user.email !== '' && user.password !== '') {
             if (user.password.length < 8){
-                alert('password muy corto');
+                alertas('error','Password muy corto');
                 return false;
             }
-            alert('datos validados');
+            alertas('success','Datos Validados');
             return true;
         } else {
-            alert('a un hay campos vacios');
+            alertas('error', 'Aun hay campos Vacios')
             return false;
         }
+    }
+
+    const enviarDatosPost = () =>{
+        axios.post('http://127.0.0.1:5000/login', user)
+        .then((response) => {
+            console.log(response.data)
+            const datos = response.data
+            const data = {
+                'id':datos.id,
+                "token":datos.token,
+                "session":true
+            }
+            localStorage.setItem('data',JSON.stringify(data));
+        })
+        .catch((error) =>{
+            console.log('error',error)
+        });
     }
 
     const enviarDatos = (e) =>{
         e.preventDefault();
         if (validarDatos()) {
-            console.log(user);
+            enviarDatosPost();
+            window.location = "/"
         }
     }
 
@@ -56,10 +85,10 @@ const Login = () =>{
                                 <Input
                                     tp={"email"}
                                     cls={"form-control input"}
-                                    val={user.correo}
+                                    val={user.email}
                                     fuc={obtenerDatos}
                                     ph={"Ingrese @email"}
-                                    nm={"correo"}
+                                    nm={"email"}
                                 />
                                 <Input
                                     tp={"password"}
