@@ -14,6 +14,10 @@ const Navbar = () =>{
         setBtnN(!btnN)
     }
 
+    const sigup = () =>{
+        localStorage.removeItem('data');
+    }
+
     useEffect(() =>{
         const datos = localStorage.getItem('data');
         if (datos) {
@@ -161,7 +165,7 @@ const Navbar = () =>{
                 })()}
 
                 <li>
-                    <a href="/login" className="logout">
+                    <a href={session ? "/" : "/login"} onClick={sigup} className="logout">
                         <i className="fas fa-user"></i>
                         <span className="nav-item">{user.nombre+' '+user.apellido}</span>
                     </a>
