@@ -6,6 +6,7 @@ import Login from "../Login";
 import Footer from "./Footer";
 import Sigup from "../Sigup";
 import BtnChat from "../../components/BtnChat";
+import Profile from "../Profile";
 
 const Menu = () =>{
 
@@ -24,8 +25,9 @@ const Menu = () =>{
                 <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={validarSesion() ?  <Navigate to='/'/> : <Login/>}/>
                 <Route path="/sigup" element={validarSesion() ?  <Navigate to='/'/> : <Sigup/>}/>
+                <Route path="/profile" element={validarSesion() ?  <Profile/> : <Navigate to='/login'/>}/>
             </Routes>
-            <BtnChat/>
+            {validarSesion() ? <BtnChat/> : null}
             <Footer/>
         </div>
     );
