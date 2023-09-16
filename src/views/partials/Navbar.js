@@ -1,15 +1,47 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import logo from '../../img/logo.png'
 import '../../css/navbar.css';
+import axios from "axios";
 // import axios from "axios";
 
 const Navbar = () =>{
 
     const [btnN, setBtnN] = useState(true);
+    const [user, setUser] = useState({});
+    const [session, setSession] = useState()
 
     const btnNav = () =>{
         setBtnN(!btnN)
     }
+
+    useEffect(() =>{
+        const datos = localStorage.getItem('data');
+        if (datos) {
+            const data = JSON.parse(datos);
+            localStorage.removeItem('session');
+            setSession(data.session);
+            const config = {
+                headers: {
+                  Authorization: `Bearer ${data.token}`,
+                },
+            }
+            axios.get(`http://127.0.0.1:5000/user/${data.id}`,config)
+            .then((response) =>{
+                setUser(response.data);
+            })
+            .catch((error) =>{
+                console.log(error);
+            })
+        } else {
+            setUser({
+                'nombre':'Iniciar',
+                'apellido':'Sesion'
+            });
+            localStorage.removeItem('data');
+            localStorage.setItem('session',false);
+            setSession(false);
+        }
+    }, []);
 
     return(
         <div>
@@ -33,14 +65,15 @@ const Navbar = () =>{
                             <li className="nav-item">
                                 <a className="nav-link" href="/proceso"><i class="fa-solid fa-toolbox"></i> Herramietas</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/Juego"><i class="fa-solid fa-briefcase"></i> Proyecto</a>
-                            </li>
+                            {session && (<li className="nav-item">
+                                        <a className="nav-link" href="/Juego"><i class="fa-solid fa-briefcase"></i> Proyecto</a>
+                                    </li>)
+                            }
                             <li className="nav-item">
                                 <a className="nav-link" href="/ayuda"> <i class="fa-solid fa-shapes"></i> Materiales</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/login"><i class="fa-solid fa-user"></i> inicar Secion</a>
+                                <a className="nav-link" href="/login"><i class="fa-solid fa-user"></i>{user.nombre+' '+user.apellido}</a>
                             </li>
                         </ul>
                     </div>
@@ -72,23 +105,48 @@ const Navbar = () =>{
                         <span className="nav-item">Herramientas</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/">
-                        <i className="fas fa-briefcase"></i>
-                        <span className="nav-item">Proyectos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/">
-                        <i className="fas fa-shapes"></i>
-                        <span className="nav-item">Materiales</span>
-                    </a>
-                </li>
+                { session &&
+                        (<li>
+                            <a href="/">
+                                <i className="fas fa-briefcase"></i>
+                                <span className="nav-item">Proyectos</span>
+                            </a>
+                        </li>)
+                }
+                {(() => {
+                    if (user.rol === "admin") {
+                        return (
+                            <>
+                                <li>
+                                    <a href="/">
+                                        <i className="fas fa-shapes"></i>
+                                        <span className="nav-item">Materiales</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/">
+                                        <i className="fas fa-users"></i>
+                                        <span className="nav-item">Usuarios</span>
+                                    </a>
+                                </li>
+                            </>
+                        );
+                    } else {
+                        return (
+                            <li>
+                                <a href="/">
+                                    <i className="fas fa-shapes"></i>
+                                    <span className="nav-item">Materiales</span>
+                                </a>
+                            </li>
+                        );
+                    }
+                })()}
+
                 <li>
                     <a href="/login" className="logout">
                         <i className="fas fa-user"></i>
-                        {/* <span className="nav-item">{data.session ? user.nombre +''+ user.apellido : 'Iniciar Sesion'}</span> */}
-                        <span className="nav-item">Iniciar Sesion</span>
+                        <span className="nav-item">{user.nombre+' '+user.apellido}</span>
                     </a>
                 </li>
             </ul>
