@@ -45,7 +45,7 @@ const Login = () =>{
     }
 
     const enviarDatosPost = () =>{
-        axios.post('http://127.0.0.1:5000/login', user)
+        axios.post('https://cubecheck.onrender.com/login', user)
         .then((response) => {
             console.log(response.data)
             const datos = response.data

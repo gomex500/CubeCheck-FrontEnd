@@ -60,7 +60,7 @@ const Sigup = () =>{
           })
     }
     const enviarDatosPost = () =>{
-        axios.post('http://127.0.0.1:5000/signin', user)
+        axios.post('https://cubecheck.onrender.com/signin', user)
         .then((response) => {
             console.log(response.data)
             const datos = response.data

@@ -25,7 +25,7 @@ const Navbar = () =>{
                   Authorization: `Bearer ${data.token}`,
                 },
             }
-            axios.get(`http://127.0.0.1:5000/user/${data.id}`,config)
+            axios.get(`https://cubecheck.onrender.com/user/${data.id}`,config)
             .then((response) =>{
                 setUser(response.data);
             })
@@ -69,9 +69,26 @@ const Navbar = () =>{
                                         <a className="nav-link" href="/Juego"><i class="fa-solid fa-briefcase"></i> Proyecto</a>
                                     </li>)
                             }
-                            <li className="nav-item">
-                                <a className="nav-link" href="/ayuda"> <i class="fa-solid fa-shapes"></i> Materiales</a>
-                            </li>
+                            {(() => {
+                                if (user.rol === "admin") {
+                                    return (
+                                        <>
+                                            <li className="nav-item">
+                                                <a className="nav-link" href="/"> <i class="fa-solid fa-shapes"></i> Materiales</a>
+                                            </li>
+                                            <li className="nav-item">
+                                                <a className="nav-link" href="/"> <i class="fa-solid fa-users"></i> Usuarios</a>
+                                            </li>
+                                        </>
+                                    );
+                                } else {
+                                    return (
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/ayuda"> <i class="fa-solid fa-shapes"></i> Materiales</a>
+                                        </li>
+                                    );
+                                }
+                            })()}
                             <li className="nav-item">
                                 <a className="nav-link" href="/login"><i class="fa-solid fa-user"></i>{user.nombre+' '+user.apellido}</a>
                             </li>
