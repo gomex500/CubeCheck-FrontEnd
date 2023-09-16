@@ -14,11 +14,6 @@ const Navbar = () =>{
         setBtnN(!btnN)
     }
 
-    const sigup = () =>{
-        localStorage.removeItem('data');
-        localStorage.setItem('session',false);
-    }
-
     useEffect(() =>{
         const datos = localStorage.getItem('data');
         if (datos) {
@@ -95,7 +90,7 @@ const Navbar = () =>{
                                 }
                             })()}
                             <li className="nav-item">
-                                <a className="nav-link" href={session ? "/" : "/login"} onClick={sigup}>
+                                <a className="nav-link" href={session ? "/profile" : "/login"}>
                                     <i class="fa-solid fa-user"></i>
                                     {user.nombre+' '+user.apellido}
                                 </a>
@@ -169,7 +164,7 @@ const Navbar = () =>{
                 })()}
 
                 <li>
-                    <a href={session ? "/" : "/login"} onClick={sigup} className="logout">
+                    <a href={session ? "/profile" : "/login"} className="logout">
                         <i className="fas fa-user"></i>
                         <span className="nav-item">{user.nombre+' '+user.apellido}</span>
                     </a>

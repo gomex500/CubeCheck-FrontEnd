@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({tp, cls, val, fuc, ph, nm}) =>{
+const Input = ({tp, cls, val, fuc, ph, nm, dis}) =>{
     return(
         <input
             type={tp}
@@ -9,6 +9,7 @@ const Input = ({tp, cls, val, fuc, ph, nm}) =>{
             onChange={fuc}
             placeholder={ph}
             name={nm}
+            disabled={dis}
         />
     );
 }
