@@ -41,6 +41,9 @@ const Sigup = () =>{
         }else if (user.password.length < 8){
             alertas('error','Password muy corto');
             return false;
+        }else if(user.edad < 15){
+            alertas('error','A un eres menor de edad');
+            return false;
         }else if (passwordN === user.password) {
             return true;
         } else {
