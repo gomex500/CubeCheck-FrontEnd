@@ -94,7 +94,10 @@ const Navbar = () =>{
                                 }
                             })()}
                             <li className="nav-item">
-                                <a className="nav-link" href="/login"><i class="fa-solid fa-user"></i>{user.nombre+' '+user.apellido}</a>
+                                <a className="nav-link" href={session ? "/" : "/login"} onClick={sigup}>
+                                    <i class="fa-solid fa-user"></i>
+                                    {user.nombre+' '+user.apellido}
+                                </a>
                             </li>
                         </ul>
                     </div>
