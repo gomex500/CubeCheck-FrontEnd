@@ -16,6 +16,7 @@ const Navbar = () =>{
 
     const sigup = () =>{
         localStorage.removeItem('data');
+        localStorage.setItem('session',false);
     }
 
     useEffect(() =>{
