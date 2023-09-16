@@ -1,11 +1,92 @@
-import React from "react";
+import React, {useState} from "react";
+import Swal from 'sweetalert2';
 import '../css/sigup.css';
 import Btn1 from '../components/Btn1';
 import Input from '../components/Input';
 import Btn2 from "../components/Btn2";
 import logo from '../img/logo.png';
+import axios from "axios";
 
 const Sigup = () =>{
+
+    const [user, setUser] = useState({
+        'nombre': '',
+        'apellido': '',
+        'edad': '',
+        'telefono':'',
+        'email': '',
+        'password': ''
+    });
+    const [passwordN, setPasswordN] = useState('');
+
+    const obtenerDatos = (e) =>{
+        const {name, value} = e.target
+        setUser({
+            ...user,
+            [name]:value
+        })
+    }
+
+    const validarDatos = () => {
+        if (
+            user.nombre === '' ||
+            user.apellido === '' ||
+            user.edad === '' ||
+            user.telefono === '' ||
+            user.email === '' ||
+            user.password === ''
+        ) {
+            alertas('error', 'Aun hay campos Vacios');
+            return false;
+        }else if (user.password.length < 8){
+            alertas('error','Password muy corto');
+            return false;
+        }else if (passwordN === user.password) {
+            return true;
+        } else {
+            alertas('error', 'El password no coincide');
+            return false;
+        }
+    }
+
+
+    const alertas = (icono, texto) =>{
+        Swal.fire({
+            // position: 'top-end',
+            icon: icono,
+            title: texto,
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
+    const enviarDatosPost = () =>{
+        axios.post('http://127.0.0.1:5000/signin', user)
+        .then((response) => {
+            console.log(response.data)
+            const datos = response.data
+            const data = {
+                'id':datos.id,
+                "token":datos.token,
+                "session":true
+            }
+            localStorage.setItem('data',JSON.stringify(data));
+            alertas('success','Bienvenido');
+            window.location = "/";
+        })
+        .catch((error) =>{
+            console.log('error',error)
+            alertas('error',error.response.data.message);
+        });
+    }
+
+    const enviarDatos = (e) =>{
+        e.preventDefault();
+        if(validarDatos()){
+            // console.log(user);
+            enviarDatosPost();
+        }
+    }
+
     return(
         <div className="seccion">
             <div className="con-sigup animate__animated animate__fadeInDown">
@@ -19,54 +100,60 @@ const Sigup = () =>{
                     <div className="sigup-form">
                         <center>
                             <h2>Registro</h2>
-                            <form className="form">
+                            <form className="form" onSubmit={enviarDatos}>
                                 <Input
                                     tp={"text"}
                                     cls={"form-control input1"}
-                                    // val={""}
-                                    fuc={console.log('')}
+                                    val={user.nombre}
+                                    fuc={obtenerDatos}
                                     ph={"Nombre"}
+                                    nm={"nombre"}
                                 />
                                 <Input
                                     tp={"text"}
                                     cls={"form-control input1"}
-                                    // val={""}
-                                    fuc={console.log('')}
+                                    val={user.apellido}
+                                    fuc={obtenerDatos}
                                     ph={"Apellido"}
+                                    nm={"apellido"}
                                 />
                                 <Input
                                     tp={"number"}
                                     cls={"form-control input2"}
-                                    // val={""}
-                                    fuc={console.log('')}
+                                    val={user.edad}
+                                    fuc={obtenerDatos}
                                     ph={"Edad"}
+                                    nm={"edad"}
                                 />
                                 <Input
                                     tp={"tel"}
                                     cls={"form-control input3"}
-                                    // val={""}
-                                    fuc={console.log('')}
+                                    val={user.telefono}
+                                    fuc={obtenerDatos}
                                     ph={"Telefono"}
+                                    nm={"telefono"}
                                 />
                                 <Input
                                     tp={"email"}
                                     cls={"form-control input"}
-                                    // val={""}
-                                    fuc={console.log('')}
-                                    ph={"Correo"}
+                                    val={user.email}
+                                    fuc={obtenerDatos}
+                                    ph={"Email"}
+                                    nm={"email"}
                                 />
                                 <Input
                                     tp={"password"}
                                     cls={"form-control input"}
-                                    // val={""}
-                                    fuc={console.log('')}
+                                    val={user.password}
+                                    fuc={obtenerDatos}
                                     ph={"Password"}
+                                    nm={"password"}
                                 />
                                 <Input
                                     tp={"password"}
                                     cls={"form-control input"}
-                                    // val={""}
-                                    fuc={console.log('')}
+                                    val={passwordN}
+                                    fuc={e => setPasswordN(e.target.value)}
                                     ph={"Password nuevamente"}
                                 />
                                 <Btn2

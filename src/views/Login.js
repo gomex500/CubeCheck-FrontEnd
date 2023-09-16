@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import axios from "axios";
 import '../css/login.css';
 import logo from '../img/logo.png';
@@ -7,7 +7,7 @@ import Input from '../components/Input'
 import Btn2 from "../components/Btn2";
 import Btn1 from "../components/Btn1";
 
-const Login = (props) =>{
+const Login = () =>{
     const [user, setUser] = useState({
         'email':'',
         'password':''
@@ -37,10 +37,9 @@ const Login = (props) =>{
                 alertas('error','Password muy corto');
                 return false;
             }
-            alertas('success','Datos Validados');
             return true;
         } else {
-            alertas('error', 'Aun hay campos Vacios')
+            alertas('error', 'Aun hay campos Vacios');
             return false;
         }
     }
@@ -56,9 +55,12 @@ const Login = (props) =>{
                 "session":true
             }
             localStorage.setItem('data',JSON.stringify(data));
+            alertas('success','Bienvenido');
+            window.location = "/";
         })
         .catch((error) =>{
-            console.log('error',error)
+            console.log('error',error);
+            alertas('error',error.response.data.message);
         });
     }
 
@@ -66,7 +68,6 @@ const Login = (props) =>{
         e.preventDefault();
         if (validarDatos()) {
             enviarDatosPost();
-            window.location = "/"
         }
     }
 

@@ -5,39 +5,11 @@ import '../../css/navbar.css';
 
 const Navbar = () =>{
 
-    // const datos = localStorage.getItem('data');
-
     const [btnN, setBtnN] = useState(true);
-    // const [data, setData] = useState(JSON.parse(datos));
-    // const [user, setUser] = useState({});
 
     const btnNav = () =>{
         setBtnN(!btnN)
     }
-
-    // const headers = {
-    //     Authorization: `Bearer ${data.token}`,
-    // }
-
-    // const cargarDatos = () =>{
-    //     axios.get(`http://127.0.0.1:5000/user/${data.id}`,{
-    //         headers: headers
-    //     })
-    //     .then((response) =>{
-    //         console.log(response.data);
-    //         setUser(response.data);
-    //     })
-    //     .catch((error) =>{
-    //         console.log(error);
-    //     })
-    // }
-
-    // useEffect(() =>{
-    //     if (data !== {}) {
-    //         cargarDatos();
-    //     }
-
-    // },[])
 
     return(
         <div>
