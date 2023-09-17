@@ -1,0 +1,75 @@
+.cont-users{
+    width: 100%;
+    padding: 10px;
+}
+
+.cont-users h2{
+    color: #4d82bc;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cont-tabla{
+    width: 90%;
+    border-radius: 5px;
+}
+
+.table-head{
+    background-color: #4d82bc;
+    color: #fcffff;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.table-body{
+    background-color: rgba(252, 255, 255, 0.3);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.3);
+    color: #4d82bc;
+    font-weight: 500;
+}
+
+.tbody:hover{
+    cursor: pointer;
+    background: linear-gradient(to bottom, rgba(57, 108, 184, 0.7), rgba(57, 108, 184, 0.7));
+    color: #fcffff;
+}
+
+.form-cont{
+    width: 90%;
+}
+
+.form-cont .input{
+    display: inline;
+    width: 80%;
+    margin-bottom: 20px;
+    border: 2px solid #4d82bc;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-radius: none;
+    color: #4d82bc;
+    background-color: rgba(252, 255, 255, 0.1);
+}
+
+.form-cont .btn1{
+    display: inline;
+    width: 10%;
+    margin-left: 1%;
+}
+
+@media screen and (max-width:590px){
+    .cont-tabla{
+        width: 98%;
+    }
+
+    .form-cont{
+        width: 98%;
+    }
+
+    .form-cont .btn1{
+        width: 15%;
+    }
+}
