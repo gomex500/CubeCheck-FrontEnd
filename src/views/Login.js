@@ -60,6 +60,7 @@ const Login = () =>{
             }
             localStorage.setItem('data',JSON.stringify(data));
             alertas('success','Bienvenido');
+            localStorage.removeItem('session');
             window.location = "/";
             setCarga(false);
         })

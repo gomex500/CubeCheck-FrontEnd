@@ -7,10 +7,13 @@ import Footer from "./Footer";
 import Sigup from "../Sigup";
 import BtnChat from "../../components/BtnChat";
 import Profile from "../Profile";
+// import Users from "../Users";
+
 
 const Menu = () =>{
 
     const session = localStorage.getItem('session');
+
     const validarSesion = () =>{
         if (session) {
             return false;
@@ -26,6 +29,7 @@ const Menu = () =>{
                 <Route path="/login" element={validarSesion() ?  <Navigate to='/'/> : <Login/>}/>
                 <Route path="/sigup" element={validarSesion() ?  <Navigate to='/'/> : <Sigup/>}/>
                 <Route path="/profile" element={validarSesion() ?  <Profile/> : <Navigate to='/login'/>}/>
+                {/* <Route path="/users" element={validarRol() ?  <Users/> : <Navigate to='/'/>}/> */}
             </Routes>
             {validarSesion() ? <BtnChat/> : null}
             <Footer/>
