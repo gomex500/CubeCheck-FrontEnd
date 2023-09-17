@@ -6,6 +6,7 @@ import Input from '../components/Input';
 import Btn2 from "../components/Btn2";
 import logo from '../img/logo.png';
 import axios from "axios";
+import Carga2 from "./partials/Carga2";
 
 const Sigup = () =>{
 
@@ -18,6 +19,7 @@ const Sigup = () =>{
         'password': ''
     });
     const [passwordN, setPasswordN] = useState('');
+    const [carga, setCarga] = useState(false);
 
     const obtenerDatos = (e) =>{
         const {name, value} = e.target
@@ -63,6 +65,7 @@ const Sigup = () =>{
           })
     }
     const enviarDatosPost = () =>{
+        setCarga(true);
         axios.post('https://cubecheck.onrender.com/signin', user)
         .then((response) => {
             console.log(response.data)
@@ -73,11 +76,13 @@ const Sigup = () =>{
                 "session":true
             }
             localStorage.setItem('data',JSON.stringify(data));
+            setCarga(false);
             alertas('success','Bienvenido');
             window.location = "/";
         })
         .catch((error) =>{
-            console.log('error',error)
+            console.log('error',error);
+            setCarga(false);
             alertas('error',error.response.data.message);
         });
     }
@@ -92,6 +97,7 @@ const Sigup = () =>{
 
     return(
         <div className="seccion">
+            {carga ? <Carga2/> : null}
             <div className="con-sigup animate__animated animate__fadeInDown">
                 <div className="row">
                     <div className="sigup-img">

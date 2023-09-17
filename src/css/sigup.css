@@ -57,6 +57,7 @@
     margin-bottom: 20px;
     margin-left: 10px;
     border: 2px solid #fcffff;
+    color: #fcffff;
     border-left: none;
     border-right: none;
     border-top: none;
@@ -70,6 +71,7 @@
     margin-bottom: 20px;
     margin-left: 10px;
     border: 2px solid #fcffff;
+    color: #fcffff;
     border-left: none;
     border-right: none;
     border-top: none;
@@ -83,6 +85,7 @@
     margin-bottom: 20px;
     margin-left: 10px;
     border: 2px solid #fcffff;
+    color: #fcffff;
     border-left: none;
     border-right: none;
     border-top: none;
@@ -96,6 +99,7 @@
     margin-bottom: 20px;
     margin-left: 10px;
     border: 2px solid #fcffff;
+    color: #fcffff;
     border-left: none;
     border-right: none;
     border-top: none;
@@ -103,7 +107,19 @@
     background-color: rgba(252, 255, 255, 0.1);
 }
 
-.sigup-form .form .input::placeholder, .input1::placeholder, .input2::placeholder, .input3::placeholder{
+.sigup-form .form .input::placeholder{
+    color: #fcffff;
+}
+
+.sigup-form .form .input1::placeholder{
+    color: #fcffff;
+}
+
+.sigup-form .form .input2::placeholder{
+    color: #fcffff;
+}
+
+.sigup-form .form .input3::placeholder{
     color: #fcffff;
 }
 

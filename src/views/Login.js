@@ -6,12 +6,15 @@ import logo from '../img/logo.png';
 import Input from '../components/Input'
 import Btn2 from "../components/Btn2";
 import Btn1 from "../components/Btn1";
+import Carga2 from "./partials/Carga2";
 
 const Login = () =>{
     const [user, setUser] = useState({
         'email':'',
         'password':''
-    })
+    });
+
+    const [carga, setCarga] = useState(false);
 
     const obtenerDatos = (e) =>{
         const {name, value} = e.target
@@ -45,6 +48,7 @@ const Login = () =>{
     }
 
     const enviarDatosPost = () =>{
+        setCarga(true);
         axios.post('https://cubecheck.onrender.com/login', user)
         .then((response) => {
             console.log(response.data)
@@ -57,9 +61,11 @@ const Login = () =>{
             localStorage.setItem('data',JSON.stringify(data));
             alertas('success','Bienvenido');
             window.location = "/";
+            setCarga(false);
         })
         .catch((error) =>{
             console.log('error',error);
+            setCarga(false);
             alertas('error',error.response.data.message);
         });
     }
@@ -73,6 +79,7 @@ const Login = () =>{
 
     return(
         <div className="seccion">
+            {carga ? <Carga2/> : null}
             <div className="con-login animate__animated animate__fadeInDown">
                 <div className="row">
                     <div className="login-img">
