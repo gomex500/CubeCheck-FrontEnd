@@ -13,7 +13,8 @@ const Users = () =>{
     const [carga2, setCarga2] = useState(false);
     const [users, setUsers] = useState([]);
     const [user, setUser] = useState([]);
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState("");
+    const [Rol, setRol] = useState("");
 
     const alertas = (icono, texto) =>{
         Swal.fire({
@@ -113,6 +114,33 @@ const Users = () =>{
         obtenerUsuarios();
     }
 
+    const cambiarR = (id, rol) =>{
+        setCarga2(true);
+        if (rol === "user") {
+            setRol({"rol":"admin"});
+        } else {
+            setRol({"rol":"user"});
+        }
+        const datos = localStorage.getItem('data');
+        const data = JSON.parse(datos);
+        const config = {
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+            },
+        }
+        axios.put(`https://cubecheck.onrender.com/rol/${id}`, Rol, config)
+            .then((response) =>{
+                obtenerUsuarios();
+                setRol("");
+                alertas('success',response.data.message);
+            })
+            .catch((error) =>{
+                console.log(error);
+                alertas('error', error.response.data.message);
+                setCarga2(false);
+            })
+    }
+
     useEffect(() =>{
         obtenerRol();
         obtenerUsuarios();
@@ -148,7 +176,13 @@ const Users = () =>{
                                         tp={'button'}
                                         cls={'btn3'}
                                         func={cancelar}
-                                        text={<i class="fa-solid fa-delete-left"></i>}
+                                        text={(() =>{
+                                            if (email.length > 0) {
+                                               return <i class="fa-solid fa-delete-left"></i>
+                                            } else {
+                                                return <i class="fa-solid fa-rotate"></i>
+                                            }
+                                        })()}
                                     />
                                 </div>
                             </form>
@@ -180,6 +214,7 @@ const Users = () =>{
                                         <td>{user.email}</td>
                                         <td>
                                             <Btn2
+                                                tp={'button'}
                                                 cls={(() =>{
                                                     if (user.rol === 'admin') {
                                                         return "btn4"
@@ -188,6 +223,7 @@ const Users = () =>{
                                                     }
                                                 })()}
                                                 text={<i class="fa-solid fa-rotate"></i>}
+                                                func={() => cambiarR(user._id, user.rol)}
                                             />
                                         </td>
                                     </tr>
@@ -201,6 +237,20 @@ const Users = () =>{
                                         <td>{user.rol}</td>
                                         <td>{user.telefono}</td>
                                         <td>{user.email}</td>
+                                        <td>
+                                            <Btn2
+                                                tp={'button'}
+                                                cls={(() =>{
+                                                    if (user.rol === 'admin') {
+                                                        return "btn4"
+                                                    }else{
+                                                        return "btn2"
+                                                    }
+                                                })()}
+                                                text={<i class="fa-solid fa-rotate"></i>}
+                                                func={() => cambiarR(user._id, user.rol)}
+                                            />
+                                        </td>
                                     </tr>
                                 )}
                                 </tbody>
