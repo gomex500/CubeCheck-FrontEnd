@@ -59,6 +59,37 @@
     width: 10%;
     margin-left: 1%;
 }
+
+.table-body .btn2{
+    display: inline;
+    padding: 5px 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-left: 1%;
+    background-color: #4dbcbc;
+    color: #fcffff;
+}
+.table-body .btn2:hover{
+    background-color: #fcffff;
+    color: #4dbcbc;
+    border: 1px solid #4dbcbc;
+}
+
+.table-body .btn4{
+    display: inline;
+    padding: 5px 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-left: 1%;
+    background-color: #4dbc56;
+    color: #fcffff;
+}
+.table-body .btn4:hover{
+    background-color: #fcffff;
+    color: #4dbc56;
+    border: 1px solid #4dbc56;
+}
+
 .form-cont .btn3{
     display: inline;
     width: 10%;

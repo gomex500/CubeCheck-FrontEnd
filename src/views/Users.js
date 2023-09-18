@@ -164,6 +164,7 @@ const Users = () =>{
                                         <th>Rol</th>
                                         <th>Telefono</th>
                                         <th>Email</th>
+                                        <th>Cambiar Rol</th>
                                     </tr>
                                 </thead>
                                 <tbody className="table-body">
@@ -177,6 +178,18 @@ const Users = () =>{
                                         <td>{user.rol}</td>
                                         <td>{user.telefono}</td>
                                         <td>{user.email}</td>
+                                        <td>
+                                            <Btn2
+                                                cls={(() =>{
+                                                    if (user.rol === 'admin') {
+                                                        return "btn4"
+                                                    }else{
+                                                        return "btn2"
+                                                    }
+                                                })()}
+                                                text={<i class="fa-solid fa-rotate"></i>}
+                                            />
+                                        </td>
                                     </tr>
                                     ))
                                 ) : (
