@@ -11,6 +11,7 @@ const Profile = () =>{
     const [editar, setEditar] = useState(true);
     const [user, setUser] = useState({});
     const [carga, setCarga] = useState(true);
+    const [editPass, setEditPass] = useState(false);
 
     const cerrarSession = () =>{
         localStorage.removeItem('data');
@@ -112,34 +113,67 @@ const Profile = () =>{
                                         nm={"email"}
                                         dis={editar}
                                     />
-                                    <Input
-                                        tp={"password"}
-                                        cls={"form-control input"}
-                                        // val={user.password}
-                                        // fuc={obtenerDatos}
-                                        ph={"Password"}
-                                        nm={"password"}
-                                        dis={editar}
-                                    />
-                                    <Input
-                                        tp={"password"}
-                                        cls={"form-control input"}
-                                        // val={passwordN}
-                                        // fuc={e => setPasswordN(e.target.value)}
-                                        ph={"Password nuevamente"}
-                                        dis={editar}
-                                    />
-                                    {/* <Btn2
-                                        tp={"sumit"}
-                                        cls={"btn1"}
-                                        text={"Iniciar"}
-                                    /> */}
+                                    {(() =>{
+                                        if (editPass) {
+                                            return(
+                                                <>
+                                                    <Input
+                                                    tp={"password"}
+                                                    cls={"form-control input"}
+                                                    // val={user.password}
+                                                    // fuc={obtenerDatos}
+                                                    ph={"Password"}
+                                                    nm={"password"}
+                                                    // dis={editar}
+                                                />
+                                                <Input
+                                                    tp={"password"}
+                                                    cls={"form-control input"}
+                                                    // val={passwordN}
+                                                    // fuc={e => setPasswordN(e.target.value)}
+                                                    ph={"Password nuevamente"}
+                                                    // dis={editar}
+                                                />
+                                                </>
+                                            );
+                                        } else {
+                                            return(
+                                                <div className="cont-btn">
+                                                    {editar ? <Btn2
+                                                        tp={'button'}
+                                                        cls={'btn2'}
+                                                        text={<i class="fa-solid fa-pencil"></i>}
+                                                        func={() => setEditar(!editar)}
+                                                    /> :
+                                                    <Btn2
+                                                        tp={'button'}
+                                                        cls={"btn3"}
+                                                        func={() => setEditar(!editar)}
+                                                        text={<i class="fa-solid fa-delete-left"></i>}
+                                                    />}
+                                                    <Btn2
+                                                        tp={'button'}
+                                                        cls={"btn1"}
+                                                        func={() => setEditPass(!editPass)}
+                                                        text={"Cambiar password"}
+                                                    />
+                                                </div>
+                                            );
+                                        }
+                                    })()}
                                 </form>
-                                <Btn2
-                                    cls={"btn1"}
-                                    func={cerrarSession}
-                                    text={"Cerrar Sesion"}
-                                />
+                                <div className="cont-btn">
+                                        <Btn2
+                                            cls={"btn1"}
+                                            func={cerrarSession}
+                                            text={"Cerrar Sesion"}
+                                        />
+                                        <Btn2
+                                            cls={"btn1"}
+                                            func={cerrarSession}
+                                            text={"Eliminar Cuenta"}
+                                        />
+                                    </div>
                             </center>
                         </div>
                     </div>
