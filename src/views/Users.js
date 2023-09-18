@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Carga from './partials/Carga';
+import Carga2 from "./partials/Carga2";
+import Swal from 'sweetalert2';
 import Input from '../components/Input';
 import Btn2 from '../components/Btn2';
 import axios from "axios";
@@ -8,7 +10,20 @@ import '../css/users.css';
 const Users = () =>{
 
     const [carga, setCarga] = useState(true);
+    const [carga2, setCarga2] = useState(false);
     const [users, setUsers] = useState([]);
+    const [user, setUser] = useState([]);
+    const [email, setEmail] = useState();
+
+    const alertas = (icono, texto) =>{
+        Swal.fire({
+            // position: 'top-end',
+            icon: icono,
+            title: texto,
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
 
     const obtenerRol = () =>{
         const datos = localStorage.getItem('data');
@@ -39,6 +54,9 @@ const Users = () =>{
     }
 
     const obtenerUsuarios = () =>{
+        if (!carga) {
+            setCarga2(true);
+        }
         const datos = localStorage.getItem('data');
         if (datos) {
             const data = JSON.parse(datos);
@@ -51,6 +69,7 @@ const Users = () =>{
             .then((response) =>{
                 setUsers(response.data);
                 setCarga(false);
+                setCarga2(false);
             })
             .catch((error) =>{
                 console.log(error);
@@ -59,6 +78,39 @@ const Users = () =>{
         } else {
             setCarga(false);
         }
+    }
+
+    const buscarUsuario = (e) =>{
+        e.preventDefault();
+        setCarga2(true);
+        if(email){
+            const datos = localStorage.getItem('data');
+            const data = JSON.parse(datos);
+            const config = {
+                headers: {
+                  Authorization: `Bearer ${data.token}`,
+                },
+            }
+            axios.get(`https://cubecheck.onrender.com/email/${email}`,config)
+            .then((response) =>{
+                setUsers([]);
+                setUser(response.data);
+                setCarga2(false);
+            })
+            .catch((error) =>{
+                console.log(error);
+                alertas('error', error.response.data.message);
+                setCarga2(false);
+            })
+        }else{
+        alertas('error', 'campo vacio');
+        setCarga2(false);
+        }
+    }
+
+    const cancelar = () =>{
+        setEmail('');
+        obtenerUsuarios();
     }
 
     useEffect(() =>{
@@ -73,21 +125,30 @@ const Users = () =>{
     } else {
         return(
             <div className="seccion">
+                {carga2 ? <Carga2/> : null}
                 <div className="cont-users">
                     <center>
                         <h2>Administracion de Usuarios</h2>
                         <div className="cont-search">
-                            <form>
+                            <form onSubmit={buscarUsuario}>
                                 <div className="form-cont">
                                     <Input
-                                        tp={'search'}
+                                        tp={'email'}
                                         cls={'form-control input'}
+                                        val={email}
+                                        fuc={e => setEmail(e.target.value)}
                                         ph={'Buscar por correo'}
                                     />
                                     <Btn2
                                         tp={'submit'}
                                         cls={'btn1'}
                                         text={<i class="fa-solid fa-magnifying-glass"></i>}
+                                    />
+                                    <Btn2
+                                        tp={'button'}
+                                        cls={'btn3'}
+                                        func={cancelar}
+                                        text={<i class="fa-solid fa-delete-left"></i>}
                                     />
                                 </div>
                             </form>
@@ -106,17 +167,29 @@ const Users = () =>{
                                     </tr>
                                 </thead>
                                 <tbody className="table-body">
-                                    {users.map((user, i) =>(
-                                        <tr key={user._id} className="tbody">
-                                            <td>{i+1}</td>
-                                            <td>{user.nombre}</td>
-                                            <td>{user.apellido}</td>
-                                            <td>{user.edad}</td>
-                                            <td>{user.rol}</td>
-                                            <td>{user.telefono}</td>
-                                            <td>{user.email}</td>
-                                        </tr>
-                                    ))}
+                                {users.length > 0 ? (
+                                    users.map((user, i) => (
+                                    <tr key={user._id} className="tbody">
+                                        <td>{i + 1}</td>
+                                        <td>{user.nombre}</td>
+                                        <td>{user.apellido}</td>
+                                        <td>{user.edad}</td>
+                                        <td>{user.rol}</td>
+                                        <td>{user.telefono}</td>
+                                        <td>{user.email}</td>
+                                    </tr>
+                                    ))
+                                ) : (
+                                    <tr className="tbody">
+                                        <td>{1}</td>
+                                        <td>{user.nombre}</td>
+                                        <td>{user.apellido}</td>
+                                        <td>{user.edad}</td>
+                                        <td>{user.rol}</td>
+                                        <td>{user.telefono}</td>
+                                        <td>{user.email}</td>
+                                    </tr>
+                                )}
                                 </tbody>
                             </table>
                         </div>
