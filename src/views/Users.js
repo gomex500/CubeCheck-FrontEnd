@@ -10,11 +10,11 @@ import '../css/users.css';
 const Users = () =>{
 
     const [carga, setCarga] = useState(true);
+    const [vista, setVista] = useState(true);
     const [carga2, setCarga2] = useState(false);
     const [users, setUsers] = useState([]);
     const [user, setUser] = useState([]);
     const [email, setEmail] = useState("");
-    const [Rol, setRol] = useState("");
 
     const alertas = (icono, texto) =>{
         Swal.fire({
@@ -27,6 +27,7 @@ const Users = () =>{
     }
 
     const obtenerRol = () =>{
+        setCarga(true);
         const datos = localStorage.getItem('data');
         if (datos) {
             const data = JSON.parse(datos);
@@ -37,8 +38,11 @@ const Users = () =>{
             }
             axios.get(`https://cubecheck.onrender.com/user/${data.id}`,config)
             .then((response) =>{
-                if (response.data.rol === 'admin') {
+                if (response.data.rol === "admin") {
                     setCarga(false);
+                    // setCarga2(true);
+                    obtenerUsuarios();
+                    setVista(false);
                 }else{
                     window.location = '/';
                 }
@@ -69,7 +73,6 @@ const Users = () =>{
             axios.get(`https://cubecheck.onrender.com/users`,config)
             .then((response) =>{
                 setUsers(response.data);
-                setCarga(false);
                 setCarga2(false);
             })
             .catch((error) =>{
@@ -116,11 +119,6 @@ const Users = () =>{
 
     const cambiarR = (id, rol) =>{
         setCarga2(true);
-        if (rol === "user") {
-            setRol({"rol":"admin"});
-        } else {
-            setRol({"rol":"user"});
-        }
         const datos = localStorage.getItem('data');
         const data = JSON.parse(datos);
         const config = {
@@ -128,10 +126,10 @@ const Users = () =>{
               Authorization: `Bearer ${data.token}`,
             },
         }
-        axios.put(`https://cubecheck.onrender.com/rol/${id}`, Rol, config)
+        if (rol === "user") {
+            axios.put(`https://cubecheck.onrender.com/rol/${id}`, {"rol":"admin"}, config)
             .then((response) =>{
                 obtenerUsuarios();
-                setRol("");
                 alertas('success',response.data.message);
             })
             .catch((error) =>{
@@ -139,14 +137,28 @@ const Users = () =>{
                 alertas('error', error.response.data.message);
                 setCarga2(false);
             })
+        } else {
+            axios.put(`https://cubecheck.onrender.com/rol/${id}`, {"rol":"user"}, config)
+            .then((response) =>{
+                obtenerUsuarios();
+                alertas('success',response.data.message);
+            })
+            .catch((error) =>{
+                console.log(error);
+                alertas('error', error.response.data.message);
+                setCarga2(false);
+            })
+        }
     }
 
     useEffect(() =>{
         obtenerRol();
-        obtenerUsuarios();
-    }, [])
+        if (!vista) {
+            obtenerUsuarios();
+        }
+    }, []);
 
-    if (carga) {
+    if (carga && vista) {
         return(
             <Carga/>
         );
