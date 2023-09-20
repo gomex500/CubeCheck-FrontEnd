@@ -11,6 +11,11 @@
     box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
 }
 
+@font-face {
+    font-family: 'cunia';
+    src: url('../fonts//cunia/Cunia.ttf');
+}
+
 .cont{
     padding-top: 50px;
     padding-left: 30px;

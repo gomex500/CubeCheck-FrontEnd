@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'cunia';
+    src: url('../fonts//cunia/Cunia.ttf');
+}
+
 .navbarr{
     position: fixed;
     top: 0;
@@ -33,6 +38,7 @@
     padding-left: 15px;
     margin-top: -7px;
     text-transform: uppercase;
+    font-family: 'cunia', serif;
 }
 
 .nav1{
@@ -43,7 +49,8 @@
 
 .nav1 a{
     color: #fcffff;
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: 'Alice', serif;
+    font-weight: 500;
     font-size: 18px;
 }
 
@@ -84,6 +91,7 @@
     font-weight: bold;
     padding: 15px;
     font-size: 18px;
+    font-family: 'cunia', serif;
     padding-left: 15px;
     margin-top: -5px;
     text-transform: uppercase;
@@ -99,6 +107,10 @@
     width: 300px;
     padding: 10px;
     color: #fcffff;
+}
+
+.navbarr a{
+    font-family: 'cunia', serif;
 }
 
 .navbarr .fas{

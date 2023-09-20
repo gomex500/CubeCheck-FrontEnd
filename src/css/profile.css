@@ -42,6 +42,7 @@
     font-weight: bold;
     text-transform: uppercase;
     margin-top: 20px;
+    font-family: 'cunia', serif;
 }
 
 .user-form h2{
@@ -49,6 +50,7 @@
     color: #4d82bc;
     font-weight: bold;
     text-transform: uppercase;
+    font-family: 'cunia', serif;
 }
 
 .user-form .form .input{
@@ -149,11 +151,13 @@
 
 .user-form .form .cont-btn{
     width: 100%;
+    margin-bottom: 50px;
 }
 
 .cont-btn .btn1{
     display: inline;
     width: 40%;
+    margin-right: 5px;
 }
 
 .cont-btn .btn2{

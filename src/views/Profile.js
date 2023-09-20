@@ -3,7 +3,7 @@ import '../css/profile.css'
 import Input from "../components/Input";
 import Btn2 from "../components/Btn2";
 import axios from "axios";
-import logo from '../img/logo.png';
+import logo from '../img/logo1.png';
 import Carga from "./partials/Carga";
 
 const Profile = () =>{
@@ -162,18 +162,41 @@ const Profile = () =>{
                                         }
                                     })()}
                                 </form>
-                                <div className="cont-btn">
-                                        <Btn2
-                                            cls={"btn1"}
-                                            func={cerrarSession}
-                                            text={"Cerrar Sesion"}
-                                        />
-                                        <Btn2
-                                            cls={"btn1"}
-                                            func={cerrarSession}
-                                            text={"Eliminar Cuenta"}
-                                        />
-                                    </div>
+                                {(() =>{
+                                    if (editPass) {
+                                        return(
+                                            <div className="cont-btn">
+                                                <Btn2
+                                                    tp={'button'}
+                                                    cls={"btn1"}
+                                                    func={() => setEditPass(!editPass)}
+                                                    text={"Guardar"}
+                                                />
+                                                <Btn2
+                                                    tp={'button'}
+                                                    cls={"btn3"}
+                                                    func={() => setEditPass(!editPass)}
+                                                    text={<i class="fa-solid fa-delete-left"></i>}
+                                                />
+                                            </div>
+                                        );
+                                    } else {
+                                        return(
+                                            <div className="cont-btn">
+                                                <Btn2
+                                                    cls={"btn1"}
+                                                    func={cerrarSession}
+                                                    text={"Cerrar Sesion"}
+                                                />
+                                                <Btn2
+                                                    cls={"btn1"}
+                                                    func={cerrarSession}
+                                                    text={"Eliminar Cuenta"}
+                                                />
+                                            </div>
+                                        );
+                                    }
+                                })()}
                             </center>
                         </div>
                     </div>

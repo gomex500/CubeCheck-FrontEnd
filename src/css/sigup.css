@@ -17,7 +17,7 @@
     /* margin: 0 auto; */
     width: 40%;
     height: 520px;
-    background-color: #fcffff;
+    /* background-color: #fcffff; */
     background-image: url('../img/fodo.png');
     border-top-right-radius: 60%;
     border-bottom-right-radius: 60%;
@@ -43,6 +43,7 @@
     font-weight: bold;
     text-transform: uppercase;
     margin-top: 20px;
+    font-family: 'cunia', serif;
 }
 
 .sigup-form h2{
@@ -50,6 +51,7 @@
     color: #fcffff;
     font-weight: bold;
     text-transform: uppercase;
+    font-family: 'cunia', serif;
 }
 
 .sigup-form .form .input{
@@ -254,7 +256,7 @@
         width: 45%;
         height: 45%;
         padding: 10px;
-        background-color: #fcffff;
+        /* background-color: #fcffff; */
         border-radius: 50%;
         margin-top: 10px;
     }
