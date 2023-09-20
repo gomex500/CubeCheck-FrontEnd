@@ -35,6 +35,8 @@
 .user-img img{
     width: 60%;
     margin-top: 40%;
+    background-color: #fcffff;
+    border-radius: 50%;
 }
 
 .user-img h2{
@@ -125,28 +127,28 @@
     cursor: text;
     border: 2px solid #4d82bc;
     transition: all 0.3s ease;
-    color: #fcffff;
+    color: #4d82bc;
 }
 
 .user-form .form .input1:focus{
     cursor: text;
     border: 2px solid #4d82bc;
     transition: all 0.3s ease;
-    color: #fcffff;
+    color: #4d82bc;
 }
 
 .user-form  .form .input2:focus{
     cursor: text;
     border: 2px solid #4d82bc;
     transition: all 0.3s ease;
-    color: #fcffff;
+    color: #4d82bc;
 }
 
 .user-form  .form .input3:focus{
     cursor: text;
     border: 2px solid #4d82bc;
     transition: all 0.3s ease;
-    color: #fcffff;
+    color: #4d82bc;
 }
 
 .user-form .form .cont-btn{
@@ -158,6 +160,30 @@
     display: inline;
     width: 40%;
     margin-right: 5px;
+}
+
+.cont-btn .btn4{
+    display: inline;
+    width: 60%;
+    background-color: #4d82bc;
+    color: #fcffff;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.cont-btn .btn5{
+    display: inline;
+    width: 40%;
+    background-color: #c94040;
+    color: #fcffff;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
 .cont-btn .btn2{
@@ -314,6 +340,16 @@
     .user-form p{
         font-size: 14px;
         margin-top: 20px;
+    }
+    .cont-btn .btn4{
+        width: 70%;
+    }
+    .cont-btn .btn1{
+        width: 90%;
+    }
+
+    .cont-btn .btn5{
+        width: 90%;
     }
 }
 

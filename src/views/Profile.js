@@ -3,14 +3,16 @@ import '../css/profile.css'
 import Input from "../components/Input";
 import Btn2 from "../components/Btn2";
 import axios from "axios";
-import logo from '../img/logo1.png';
+import logo from '../img/logo.png';
 import Carga from "./partials/Carga";
+import Carga2 from "./partials/Carga2";
 
 const Profile = () =>{
 
-    const [editar, setEditar] = useState(true);
+    const [editar, setEditar] = useState(false);
     const [user, setUser] = useState({});
     const [carga, setCarga] = useState(true);
+    const [carga2, setCarga2] = useState(false);
     const [editPass, setEditPass] = useState(false);
 
     const cerrarSession = () =>{
@@ -19,7 +21,13 @@ const Profile = () =>{
         window.location = '/';
     }
 
-    useEffect(() =>{
+    const auxi = () =>{
+        setEditar(!editar);
+        obtenerUsuerio();
+    }
+
+    const obtenerUsuerio = () =>{
+        setCarga2(true);
         const datos = localStorage.getItem('data');
         if (datos) {
             const data = JSON.parse(datos);
@@ -33,10 +41,12 @@ const Profile = () =>{
             .then((response) =>{
                 setUser(response.data);
                 setCarga(false);
+                setCarga2(false);
             })
             .catch((error) =>{
                 console.log(error);
                 setCarga(false);
+                setCarga2(false);
             })
         } else {
             setUser({
@@ -46,7 +56,22 @@ const Profile = () =>{
             localStorage.removeItem('data');
             localStorage.setItem('session',false);
             setCarga(false);
+            setCarga2(false);
         }
+    }
+
+    const obtenerDatos = (e) =>{
+        const {name, value} = e.target
+        setUser({
+            ...user,
+            [name]:value
+        })
+    }
+
+
+    useEffect(() =>{
+        setEditar(true);
+        obtenerUsuerio();
     }, []);
 
     if (carga) {
@@ -56,6 +81,7 @@ const Profile = () =>{
     } else {
         return(
             <div className="seccion">
+                {carga2 ? <Carga2/> : null}
                 <div className="con-user animate__animated animate__fadeInDown">
                     <div className="row">
                         <div className="user-img">
@@ -68,11 +94,12 @@ const Profile = () =>{
                             <center>
                                 <h2>Datos de Usuario</h2>
                                 <form className="form">
+                                    {/* <label for='nombre' className="form-label">Nombre:</label> */}
                                     <Input
                                         tp={"text"}
                                         cls={"form-control input1"}
                                         val={user.nombre}
-                                        // fuc={obtenerDatos}
+                                        fuc={obtenerDatos}
                                         ph={"Nombre"}
                                         nm={"nombre"}
                                         dis={editar}
@@ -81,7 +108,7 @@ const Profile = () =>{
                                         tp={"text"}
                                         cls={"form-control input1"}
                                         val={user.apellido}
-                                        // fuc={obtenerDatos}
+                                        fuc={obtenerDatos}
                                         ph={"Apellido"}
                                         nm={"apellido"}
                                         dis={editar}
@@ -90,7 +117,7 @@ const Profile = () =>{
                                         tp={"number"}
                                         cls={"form-control input2"}
                                         val={user.edad}
-                                        // fuc={obtenerDatos}
+                                        fuc={obtenerDatos}
                                         ph={"Edad"}
                                         nm={"edad"}
                                         dis={editar}
@@ -99,7 +126,7 @@ const Profile = () =>{
                                         tp={"tel"}
                                         cls={"form-control input3"}
                                         val={user.telefono}
-                                        // fuc={obtenerDatos}
+                                        fuc={obtenerDatos}
                                         ph={"Telefono"}
                                         nm={"telefono"}
                                         dis={editar}
@@ -108,7 +135,7 @@ const Profile = () =>{
                                         tp={"email"}
                                         cls={"form-control input"}
                                         val={user.email}
-                                        // fuc={obtenerDatos}
+                                        fuc={obtenerDatos}
                                         ph={"Email"}
                                         nm={"email"}
                                         dis={editar}
@@ -124,7 +151,6 @@ const Profile = () =>{
                                                     // fuc={obtenerDatos}
                                                     ph={"Password"}
                                                     nm={"password"}
-                                                    // dis={editar}
                                                 />
                                                 <Input
                                                     tp={"password"}
@@ -132,7 +158,6 @@ const Profile = () =>{
                                                     // val={passwordN}
                                                     // fuc={e => setPasswordN(e.target.value)}
                                                     ph={"Password nuevamente"}
-                                                    // dis={editar}
                                                 />
                                                 </>
                                             );
@@ -148,15 +173,21 @@ const Profile = () =>{
                                                     <Btn2
                                                         tp={'button'}
                                                         cls={"btn3"}
-                                                        func={() => setEditar(!editar)}
+                                                        func={() => auxi()}
                                                         text={<i class="fa-solid fa-delete-left"></i>}
                                                     />}
-                                                    <Btn2
+                                                    {editar ? <Btn2
                                                         tp={'button'}
-                                                        cls={"btn1"}
+                                                        cls={"btn4"}
                                                         func={() => setEditPass(!editPass)}
                                                         text={"Cambiar password"}
-                                                    />
+                                                    /> :
+                                                    <Btn2
+                                                        tp={'button'}
+                                                        cls={"btn4"}
+                                                        func={() => setEditPass(!editPass)}
+                                                        text={"Guardar"}
+                                                    />}
                                                 </div>
                                             );
                                         }
@@ -189,8 +220,8 @@ const Profile = () =>{
                                                     text={"Cerrar Sesion"}
                                                 />
                                                 <Btn2
-                                                    cls={"btn1"}
-                                                    func={cerrarSession}
+                                                    cls={"btn5"}
+                                                    // func={cerrarSession}
                                                     text={"Eliminar Cuenta"}
                                                 />
                                             </div>
