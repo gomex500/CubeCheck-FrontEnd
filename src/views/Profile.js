@@ -6,6 +6,7 @@ import axios from "axios";
 import logo from '../img/logo.png';
 import Carga from "./partials/Carga";
 import Carga2 from "./partials/Carga2";
+import Swal from "sweetalert2";
 
 const Profile = () =>{
 
@@ -14,6 +15,10 @@ const Profile = () =>{
     const [carga, setCarga] = useState(true);
     const [carga2, setCarga2] = useState(false);
     const [editPass, setEditPass] = useState(false);
+    const [userPassword, setUserPassword] = useState({
+        "password":"",
+        "newPassword":""
+    })
 
     const cerrarSession = () =>{
         localStorage.removeItem('data');
@@ -24,6 +29,16 @@ const Profile = () =>{
     const auxi = () =>{
         setEditar(!editar);
         obtenerUsuerio();
+    }
+
+    const alertas = (icono, texto) =>{
+        Swal.fire({
+            // position: 'top-end',
+            icon: icono,
+            title: texto,
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
 
     const obtenerUsuerio = () =>{
@@ -68,6 +83,80 @@ const Profile = () =>{
         })
     }
 
+    const obtenerPassword = (e) =>{
+        const {name, value} = e.target
+        setUserPassword({
+            ...user,
+            [name]:value
+        })
+    }
+
+    const validarDatos = () => {
+        if (
+            user.nombre === "" ||
+            user.apellido === "" ||
+            user.edad === "" ||
+            user.telefono === ""
+        ) {
+            auxi();
+            alertas('error', 'Aun hay campos Vacios');
+            return false;
+        }else if(user.edad < 15){
+            auxi();
+            alertas('error','A un eres menor de edad');
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    const actualizarUsuario = (e) =>{
+        e.preventDefault();
+        if (validarDatos()) {
+            enviarDatos();
+        }
+        setEditar(!editar);
+    }
+
+    const enviarDatos = () =>{
+        setCarga2(true);
+        const datos = localStorage.getItem('data');
+        const data = JSON.parse(datos);
+        const config = {
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+            },
+        }
+        axios.put(`https://cubecheck.onrender.com/userb/${data.id}`,
+            {
+                "nombre": user.nombre,
+                "apellido": user.apellido,
+                "edad":user.edad,
+                "telefono":user.telefono
+            }
+            , config)
+            .then((response) =>{
+                alertas('success',response.data.message);
+                setCarga2(false);
+            })
+            .catch((error) =>{
+                console.log(error);
+                alertas('error', error.response.data.message);
+                setCarga2(false);
+            })
+    }
+
+    const validarPassword = () =>{
+        if (userPassword.password !== '') {
+            if (userPassword.newPassword !== '') {
+                console.log(userPassword);
+            } else {
+                alertas('error', 'campos vacios');
+            }
+        }else{
+            alertas('error', 'campos vacios');
+        }
+    }
 
     useEffect(() =>{
         setEditar(true);
@@ -93,7 +182,7 @@ const Profile = () =>{
                         <div className="user-form">
                             <center>
                                 <h2>Datos de Usuario</h2>
-                                <form className="form">
+                                <form className="form" onSubmit={actualizarUsuario}>
                                     {/* <label for='nombre' className="form-label">Nombre:</label> */}
                                     <Input
                                         tp={"text"}
@@ -138,7 +227,7 @@ const Profile = () =>{
                                         fuc={obtenerDatos}
                                         ph={"Email"}
                                         nm={"email"}
-                                        dis={editar}
+                                        dis={true}
                                     />
                                     {(() =>{
                                         if (editPass) {
@@ -147,17 +236,17 @@ const Profile = () =>{
                                                     <Input
                                                     tp={"password"}
                                                     cls={"form-control input"}
-                                                    // val={user.password}
-                                                    // fuc={obtenerDatos}
-                                                    ph={"Password"}
+                                                    val={userPassword.password}
+                                                    fuc={obtenerPassword}
+                                                    ph={"Password actual"}
                                                     nm={"password"}
                                                 />
                                                 <Input
                                                     tp={"password"}
                                                     cls={"form-control input"}
-                                                    // val={passwordN}
-                                                    // fuc={e => setPasswordN(e.target.value)}
-                                                    ph={"Password nuevamente"}
+                                                    val={userPassword.newPassword}
+                                                    fuc={obtenerPassword}
+                                                    ph={"newPassword"}
                                                 />
                                                 </>
                                             );
@@ -183,9 +272,8 @@ const Profile = () =>{
                                                         text={"Cambiar password"}
                                                     /> :
                                                     <Btn2
-                                                        tp={'button'}
+                                                        tp={'submit'}
                                                         cls={"btn4"}
-                                                        func={() => setEditPass(!editPass)}
                                                         text={"Guardar"}
                                                     />}
                                                 </div>
@@ -200,7 +288,7 @@ const Profile = () =>{
                                                 <Btn2
                                                     tp={'button'}
                                                     cls={"btn1"}
-                                                    func={() => setEditPass(!editPass)}
+                                                    func={() => validarPassword()}
                                                     text={"Guardar"}
                                                 />
                                                 <Btn2
@@ -215,11 +303,13 @@ const Profile = () =>{
                                         return(
                                             <div className="cont-btn">
                                                 <Btn2
+                                                    tp={'button'}
                                                     cls={"btn1"}
                                                     func={cerrarSession}
                                                     text={"Cerrar Sesion"}
                                                 />
                                                 <Btn2
+                                                    tp={'button'}
                                                     cls={"btn5"}
                                                     // func={cerrarSession}
                                                     text={"Eliminar Cuenta"}
