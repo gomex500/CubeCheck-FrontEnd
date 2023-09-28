@@ -70,7 +70,7 @@ const Navbar = () =>{
                                     <a className="nav-link" aria-current="page" href="/"><i class="fas fa-home"></i> Inico</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/beneficios"><i class="fas fa-calculator"></i> Calculadora</a>
+                                    <a className="nav-link" href="/Calculation"><i class="fas fa-calculator"></i> Calculadora</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="/proceso"><i class="fa-solid fa-toolbox"></i> Herramietas</a>
@@ -127,7 +127,7 @@ const Navbar = () =>{
                         </a>
                     </li>
                     <li>
-                        <a href="/">
+                        <a href="/Calculation">
                             <i className="fas fa-calculator"></i>
                             <span className="nav-item">Calculadora</span>
                         </a>

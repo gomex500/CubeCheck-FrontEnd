@@ -8,6 +8,7 @@ import Sigup from "../Sigup";
 import BtnChat from "../../components/BtnChat";
 import Profile from "../Profile";
 import Users from "../Users";
+import Calculation from '../Calculation';
 
 
 const Menu = () =>{
@@ -26,6 +27,7 @@ const Menu = () =>{
             <Navbar/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/calculation" element={<Calculation/>}/>
                 <Route path="/login" element={validarSesion() ?  <Navigate to='/'/> : <Login/>}/>
                 <Route path="/sigup" element={validarSesion() ?  <Navigate to='/'/> : <Sigup/>}/>
                 <Route path="/profile" element={validarSesion() ?  <Profile/> : <Navigate to='/login'/>}/>
