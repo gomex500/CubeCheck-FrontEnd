@@ -1,0 +1,69 @@
+.contA{
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 30px;
+}
+
+.contInput{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contI{
+    display: inline;
+}
+
+.contI .input1{
+    display: inline;
+    width: 20%;
+    margin: 0 10px 0 10px;
+    border-radius: 5px;
+}
+
+.contBA{
+    width: 40%;
+    margin: 0 auto;
+}
+
+.contBA .btn1{
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.contBA p{
+    font-size: 25px;
+}
+
+@media screen and (max-width:650px){
+    .contI{
+        display: block;
+        width: 100%;
+    }
+    
+    .contI .input1{
+        display: inline;
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 0;
+        margin-left: 5px;
+    }
+    
+    .contBA{
+        width: 60%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:400px){
+    .contI .input1{
+        display: block;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+    
+    .contBA{
+        width: 80%;
+    }
+}

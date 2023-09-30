@@ -3,12 +3,16 @@ import '../css/Calculation.css';
 import Btn2 from '../components/Btn2';
 import Input from '../components/Input';
 import Swal from 'sweetalert2';
+import Area from './partials/Area';
+import Perimetro from './partials/Perimetro';
+import Volumen from './partials/Volumen';
 
 const Calculation = () =>{
 
     const [btnC, setBtnC] = useState(true);
     const [seleccion, setSeleccion] = useState(1);
     const [seleccion2, setSeleccion2] = useState(1);
+    const [seleccionC, setSeleccionC] = useState(1);
     const [val1, setVal1] = useState(0);
     const [resultado, setResultado] = useState(0);
 
@@ -244,6 +248,10 @@ const Calculation = () =>{
         }
     }
 
+    const cambio2 = (contenedor) =>{
+        setSeleccionC(contenedor);
+    }
+
     const alertas = (icono, texto) =>{
         Swal.fire({
             // position: 'top-end',
@@ -257,7 +265,7 @@ const Calculation = () =>{
     return(
         <div className='seccion'>
             <div className='cont-cal'>
-                <div className='cont-btn'>
+                <div className='cont-btnC'>
                     <Btn2
                         text={'Calculadora'}
                         cls={btnC ? 'btnC2' : 'btnC1'}
@@ -274,11 +282,31 @@ const Calculation = () =>{
                 {
                     btnC ?
                     <div className='cont-1'>
-
+                        <div className='contS1'>
+                            <p>Calcular:
+                                <select onChange={e => cambio2(parseInt(e.target.value))} className='form-select select1'>
+                                    <option value='1'>Area</option>
+                                    <option value='2'>Perimetro</option>
+                                    <option value='3'>Volumen</option>
+                                </select>
+                            </p>
+                            <hr/>
+                            {(() =>{
+                                if (seleccionC === 1) {
+                                    return <Area/>
+                                } else if (seleccionC === 2) {
+                                    return <Perimetro/>
+                                }else if(seleccionC === 3){
+                                    return <Volumen/>
+                                }else{
+                                    return null;
+                                }
+                            })()}
+                        </div>
                     </div> :
                     <div className='cont2'>
                         <div className='contS'>
-                            <p>Convertir 
+                            <p>Convertir:
                                 <select name='medida' onChange={e => setSeleccion(parseInt(e.target.value))} className='form-select select1'>
                                     <option value='1'>Metros</option>
                                     <option value='2'>Centimetro</option>
@@ -323,3 +351,4 @@ const Calculation = () =>{
 }
 
 export default Calculation;
+
