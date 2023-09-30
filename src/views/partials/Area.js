@@ -30,7 +30,7 @@ const Area = () =>{
     }
 
     return(
-        <div className="contA">
+        <div className="contA animate__animated animate__fadeInUp">
             <div className="contInput">
                 <div className="contI">
                     <label for='base'>Ingrese Base:</label>

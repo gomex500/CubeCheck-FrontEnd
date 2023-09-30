@@ -281,10 +281,10 @@ const Calculation = () =>{
                 </div>
                 {
                     btnC ?
-                    <div className='cont-1'>
+                    <div className='cont-1 animate__animated animate__bounceInLeft'>
                         <div className='contS1'>
                             <p>Calcular:
-                                <select onChange={e => cambio2(parseInt(e.target.value))} className='form-select select1'>
+                                <select onChange={e => cambio2(parseInt(e.target.value))} className='form-select select2'>
                                     <option value='1'>Area</option>
                                     <option value='2'>Perimetro</option>
                                     <option value='3'>Volumen</option>
@@ -304,7 +304,7 @@ const Calculation = () =>{
                             })()}
                         </div>
                     </div> :
-                    <div className='cont2'>
+                    <div className='cont2 animate__animated animate__bounceInRight'>
                         <div className='contS'>
                             <p>Convertir:
                                 <select name='medida' onChange={e => setSeleccion(parseInt(e.target.value))} className='form-select select1'>

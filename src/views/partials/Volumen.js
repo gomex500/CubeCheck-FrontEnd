@@ -31,7 +31,7 @@ const Volumen = () =>{
     }
 
     return(
-        <div className="contV">
+        <div className="contV animate__animated animate__fadeInUp">
             <div className="contInput">
                 <div className="contI2">
                     <label for='longitud'>Ingrese Logitud:</label>

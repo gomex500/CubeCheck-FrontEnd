@@ -9,7 +9,7 @@
 .cont-1{
     width: 100%;
     margin: 0 auto;
-    padding-top: 40px;
+    padding-top: 20px;
     /* background-color: #fcffff; */
 }
 
@@ -89,6 +89,16 @@
     margin-left: 5px;
     margin-right: 3px;
     color: #4d82bc;
+    font-size: 18px;
+}
+
+.select2{
+    display: inline;
+    width: 20%;
+    margin-left: 5px;
+    margin-right: 3px;
+    color: #4d82bc;
+    font-size: 18px;
 }
 
 .contIB{
@@ -201,6 +211,11 @@ h2{
 
 @media screen and (max-width:500px){
     .select1{
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+    .select2{
         width: 100%;
         margin: 0;
         display: block;
