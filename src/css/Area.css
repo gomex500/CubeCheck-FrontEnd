@@ -20,6 +20,12 @@
     border-radius: 5px;
 }
 
+.contI .input1:focus   {
+    border: none;
+    border-bottom: 2px solid #4d82bc;
+    background-color: #fcffff;
+}
+
 .contBA{
     width: 40%;
     margin: 0 auto;
@@ -60,7 +66,7 @@
         display: block;
         width: 100%;
         margin-left: 0;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
     
     .contBA{

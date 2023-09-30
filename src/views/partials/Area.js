@@ -25,7 +25,7 @@ const Area = () =>{
             setResultado(base*altura);
             alertas('success','Listo');
         } else {
-            alertas('error','Listo');
+            alertas('error','campos vacios');
         }
     }
 
