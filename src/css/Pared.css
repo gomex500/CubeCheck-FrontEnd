@@ -11,7 +11,7 @@
 }
 
 .form-pared{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     margin-top: 30px;
 }
@@ -36,4 +36,23 @@
 .form-pared .contI .select2{
     width: 100%;
     margin-left: 0;
+}
+
+.contPA{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.contPA hr{
+    width: 100%;
+}
+
+.contPA .contP{
+    width: 100%;
+}
+
+.contPA label{
+    color: #4d82bc;
+    font-weight: bold;
 }
