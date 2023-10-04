@@ -25,14 +25,21 @@ const Area = () =>{
             setResultado(base*altura);
             alertas('success','Listo');
         } else {
-            alertas('error','campos vacios');
+            alertas('error','Campos Vacios');
         }
+    }
+
+    const eliminarDatos = () =>{
+        setBase(0);
+        setAltura(0);
+        setResultado(0);
+        alertas('success','Datos Eliminados');
     }
 
     return(
         <div className="contA animate__animated animate__fadeInUp">
-            <div className="contInput">
-                <div className="contI">
+            <div className="contInput row">
+                <div className="contI col-md-4">
                     <label for='base'>Ingrese Base:</label>
                     <Input
                         tp={'number'}
@@ -43,7 +50,7 @@ const Area = () =>{
                         fuc={e => setBase(parseInt(e.target.value))}
                     />
                 </div>
-                <div className="contI">
+                <div className="contI col-md-4">
                     <label for='altura'>Ingrese Altura:</label>
                     <Input
                         tp={'number'}
@@ -54,14 +61,21 @@ const Area = () =>{
                         fuc={e => setAltura(parseInt(e.target.value))}
                     />
                 </div>
+                <div className="contBA col-md-4">
+                    <Btn2
+                        text={<i class="fa-solid fa-delete-left"></i>}
+                        cls={"btn2"}
+                        func={eliminarDatos}
+                    />
+                    <Btn2
+                        text={'Calcular'}
+                        cls={'btn1'}
+                        func={calcular}
+                    />
             </div>
-            <div className="contBA">
-                <Btn2
-                    text={'Calcular'}
-                    cls={'btn1'}
-                    func={calcular}
-                />
-                <p>Resultado: {resultado}</p>
+            </div>
+            <div className="contr">
+                <p>Area es: {resultado}</p>
             </div>
         </div>
     );

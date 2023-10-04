@@ -8,9 +8,9 @@ const Pared = () =>{
         <div className="seccion">
             <div className="cont-pared">
                 <h2 className="titulo-pared">Calcular Materiales de una Pared</h2>
-                <div className="form-pared">
-                    <div className="contI">
-                        <label for='base'>Ingrese base:</label>
+                <div className="form-pared row">
+                    <div className="contI col-md-4">
+                        <label htmlFor='base'>Ingrese base:</label>
                         <Input
                             tp={'number'}
                             cls={'input1'}
@@ -20,8 +20,8 @@ const Pared = () =>{
                             // fuc={e => setBase(parseInt(e.target.value))}
                         />
                     </div>
-                    <div className="contI">
-                        <label for='base'>Ingrese Altura:</label>
+                    <div className="contI col-md-4">
+                        <label htmlFor='base'>Ingrese Altura:</label>
                         <Input
                             tp={'number'}
                             cls={'input1'}
@@ -31,14 +31,16 @@ const Pared = () =>{
                             // fuc={e => setBase(parseInt(e.target.value))}
                         />
                     </div>
-                    <div className="contS1">
-                        <p>Selecione Material:
-                            <select className='form-select select2'>
+                    <div className="contI col-md-4">
+                        <label htmlFor="material">Selecione Material:</label>
+                            <select name="material" className='form-select select2'>
                                 <option value='1'>Ladrillo</option>
                                 <option value='2'>Bloque</option>
                                 <option value='3'>Piedra Cantera</option>
                             </select>
-                        </p>
+                    </div>
+                    <div className="contPA">
+
                     </div>
                 </div>
             </div>

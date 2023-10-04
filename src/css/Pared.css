@@ -15,3 +15,25 @@
     margin: 0 auto;
     margin-top: 30px;
 }
+
+/* .form-pared .contI{
+    
+} */
+
+.form-pared .contI .input1{
+    width: 100%;
+    margin-left: 0;
+}
+
+.form-pared .contI label{
+    color: #4d82bc;
+    font-weight: bold;
+    font-size: 17px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.form-pared .contI .select2{
+    width: 100%;
+    margin-left: 0;
+}
