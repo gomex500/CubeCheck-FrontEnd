@@ -1,0 +1,146 @@
+.cont-tools{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 160px;
+}
+
+.card-pared{
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(93, 152, 240, 0.8), rgba(174, 191, 218, 0.5)),
+    url('../img/pared.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    overflow: hidden;
+    border-radius: 0  0 5px 0;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.card-pilar{
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(93, 152, 240, 0.8), rgba(174, 191, 218, 0.5)),
+    url('../img/pilar.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    overflow: hidden;
+    border-radius: 0  0 5px 0;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.card-embaldosado{
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(93, 152, 240, 0.8), rgba(174, 191, 218, 0.5)),
+    url('../img/embaldosado.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    overflow: hidden;
+    border-radius: 0  0 5px 0;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.card-losa{
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(93, 152, 240, 0.8), rgba(174, 191, 218, 0.5)),
+    url('../img/loza.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    overflow: hidden;
+    border-radius: 0  0 5px 0;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.card-pared .cardT{
+    text-align: center;
+    font-family: 'cunia', serif;
+    color: #fcffff;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.card-pilar .cardT{
+    text-align: center;
+    font-family: 'cunia', serif;
+    color: #fcffff;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.card-embaldosado .cardT{
+    text-align: center;
+    font-family: 'cunia', serif;
+    color: #fcffff;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.card-losa .cardT{
+    text-align: center;
+    font-family: 'cunia', serif;
+    color: #fcffff;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.card-pared .btn1{
+    text-align: center;
+    margin: 0 auto;
+    width: 40%;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
+}
+
+.card-pilar .btn1{
+    text-align: center;
+    margin: 0 auto;
+    width: 40%;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
+}
+
+.card-embaldosado .btn1{
+    text-align: center;
+    margin: 0 auto;
+    width: 40%;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
+}
+
+.card-losa .btn1{
+    text-align: center;
+    margin: 0 auto;
+    width: 40%;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
+}
+
+@media screen and (max-width:590px){
+    .card-pared, .card-pilar, .card-embaldosado, .card-losa {
+        width: 250px;
+        height: 250px;
+        padding-top: 20px;
+    }
+
+    .card-pared .cardT, .card-pilar .cardT, .card-embaldosado .cardT, .card-losa .cardT{
+        margin-bottom: 40px;
+    }
+}

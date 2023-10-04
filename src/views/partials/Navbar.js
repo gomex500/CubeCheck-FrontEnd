@@ -73,7 +73,7 @@ const Navbar = () =>{
                                     <a className="nav-link" href="/Calculation"><i class="fas fa-calculator"></i> Calculadora</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/proceso"><i class="fa-solid fa-toolbox"></i> Herramietas</a>
+                                    <a className="nav-link" href="/tools"><i class="fa-solid fa-toolbox"></i> Herramietas</a>
                                 </li>
                                 {session && (<li className="nav-item">
                                             <a className="nav-link" href="/Juego"><i class="fa-solid fa-briefcase"></i> Proyecto</a>
@@ -133,7 +133,7 @@ const Navbar = () =>{
                         </a>
                     </li>
                     <li>
-                        <a href="/">
+                        <a href="/tools">
                             <i className="fas fa-toolbox"></i>
                             <span className="nav-item">Herramientas</span>
                         </a>
