@@ -66,3 +66,13 @@
 .contr p{
     font-size: 25px;
 }
+
+@media screen and (max-width:500px){
+    .contBA .btn1{
+        margin-top: 0px;
+    }
+
+    .contI label{
+        text-align: center;
+    }
+}

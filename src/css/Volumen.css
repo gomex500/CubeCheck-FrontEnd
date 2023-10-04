@@ -1,25 +1,21 @@
 .contV{
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
     margin-top: 30px;
 }
 
-.contV .contInput{
+.contInput .contI2 label{
     width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.contInput .contI2 .input1{
+    width: 100%;
+    border-radius: 5px;
     margin-bottom: 20px;
 }
 
-.contI2{
-    width: 30%;
-    display: inline;
-}
-
-.contI2 .input1{
-    display: inline;
-    width: 18%;
-    margin: 0 10px 0 10px;
-    border-radius: 5px;
-}
 
 .contI2 .input1:focus   {
     border: none;
@@ -28,56 +24,55 @@
 }
 
 .contBV{
-    width: 40%;
     margin: 0 auto;
+    margin-top: 23px;
 }
 
 .contBV .btn1{
     margin: 0 auto;
     margin-bottom: 20px;
+    width: 60%;
+    display: inline;
+    background-color: #4dbc56;
+    margin-left: 4px;
 }
 
-.contBV p{
+.contBV .btn1:hover{
+    background-color: #fcffff;
+    color: #4dbc56;
+    border: 1px solid #4dbc56;
+}
+
+.contBV .btn2{
+    display: inline;
+    width: 70px;
+    margin: 5px;
+    background-color: #c94040;
+    border: none;
+    text-decoration: none;
+    color: #fcffff;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.contBV .btn2:hover{
+    background-color: #fcffff;
+    border: 1px solid #c94040;
+    color: #c94040;
+}
+
+.contr p{
     font-size: 25px;
 }
 
-@media screen and (max-width:1290px){
-    .contI2{
-        width: 50%;
-    }
-    
-    .contI2 .input1{
-        width: 28%;
-    }
-}
-
-@media screen and (max-width:900px){
-    .contI2{
-        width: 50%;
-    }
-    
-    .contI2 .input1{
-        width: 20%;
-    }
-}
-
-@media screen and (max-width:680px){
-    .contV{
-        margin-top: 10px;
-    }
-    
-    .contI2{
-        width: 100%;
-    }
-    
-    .contI2 .input1{
-        display: block;
-        width: 100%;
-        margin: 0 auto;
-        margin-bottom: 20px;
-    }
-
+@media screen and (max-width:500px){
     .contBV{
-        width: 80%;
+        margin-top: 0px;
+    }
+    .contInput .contI2 label{
+        text-align: center;
     }
 }

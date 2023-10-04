@@ -26,14 +26,22 @@ const Volumen = () =>{
             setResultado((longitud*ancho)*alto);
             alertas('success','Listo');
         } else {
-            alertas('error','campos vacios');
+            alertas('error','Campos Vacios');
         }
+    }
+
+    const eliminarDatos = () =>{
+        setAlto(0);
+        setAncho(0);
+        setLongitud(0);
+        setResultado(0);
+        alertas('success','Datos Eliminados');
     }
 
     return(
         <div className="contV animate__animated animate__fadeInUp">
-            <div className="contInput">
-                <div className="contI2">
+            <div className="contInput row">
+                <div className="contI2 col-md-3">
                     <label for='longitud'>Ingrese Logitud:</label>
                     <Input
                         tp={'number'}
@@ -44,7 +52,7 @@ const Volumen = () =>{
                         fuc={e => setLongitud(parseInt(e.target.value))}
                     />
                 </div>
-                <div className="contI2">
+                <div className="contI2 col-md-3">
                     <label for='ancho'>Ingrese Ancho:</label>
                     <Input
                         tp={'number'}
@@ -55,7 +63,7 @@ const Volumen = () =>{
                         fuc={e => setAncho(parseInt(e.target.value))}
                     />
                 </div>
-                <div className="contI2">
+                <div className="contI2 col-md-3">
                     <label for='alto'>Ingrese Alto:</label>
                     <Input
                         tp={'number'}
@@ -66,14 +74,21 @@ const Volumen = () =>{
                         fuc={e => setAlto(parseInt(e.target.value))}
                     />
                 </div>
+                <div className="contBV col-md-3">
+                    <Btn2
+                        text={<i class="fa-solid fa-delete-left"></i>}
+                        cls={"btn2"}
+                        func={eliminarDatos}
+                    />
+                    <Btn2
+                        text={'Calcular'}
+                        cls={'btn1'}
+                        func={calcular}
+                    />
             </div>
-            <div className="contBV">
-                <Btn2
-                    text={'Calcular'}
-                    cls={'btn1'}
-                    func={calcular}
-                />
-                <p>Resultado: {resultado}</p>
+            </div>
+            <div className="contr">
+                <p>Volumen es: {resultado}</p>
             </div>
         </div>
     );
