@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-// import Btn1 from "../../components/Btn1";
+import Btn2 from "../../components/Btn2";
 import Input from "../../components/Input";
 import Checkbox from "../../components/Checkbox";
 import '../../css/Pared.css'
@@ -9,6 +9,8 @@ const Pared = () =>{
     const [puertas, setPuertas] = useState(false);
     const [ventanas, setVentanas] = useState(false);
 
+    const [basePared, setBasePared] = useState(0);
+    const [alturaPared, setAlturaPared] = useState(0);
 
     const contPuertas = (e) =>{
         setPuertas(e.target.checked);
@@ -29,9 +31,11 @@ const Pared = () =>{
                             tp={'number'}
                             cls={'input1'}
                             ph={'Base'}
-                            val={''}
+                            val={basePared}
                             nm={'base'}
-                            // fuc={e => setBase(parseInt(e.target.value))}
+                            max={1}
+                            min={12}
+                            fuc={e =>setBasePared(e.target.value)}
                         />
                     </div>
                     <div className="contI col-md-4">
@@ -40,9 +44,9 @@ const Pared = () =>{
                             tp={'number'}
                             cls={'input1'}
                             ph={'Altura'}
-                            val={''}
+                            val={alturaPared}
                             nm={'base'}
-                            // fuc={e => setBase(parseInt(e.target.value))}
+                            fuc={e => setAlturaPared(e.target.value)}
                         />
                     </div>
                     <div className="contI col-md-4">
@@ -57,47 +61,48 @@ const Pared = () =>{
                 <div className="contPA">
                         <div className="contP">
                             <div class="form-check">
-                                <Checkbox 
+                                <Checkbox
                                     cls={"form-check-input"}
-                                    val={puertas} 
+                                    val={puertas}
                                     id={"puertas"}
                                     func={contPuertas}
                                     />
                                 <label class="form-check-label" htmlFor="puertas">
-                                    Agregar Puertas
+                                    Agregar Puerta
                                 </label>
                             </div>
                             <hr/>
                             {puertas ?
                                 <div className="puertas">
                                     <div className="row">
-                                        <div className="col-md-4">
-                                        <h4>Ingresando Puerta</h4>
-                                        <div className="contI">
+                                        <div className="contFP">
+                                            <h4>Ingresando Puerta</h4>
+                                                <Btn2
+                                                    text={<i class="fa-solid fa-delete-left"></i>}
+                                                    cls={'btn1'}
+                                                />
+                                        </div>
+                                        <div className="contI col-md-6">
                                             <label htmlFor='base'>Ingrese Alto:</label>
                                             <Input
                                                 tp={'number'}
                                                 cls={'input1'}
-                                                ph={'Alto de ventana'}
+                                                ph={'Alto de Puerta'}
                                                 val={''}
                                                 nm={'base'}
                                                 // fuc={e => setBase(parseInt(e.target.value))}
                                             />
                                         </div>
-                                        <div className="contI">
+                                        <div className="contI col-md-6">
                                             <label htmlFor='base'>Ingrese Ancho:</label>
                                             <Input
                                                 tp={'number'}
                                                 cls={'input1'}
-                                                ph={'Ancho de ventana'}
+                                                ph={'Ancho de Puerta'}
                                                 val={''}
                                                 nm={'base'}
                                                 // fuc={e => setBase(parseInt(e.target.value))}
                                             />
-                                        </div>
-                                        </div>
-                                        <div className="col-md-6">
-
                                         </div>
                                     </div>
                                 </div> :
@@ -113,13 +118,43 @@ const Pared = () =>{
                                     func={contVentanas}
                                     />
                                 <label class="form-check-label" for="ventanas">
-                                    Agregar Ventanas
+                                    Agregar Ventana
                                 </label>
                             </div>
                             <hr/>
                             {ventanas ?
                                 <div className="ventana">
-                                    <h3>Ventanas</h3>
+                                    <div className="row">
+                                        <div className="contFP">
+                                            <h4>Ingresando Ventana</h4>
+                                                <Btn2
+                                                    text={<i class="fa-solid fa-delete-left"></i>}
+                                                    cls={'btn1'}
+                                                />
+                                        </div>
+                                        <div className="contI col-md-6">
+                                            <label htmlFor='base'>Ingrese Alto:</label>
+                                            <Input
+                                                tp={'number'}
+                                                cls={'input1'}
+                                                ph={'Alto de Ventana'}
+                                                val={''}
+                                                nm={'base'}
+                                                // fuc={e => setBase(parseInt(e.target.value))}
+                                            />
+                                        </div>
+                                        <div className="contI col-md-6">
+                                            <label htmlFor='base'>Ingrese Ancho:</label>
+                                            <Input
+                                                tp={'number'}
+                                                cls={'input1'}
+                                                ph={'Ancho de Ventana'}
+                                                val={''}
+                                                nm={'base'}
+                                                // fuc={e => setBase(parseInt(e.target.value))}
+                                            />
+                                        </div>
+                                    </div>
                                 </div> :
                                 null
                             }

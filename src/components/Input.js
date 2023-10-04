@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({tp, cls, val, fuc, ph, nm, dis}) =>{
+const Input = ({tp, cls, val, fuc, ph, nm, dis, max, min}) =>{
     return(
         <input
             type={tp}
@@ -10,6 +10,8 @@ const Input = ({tp, cls, val, fuc, ph, nm, dis}) =>{
             placeholder={ph}
             name={nm}
             disabled={dis}
+            max={max}
+            min={min}
         />
     );
 }

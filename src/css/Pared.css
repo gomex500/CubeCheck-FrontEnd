@@ -56,3 +56,33 @@
     color: #4d82bc;
     font-weight: bold;
 }
+
+.puertas{
+    padding-top: 20px;
+}
+
+.contFP{
+    margin-bottom: 10px;
+}
+
+.contFP h4{
+    color: #4d82bc;
+    font-weight: bolder;
+    display: inline;
+    line-height: 40px;
+}
+
+.contFP .btn1{
+    display: inline;
+    background-color: #c94040;
+    color: #fcffff;
+    width: 50px;
+    margin: 0;
+    float: right;
+}
+
+.contFP .btn1:hover{
+    background-color: #fcffff;
+    border: 1px solid #c94040;
+    color: #c94040;
+}
