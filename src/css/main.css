@@ -37,9 +37,23 @@ body{
     color: #4d82bc;
 }
 
+.btnReturn{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.btnReturn .btn1{
+    width: 10%;
+    text-align: center;
+}
+
 
 @media screen and (max-width:580px){
     .seccion{
         margin-left: 0;
+    }
+    .btnReturn .btn1{
+        width: 15%;
     }
 }

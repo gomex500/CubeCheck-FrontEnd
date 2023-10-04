@@ -89,6 +89,9 @@ const Navbar = () =>{
                                                 <li className="nav-item">
                                                     <a className="nav-link" href="/users"> <i class="fa-solid fa-users"></i> Usuarios</a>
                                                 </li>
+                                                <li className="nav-item">
+                                                    <a className="nav-link" href="/users"> <i class="fa-solid fa-chart-pie"></i> Metricas</a>
+                                                </li>
                                             </>
                                         );
                                     } else {
@@ -160,6 +163,12 @@ const Navbar = () =>{
                                         <a href="/users">
                                             <i className="fas fa-users"></i>
                                             <span className="nav-item">Usuarios</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/">
+                                            <i class="fas fa-chart-pie"></i>
+                                            <span className="nav-item">Metricas</span>
                                         </a>
                                     </li>
                                 </>

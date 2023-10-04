@@ -9,7 +9,7 @@ const Tools = () =>{
         <div className="seccion">
             <div className="cont-tools row">
                 <div className="card-pared animate__animated animate__flipInY col-md-3">
-                    <p className="cardT">Calcular Materiales de una Pared </p>
+                    <p className="cardT">Calcular Materiales de una Pared</p>
                     <Btn1
                         text={"Go"}
                         cls={"btn1"}

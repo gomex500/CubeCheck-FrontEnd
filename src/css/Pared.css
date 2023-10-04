@@ -1,0 +1,17 @@
+.cont-pared{
+    width: 100%;
+    margin-top: 50px;
+}
+
+.cont-pared .titulo-pared{
+    text-align: center;
+    margin-left: 0;
+    font-family: 'cunia', serif;
+    letter-spacing: 2px;
+}
+
+.form-pared{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
