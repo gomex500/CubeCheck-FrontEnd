@@ -24,7 +24,7 @@ const Volumen = () =>{
     const calcular = () =>{
         if (longitud > 0 && ancho > 0 && alto > 0) {
             setResultado((longitud*ancho)*alto);
-            alertas('success','Listo');
+            alertas('success',`El Volumen es: ${resultado}`);
         } else {
             alertas('error','Campos Vacios');
         }

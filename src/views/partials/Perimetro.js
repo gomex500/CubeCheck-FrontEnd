@@ -77,7 +77,7 @@ const Perimetro = () => {
           <Btn2 text={"Calcular"} cls={"btn3"} func={CalcularPerimetro} />
         </div>
         <div className="contR">
-            <p>Resultado {resultado}</p>
+            <p>Perimetro es: {resultado}</p>
         </div>
       </div>
       <div className="lados col-md-6">
