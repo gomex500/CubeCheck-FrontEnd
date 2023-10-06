@@ -76,7 +76,7 @@ const Navbar = () =>{
                                     <a className="nav-link" href="/tools"><i class="fa-solid fa-toolbox"></i> Herramietas</a>
                                 </li>
                                 {session && (<li className="nav-item">
-                                            <a className="nav-link" href="/project"><i class="fa-solid fa-briefcase"></i> Proyecto</a>
+                                            <a className="nav-link" href="/projects"><i class="fa-solid fa-briefcase"></i> Proyecto</a>
                                         </li>)
                                 }
                                 {(() => {
@@ -143,7 +143,7 @@ const Navbar = () =>{
                     </li>
                     { session &&
                             (<li>
-                                <a href="/">
+                                <a href="/projects">
                                     <i className="fas fa-briefcase"></i>
                                     <span className="nav-item">Proyectos</span>
                                 </a>

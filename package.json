@@ -16,6 +16,7 @@
     "react-scripts": "5.0.1",
     "sweetalert2": "^11.7.28",
     "three": "^0.157.0",
+    "tthreebsp": "^1.0.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

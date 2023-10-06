@@ -15,6 +15,7 @@ import Pilar from "../partials/Pilar";
 import Embaldosado from "../partials/Embaldosado";
 import Losa from "../partials/Losa";
 import Metrics from "../Metrics";
+import Projects from "../Projects";
 
 
 const Menu = () =>{
@@ -44,6 +45,7 @@ const Menu = () =>{
                 <Route path="/profile" element={validarSesion() ?  <Profile/> : <Navigate to='/login'/>}/>
                 <Route path="/users" element={validarSesion() ?  <Users/> : <Navigate to='/'/>}/>
                 <Route path="/metrics" element={validarSesion() ?  <Metrics/> : <Navigate to='/'/>}/>
+                <Route path="/projects" element={validarSesion() ?  <Projects/> : <Navigate to='/'/>}/>
             </Routes>
             {validarSesion() ? <BtnChat/> : null}
             <Footer/>
