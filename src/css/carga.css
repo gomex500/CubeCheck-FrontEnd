@@ -1,5 +1,5 @@
 .contenedor-carga{
-    background-color: #fcffff;
+    background-image: url('../img/fodo.png');
     height: 100%;
     width: 100%;
     position: fixed;
@@ -38,3 +38,4 @@
     from{transform: rotate(0deg);}
     to{transform: rotate(360deg);}
 }
+

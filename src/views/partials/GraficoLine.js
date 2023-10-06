@@ -22,14 +22,14 @@ ChartJs.register(
     Filler
 );
 
-var ben = [0,23,56,78];
-var mes = ['enero', 'mayo', 'agosto', 'dicimebre'];
+var ben = [12,23,56,78, 34,68,98, 99, 100,160,78,200];
+var mes = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Novimbre', 'Dicimebre'];
 
 var midata = {
     labels: mes,
     datasets: [
         {
-            label: 'benefciones',
+            label: 'Suscripciones',
             data: ben,
             tension: 0.5,
             fill: true,
@@ -48,7 +48,7 @@ var mioptions = {
             min: 0
         },
         x: {
-            ticks: { color: 'pink'}
+            ticks: { color: 'rgb(255, 99, 132)'}
         }
     },
     plugins: {

@@ -51,16 +51,25 @@ const Metrics = () =>{
     } else {
         return(
             <div className="seccion">
-                <h1>Metrics</h1>
-                <div className="row">
-                    <div className="col-md-4 grafico">
-                        <GraficoLine/>
+                <h1 className="t">Dashboard</h1>
+                <div className="contM row">
+                    <div className="col-md-3 cong animate__animated animate__zoomIn">
+                        <p>Suscripciones Mesuales</p>
+                        <div className="grafico">
+                            <GraficoLine/>
+                        </div>
                     </div>
-                    <div className="col-md-4 grafico">
-                        <GraficoBar/>
+                    <div className="col-md-3 cong animate__animated animate__zoomIn">
+                        <p>Candidad de Usuarios</p>
+                        <div className="grafico">
+                            <GraficoBar/>
+                        </div>
                     </div>
-                    <div className="col-md-4 grafico">
-                        <GraficoPaste/>
+                    <div className="col-md-3 cong animate__animated animate__zoomIn">
+                        <p>Herrameintas Mas utilizadas</p>
+                        <div className="grafico">
+                            <GraficoPaste/>
+                        </div>
                     </div>
                 </div>
             </div>
