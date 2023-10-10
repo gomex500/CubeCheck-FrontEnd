@@ -10,7 +10,7 @@ var mioptions = {
 };
 
 var midata = {
-    labels: ['carne', 'jamon', 'dulces', 'turron'],
+    labels: ['Pared', 'Pilar', 'Embaldosado', 'Losa'],
     datasets: [
         {
             label: 'Popularidad en Navidad',
