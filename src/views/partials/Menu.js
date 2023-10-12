@@ -1,24 +1,32 @@
 import React from "react";
 import {Navigate, Route, Routes} from 'react-router-dom';
 import Navbar from "./Navbar";
-import Home from '../Home';
-import Login from "../Login";
+import {
+    Home,
+    Calculation,
+    Tools,
+    Projects,
+    Users,
+    Metrics,
+    Login,
+    Profile,
+    Sigup
+} from '../pages';
+
 import Footer from "./Footer";
-import Sigup from "../Sigup";
-import BtnChat from "../../components/BtnChat";
-import Profile from "../Profile";
-import Users from "../Users";
-import Calculation from '../Calculation';
-import Tools from "../Tools";
-import Pared from "../partials/Pared";
-import Pilar from "../partials/Pilar";
-import Embaldosado from "../partials/Embaldosado";
-import Losa from "../partials/Losa";
-import Metrics from "../Metrics";
-import Projects from "../Projects";
+
+import { BtnChat } from "../../components";
+
+import {
+    Embaldosado,
+    Losa,
+    Pilar,
+    Pared
+} from './Tools'
+
 
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../store/slices/UserSlices/userThunks";
+// import { getUser } from "../../store/slices/UserSlices/userThunks";
 
 const Menu = () =>{
 

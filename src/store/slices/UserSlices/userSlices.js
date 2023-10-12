@@ -12,9 +12,9 @@ export const userSlice = createSlice({
             state.isLoading = true;
         },
         getUsuario: (state, action) =>{
-            state.isLoading = false;
             state.user = action.payload.user;
             state.isSession = action.payload.isSession;
+            state.isLoading = action.payload.isLoading;
         },
     },
 });

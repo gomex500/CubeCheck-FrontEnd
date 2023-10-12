@@ -1,12 +1,10 @@
 import React, {useState} from "react";
 import Swal from 'sweetalert2';
-import '../css/sigup.css';
-import Btn1 from '../components/Btn1';
-import Input from '../components/Input';
-import Btn2 from "../components/Btn2";
-import logo from '../img/logo.png';
+import '../../css/sigup.css';
+import { Btn1, Btn2, Input } from "../../components";
+import logo from '../../img/logo.png';
 import axios from "axios";
-import Carga2 from "./partials/Carga2";
+import { Carga2 } from "../partials/Loading";
 
 const Sigup = () =>{
 

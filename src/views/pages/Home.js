@@ -1,7 +1,7 @@
 import React from "react";
-import Btn1 from "../components/Btn1";
-import '../css/home.css'
-import logo from '../img/logo.png';
+import { Btn1 } from "../../components";
+import '../../css/home.css'
+import logo from '../../img/logo.png';
 
 const Home = () =>{
     return(

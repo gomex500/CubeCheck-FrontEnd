@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import '../../css/Volumen.css'
-import Input from "../../components/Input";
-import Btn2 from "../../components/Btn2";
+import '../../../css/Volumen.css'
+import { Btn2, Input } from "../../../components";
 import Swal from "sweetalert2";
 
 const Volumen = () =>{

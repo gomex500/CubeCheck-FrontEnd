@@ -20,12 +20,14 @@ export const getUser = () =>{
             dispatch( getUsuario({
                 user: data,
                 isSession: true,
+                isLoading: false
             }));
 
         } else {
             dispatch( getUsuario({
                 user: {},
                 isSession: false,
+                isLoading: false
             }));
         }
 

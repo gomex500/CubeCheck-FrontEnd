@@ -1,6 +1,6 @@
 import React from "react";
-import Btn1 from "../components/Btn1";
-import '../css/tools.css'
+import { Btn1 } from "../../components";
+import '../../css/tools.css'
 
 const Tools = () =>{
 

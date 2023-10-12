@@ -1,12 +1,10 @@
 import React, {useState} from "react";
 import Swal from 'sweetalert2';
 import axios from "axios";
-import '../css/login.css';
-import logo from '../img/logo.png';
-import Input from '../components/Input'
-import Btn2 from "../components/Btn2";
-import Btn1 from "../components/Btn1";
-import Carga2 from "./partials/Carga2";
+import '../../css/login.css';
+import logo from '../../img/logo.png';
+import { Btn1, Btn2, Input } from "../../components";
+import { Carga2 } from "../partials/Loading";
 
 const Login = () =>{
     const [user, setUser] = useState({

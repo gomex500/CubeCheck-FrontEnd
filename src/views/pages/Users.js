@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from "react";
-import Carga from './partials/Carga';
-import Carga2 from "./partials/Carga2";
+import { Carga, Carga2 } from "../partials/Loading";
 import Swal from 'sweetalert2';
-import Input from '../components/Input';
-import Btn2 from '../components/Btn2';
+import { Btn2, Input } from "../../components";
 import axios from "axios";
-import '../css/users.css';
+import '../../css/users.css';
 
 const Users = () =>{
 

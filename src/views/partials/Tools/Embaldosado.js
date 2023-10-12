@@ -1,7 +1,7 @@
 import React from "react";
-import Btn1 from "../../components/Btn1";
+import Btn1 from "../../../components/Btn1";
 
-const Pilar = () =>{
+const Embaldosado = () =>{
     return(
         <div className="seccion">
             <div className="btnReturn">
@@ -11,11 +11,11 @@ const Pilar = () =>{
                     url={'/tools'}
                 />
             </div>
-            <div className="cont-pilar">
-                <h1>Pilar</h1>
+            <div className="cont-embaldosado">
+                <h1>Embaldosado</h1>
             </div>
         </div>
     );
 }
 
-export default Pilar;
+export default Embaldosado;

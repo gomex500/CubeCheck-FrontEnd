@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import logo from '../../img/logo.png'
 import '../../css/navbar.css';
-import Carga from "./Carga";
+import Carga from "./Loading/Carga";
 
 
 import { useDispatch, useSelector } from "react-redux";
@@ -13,18 +13,14 @@ const Navbar = () =>{
     const { user , isLoading, isSession } = useSelector( state => state.user );
 
     const [btnN, setBtnN] = useState(true);
-    const [carga, setCarga] = useState(true);
 
     const btnNav = () => setBtnN(!btnN);
 
-    const cargarDatos = () => setCarga(isLoading);
-
     useEffect(() =>{
         dispatch( getUser() );
-        const timeout = setTimeout(cargarDatos, 1000);
     }, []);
 
-    if (carga) {
+    if (isLoading) {
         return(
             <Carga/>
         );

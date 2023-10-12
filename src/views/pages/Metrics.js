@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react";
-import Carga from './partials/Carga';
-import '../css/Metrics.css'
+import { Carga } from "../partials/Loading";
+import '../../css/Metrics.css'
 import axios from "axios";
-import GraficoLine from "./partials/GraficoLine";
-import GraficoBar from "./partials/GraficoBar";
-import GraficoPaste from "./partials/GraficoPaste";
+import { GraficoBar, GraficoLine, GraficoPaste } from "../partials/Metrics"
 
 
 const Metrics = () =>{

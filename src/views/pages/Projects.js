@@ -1,6 +1,6 @@
 import React from "react";
-import Esquema from "../components/Esquema"
-import '../css/Projects.css';
+import { Esquema } from "../../components";
+import '../../css/Projects.css';
 
 
 const Projects = () =>{

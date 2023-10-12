@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
-import '../css/Calculation.css';
-import Btn2 from '../components/Btn2';
-import Input from '../components/Input';
+import '../../css/Calculation.css';
+import { Btn2, Input } from '../../components';
 import Swal from 'sweetalert2';
-import Area from './partials/Area';
-import Perimetro from './partials/Perimetro';
-import Volumen from './partials/Volumen';
+import { Volumen, Area, Perimetro } from '../partials/Calculation';
 
 const Calculation = () =>{
 

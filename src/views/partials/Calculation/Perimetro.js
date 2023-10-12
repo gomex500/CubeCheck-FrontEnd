@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Input from "../../components/Input";
-import Btn2 from "../../components/Btn2";
+import { Btn2, Input } from "../../../components";
 import Swal from "sweetalert2";
-import '../../css/Perimetro.css';
+import '../../../css/Perimetro.css';
 
 const Perimetro = () => {
   const [lados, setLados] = useState([]);

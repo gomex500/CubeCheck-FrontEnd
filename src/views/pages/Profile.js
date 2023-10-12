@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from "react";
-import '../css/profile.css'
-import Input from "../components/Input";
-import Btn2 from "../components/Btn2";
 import axios from "axios";
-import logo from '../img/logo.png';
-import Carga from "./partials/Carga";
-import Carga2 from "./partials/Carga2";
+import '../../css/profile.css'
+import { Input, Btn2 } from "../../components";
+import logo from '../../img/logo.png';
+import { Carga, Carga2 } from "../partials/Loading";
 import Swal from "sweetalert2";
 
 const Profile = () =>{

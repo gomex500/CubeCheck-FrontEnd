@@ -1,7 +1,7 @@
 import React from "react";
-import Btn1 from "../../components/Btn1";
+import { Btn1 } from "../../../components";
 
-const Losa = () =>{
+const Pilar = () =>{
     return(
         <div className="seccion">
             <div className="btnReturn">
@@ -11,11 +11,11 @@ const Losa = () =>{
                     url={'/tools'}
                 />
             </div>
-            <div className="cont-losa">
-                <h1>Losa</h1>
+            <div className="cont-pilar">
+                <h1>Pilar</h1>
             </div>
         </div>
     );
 }
 
-export default Losa;
+export default Pilar;

@@ -1,8 +1,6 @@
 import React, {useState} from "react";
-import Btn2 from "../../components/Btn2";
-import Input from "../../components/Input";
-import Checkbox from "../../components/Checkbox";
-import '../../css/Pared.css'
+import { Btn2, Input, Checkbox } from "../../../components";
+import '../../../css/Pared.css'
 
 const Pared = () =>{
 

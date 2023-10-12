@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import Btn2 from "../../components/Btn2";
-import Input from "../../components/Input";
-import '../../css/Area.css';
+import { Btn2, Input } from "../../../components";
+import '../../../css/Area.css';
 import Swal from "sweetalert2";
 
 const Area = () =>{
