@@ -1,6 +1,7 @@
 import React, {useRef, useEffect} from "react";
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import {TransformControls} from 'three/examples/jsm/controls/TransformControls';
 
 const Esquema = () =>{
 
@@ -12,8 +13,10 @@ const Esquema = () =>{
         const currentRef = mountRef.current;
         const {clientWidth: width, clientHeight: height} = currentRef;
 
+        ///scena
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x252525);
+
         const camera = new THREE.PerspectiveCamera(25, width / height, 0.1, 100);
         scene.add(camera);
         camera.position.z = 25;
@@ -28,6 +31,13 @@ const Esquema = () =>{
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
 
+        const tcontrols = new TransformControls(camera, renderer.domElement);
+
+        tcontrols.addEventListener('dragging-changed', (e) =>{
+            controls.enabled = !e.value;
+        });
+
+
         const Resize = () =>{
             const updateWidth = currentRef.clientWidth;
             const updateHeight = currentRef.clientHeight;
@@ -37,13 +47,6 @@ const Esquema = () =>{
         };
 
         window.addEventListener('resize', Resize);
-
-        const animateScene = () =>{
-            controls.update();
-            renderer.render(scene, camera);
-            requestAnimationFrame(animateScene);
-        }
-        animateScene();
 
         const axesHelper = new THREE.AxesHelper(2);
         scene.add(axesHelper);
@@ -79,12 +82,24 @@ const Esquema = () =>{
         cube5.position.set(1,6,1);
         cube6.position.set(1,6,1);
 
+        // tcontrols.attach(cube3);
+        // scene.add(tcontrols);
+
+        // tcontrols.setMode('translate');
+
         const ambientLight = new THREE.AmbientLight(0x4d82bc, 10);
         scene.add(ambientLight);
 
         const light = new THREE.PointLight(0x4d82bc, 10000);
         light.position.set(8, 8, 8);
         scene.add(light);
+
+        const animateScene = () =>{
+            controls.update();
+            renderer.render(scene, camera);
+            requestAnimationFrame(animateScene);
+        }
+        animateScene();
 
         return () =>{
             currentRef.removeChild(renderer.domElement);
@@ -93,7 +108,9 @@ const Esquema = () =>{
 
     },[]);
 
-    return <div ref={mountRef} style={{width: "100%", height: "300px"}}></div>;
+    return <div>
+        <div ref={mountRef} style={{width: "100%", height: "300px"}}></div>
+    </div>
 }
 
 export default Esquema;

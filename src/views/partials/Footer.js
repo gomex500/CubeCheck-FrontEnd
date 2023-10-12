@@ -9,27 +9,27 @@ const Footer = () =>{
                 <div className="cuadro"></div>
                 <div className="redes">
                     <Btn1
-                        text={<i class="fa-brands fa-facebook"></i>}
+                        text={<i className="fa-brands fa-facebook"></i>}
                         cls={"icon"}
                         url={'/'}
                     />
                     <Btn1
-                        text={<i class="fa-brands fa-instagram"></i>}
+                        text={<i className="fa-brands fa-instagram"></i>}
                         cls={"icon"}
                         url={'/'}
                     />
                     <Btn1
-                        text={<i class="fa-brands fa-twitter"></i>}
+                        text={<i className="fa-brands fa-twitter"></i>}
                         cls={"icon"}
                         url={'/'}
                     />
                     <Btn1
-                        text={<i class="fa-brands fa-youtube"></i>}
+                        text={<i className="fa-brands fa-youtube"></i>}
                         cls={"icon"}
                         url={'/'}
                     />
                     <Btn1
-                        text={<i class="fa-brands fa-whatsapp"></i>}
+                        text={<i className="fa-brands fa-whatsapp"></i>}
                         cls={"icon"}
                         url={'/'}
                     />

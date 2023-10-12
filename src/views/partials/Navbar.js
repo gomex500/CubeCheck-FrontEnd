@@ -1,51 +1,27 @@
 import React, {useState, useEffect} from "react";
 import logo from '../../img/logo.png'
 import '../../css/navbar.css';
-import axios from "axios";
 import Carga from "./Carga";
-// import axios from "axios";
+
+
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../store/slices/UserSlices/userThunks";
 
 const Navbar = () =>{
 
+    const dispatch = useDispatch();
+    const { user , isLoading, isSession } = useSelector( state => state.user );
+
     const [btnN, setBtnN] = useState(true);
-    const [user, setUser] = useState({});
-    const [session, setSession] = useState();
     const [carga, setCarga] = useState(true);
 
-    const btnNav = () =>{
-        setBtnN(!btnN)
-    }
+    const btnNav = () => setBtnN(!btnN);
+
+    const cargarDatos = () => setCarga(isLoading);
 
     useEffect(() =>{
-        const datos = localStorage.getItem('data');
-        if (datos) {
-            const data = JSON.parse(datos);
-            localStorage.removeItem('session');
-            setSession(data.session);
-            const config = {
-                headers: {
-                  Authorization: `Bearer ${data.token}`,
-                },
-            }
-            axios.get(`https://cubecheck.onrender.com/user/${data.id}`,config)
-            .then((response) =>{
-                setUser(response.data);
-                setCarga(false);
-            })
-            .catch((error) =>{
-                console.log(error);
-                setCarga(false);
-            })
-        } else {
-            setUser({
-                'nombre':'Iniciar',
-                'apellido':'Sesion'
-            });
-            localStorage.removeItem('data');
-            localStorage.setItem('session',false);
-            setSession(false);
-            setCarga(false);
-        }
+        dispatch( getUser() );
+        const timeout = setTimeout(cargarDatos, 1000);
     }, []);
 
     if (carga) {
@@ -58,25 +34,28 @@ const Navbar = () =>{
                 <nav className="navbar navbar-expand-lg nav1">
                     <div className="container-fluid">
                         <a className= "logo navbar-brand" href="/" >
-                            <img src={logo} alt="logo"/>
+                            <img
+                                src={logo}
+                                alt="logo"
+                            />
                             <span className="nav-item">CubeCheck</span>
                         </a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fa-solid fa-bars"></i>
+                            <i className="fa-solid fa-bars"></i>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav ms-auto">
                                 <li className="nav-item">
-                                    <a className="nav-link" aria-current="page" href="/"><i class="fas fa-home"></i> Inico</a>
+                                    <a className="nav-link" aria-current="page" href="/"><i className="fas fa-home"></i> Inico</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/Calculation"><i class="fas fa-calculator"></i> Calculadora</a>
+                                    <a className="nav-link" href="/Calculation"><i className="fas fa-calculator"></i> Calculadora</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/tools"><i class="fa-solid fa-toolbox"></i> Herramietas</a>
+                                    <a className="nav-link" href="/tools"><i className="fa-solid fa-toolbox"></i> Herramietas</a>
                                 </li>
-                                {session && (<li className="nav-item">
-                                            <a className="nav-link" href="/projects"><i class="fa-solid fa-briefcase"></i> Proyecto</a>
+                                {isSession && (<li className="nav-item">
+                                            <a className="nav-link" href="/projects"><i className="fa-solid fa-briefcase"></i> Proyecto</a>
                                         </li>)
                                 }
                                 {(() => {
@@ -84,31 +63,31 @@ const Navbar = () =>{
                                         return (
                                             <>
                                                 <li className="nav-item">
-                                                    <a className="nav-link" href="/"> <i class="fa-solid fa-shapes"></i> Materiales</a>
+                                                    <a className="nav-link" href="/"> <i className="fa-solid fa-shapes"></i> Materiales</a>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <a className="nav-link" href="/users"> <i class="fa-solid fa-users"></i> Usuarios</a>
+                                                    <a className="nav-link" href="/users"> <i className="fa-solid fa-users"></i> Usuarios</a>
                                                 </li>
                                                 <li className="nav-item">
-                                                    <a className="nav-link" href="/metrics"> <i class="fa-solid fa-chart-pie"></i> Metricas</a>
+                                                    <a className="nav-link" href="/metrics"> <i className="fa-solid fa-chart-pie"></i> Metricas</a>
                                                 </li>
                                             </>
                                         );
                                     } else {
                                         return (
                                             <li className="nav-item">
-                                                <a className="nav-link" href="/ayuda"> <i class="fa-solid fa-shapes"></i> Materiales</a>
+                                                <a className="nav-link" href="/ayuda"> <i className="fa-solid fa-shapes"></i> Materiales</a>
                                             </li>
                                         );
                                     }
                                 })()}
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/info"> <i class="fa-solid fa-circle-info"></i> Acerca de</a>
+                                    <a className="nav-link" href="/info"> <i className="fa-solid fa-circle-info"></i> Acerca de</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href={session ? "/profile" : "/login"}>
-                                        <i class="fa-solid fa-user"></i>
-                                        {user.nombre+' '+user.apellido}
+                                    <a className="nav-link" href={isSession ? "/profile" : "/login"}>
+                                        <i className="fa-solid fa-user"></i>
+                                        {isSession ? user.nombre+' '+user.apellido : "Iniciar Sesion"}
                                     </a>
                                 </li>
                             </ul>
@@ -141,7 +120,7 @@ const Navbar = () =>{
                             <span className="nav-item">Herramientas</span>
                         </a>
                     </li>
-                    { session &&
+                    { isSession &&
                             (<li>
                                 <a href="/projects">
                                     <i className="fas fa-briefcase"></i>
@@ -167,7 +146,7 @@ const Navbar = () =>{
                                     </li>
                                     <li>
                                         <a href="/metrics">
-                                            <i class="fas fa-chart-pie"></i>
+                                            <i className="fas fa-chart-pie"></i>
                                             <span className="nav-item">Metricas</span>
                                         </a>
                                     </li>
@@ -191,9 +170,9 @@ const Navbar = () =>{
                         </a>
                     </li>
                     <li>
-                        <a href={session ? "/profile" : "/login"} className="logout">
+                        <a href={isSession ? "/profile" : "/login"} className="logout">
                             <i className="fas fa-user"></i>
-                            <span className="nav-item">{user.nombre+' '+user.apellido}</span>
+                            <span className="nav-item">{isSession ? user.nombre+' '+user.apellido : "Iniciar Sesion"}</span>
                         </a>
                     </li>
                 </ul>

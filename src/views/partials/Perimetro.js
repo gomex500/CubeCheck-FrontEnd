@@ -72,8 +72,8 @@ const Perimetro = () => {
           />
         </div>
         <div className="contBP">
-          <Btn2 text={<i class="fa-solid fa-circle-plus"></i>} cls={"btn1"} func={IngresarLados} />
-          <Btn2 text={<i class="fa-solid fa-delete-left"></i>} cls={"btn2"} func={eliminarLados} />
+          <Btn2 text={<i className="fa-solid fa-circle-plus"></i>} cls={"btn1"} func={IngresarLados} />
+          <Btn2 text={<i className="fa-solid fa-delete-left"></i>} cls={"btn2"} func={eliminarLados} />
           <Btn2 text={"Calcular"} cls={"btn3"} func={CalcularPerimetro} />
         </div>
         <div className="contR">

@@ -40,7 +40,7 @@ const Area = () =>{
         <div className="contA animate__animated animate__fadeInUp">
             <div className="contInput row">
                 <div className="contI col-md-4">
-                    <label for='base'>Ingrese Base:</label>
+                    <label htmlFor='base'>Ingrese Base:</label>
                     <Input
                         tp={'number'}
                         cls={'input1'}
@@ -51,7 +51,7 @@ const Area = () =>{
                     />
                 </div>
                 <div className="contI col-md-4">
-                    <label for='altura'>Ingrese Altura:</label>
+                    <label htmlFor='altura'>Ingrese Altura:</label>
                     <Input
                         tp={'number'}
                         cls={'input1'}
@@ -63,7 +63,7 @@ const Area = () =>{
                 </div>
                 <div className="contBA col-md-4">
                     <Btn2
-                        text={<i class="fa-solid fa-delete-left"></i>}
+                        text={<i className="fa-solid fa-delete-left"></i>}
                         cls={"btn2"}
                         func={eliminarDatos}
                     />

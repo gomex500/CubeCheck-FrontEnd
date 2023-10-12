@@ -17,8 +17,13 @@ import Losa from "../partials/Losa";
 import Metrics from "../Metrics";
 import Projects from "../Projects";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../store/slices/UserSlices/userThunks";
 
 const Menu = () =>{
+
+    const dispatch = useDispatch();
+    const { user } = useSelector( state => state.user );
 
     const session = localStorage.getItem('session');
 

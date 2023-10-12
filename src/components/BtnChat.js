@@ -52,7 +52,7 @@ const BtnChat = () =>{
         <div className="con-chatbot">
             <div className={visible ? "Chat-container animate__animated animate__bounceIn" : "Chat-container-no"}>
                 <div className="chatHead">
-                    <i class="fa-solid fa-robot"></i>
+                    <i className="fa-solid fa-robot"></i>
                     <span>CubeBot</span>
                 </div>
                 <div ref={chatboxRef} className="chatbody">
@@ -75,13 +75,13 @@ const BtnChat = () =>{
                             tp={"submit"}
                             cls={"btn btnSend"}
                             func={console.log("")}
-                            text={<i class="fa-solid fa-paper-plane"></i>}
+                            text={<i className="fa-solid fa-paper-plane"></i>}
                         />
                     </form>
                 </div>
             </div>
             <Btn2
-                text={<i class="fa-solid fa-comments"></i>}
+                text={<i className="fa-solid fa-comments"></i>}
                 cls={"btnChat animate__animated animate__bounce"}
                 func={btnVisible}
             />

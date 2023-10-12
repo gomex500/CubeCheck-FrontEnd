@@ -42,7 +42,7 @@ const Volumen = () =>{
         <div className="contV animate__animated animate__fadeInUp">
             <div className="contInput row">
                 <div className="contI2 col-md-3">
-                    <label for='longitud'>Ingrese Logitud:</label>
+                    <label htmlFor='longitud'>Ingrese Logitud:</label>
                     <Input
                         tp={'number'}
                         cls={'input1'}
@@ -53,7 +53,7 @@ const Volumen = () =>{
                     />
                 </div>
                 <div className="contI2 col-md-3">
-                    <label for='ancho'>Ingrese Ancho:</label>
+                    <label htmlFor='ancho'>Ingrese Ancho:</label>
                     <Input
                         tp={'number'}
                         cls={'input1'}
@@ -64,7 +64,7 @@ const Volumen = () =>{
                     />
                 </div>
                 <div className="contI2 col-md-3">
-                    <label for='alto'>Ingrese Alto:</label>
+                    <label htmlFor='alto'>Ingrese Alto:</label>
                     <Input
                         tp={'number'}
                         cls={'input1'}
@@ -76,7 +76,7 @@ const Volumen = () =>{
                 </div>
                 <div className="contBV col-md-3">
                     <Btn2
-                        text={<i class="fa-solid fa-delete-left"></i>}
+                        text={<i className="fa-solid fa-delete-left"></i>}
                         cls={"btn2"}
                         func={eliminarDatos}
                     />
