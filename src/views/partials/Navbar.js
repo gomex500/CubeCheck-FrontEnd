@@ -11,16 +11,20 @@ const Navbar = () =>{
 
     const dispatch = useDispatch();
     const { user , isLoading, isSession } = useSelector( state => state.user );
+    const [carga, setCarga] = useState(true);
 
     const [btnN, setBtnN] = useState(true);
 
     const btnNav = () => setBtnN(!btnN);
 
+    const cargando = () => setCarga(isLoading);
+
     useEffect(() =>{
         dispatch( getUser() );
+        const timeout = setTimeout(cargando, 1000);
     }, []);
 
-    if (isLoading) {
+    if (carga) {
         return(
             <Carga/>
         );
@@ -50,16 +54,26 @@ const Navbar = () =>{
                                 <li className="nav-item">
                                     <a className="nav-link" href="/tools"><i className="fa-solid fa-toolbox"></i> Herramietas</a>
                                 </li>
-                                {isSession && (<li className="nav-item">
-                                            <a className="nav-link" href="/projects"><i className="fa-solid fa-briefcase"></i> Proyecto</a>
-                                        </li>)
-                                }
                                 {(() => {
-                                    if (user.rol === "admin") {
+                                    if (user.rol === "premium") {
                                         return (
                                             <>
                                                 <li className="nav-item">
-                                                    <a className="nav-link" href="/"> <i className="fa-solid fa-shapes"></i> Materiales</a>
+                                                    <a className="nav-link" href="/projects"><i className="fa-solid fa-briefcase"></i> Proyecto</a>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <a className="nav-link" href="/materials"> <i className="fa-solid fa-shapes"></i> Materiales</a>
+                                                </li>
+                                            </>
+                                        );
+                                    } else if(user.rol === "admin") {
+                                        return (
+                                            <>
+                                                <li className="nav-item">
+                                                    <a className="nav-link" href="/projects"><i className="fa-solid fa-briefcase"></i> Proyecto</a>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <a className="nav-link" href="/materials"> <i className="fa-solid fa-shapes"></i> Materiales</a>
                                                 </li>
                                                 <li className="nav-item">
                                                     <a className="nav-link" href="/users"> <i className="fa-solid fa-users"></i> Usuarios</a>
@@ -69,10 +83,10 @@ const Navbar = () =>{
                                                 </li>
                                             </>
                                         );
-                                    } else {
+                                    } else{
                                         return (
                                             <li className="nav-item">
-                                                <a className="nav-link" href="/ayuda"> <i className="fa-solid fa-shapes"></i> Materiales</a>
+                                                <a className="nav-link" href="/materials"> <i className="fa-solid fa-shapes"></i> Materiales</a>
                                             </li>
                                         );
                                     }
@@ -116,20 +130,35 @@ const Navbar = () =>{
                             <span className="nav-item">Herramientas</span>
                         </a>
                     </li>
-                    { isSession &&
-                            (<li>
-                                <a href="/projects">
-                                    <i className="fas fa-briefcase"></i>
-                                    <span className="nav-item">Proyectos</span>
-                                </a>
-                            </li>)
-                    }
                     {(() => {
-                        if (user.rol === "admin") {
+                        if (user.rol === "premium") {
                             return (
                                 <>
                                     <li>
-                                        <a href="/">
+                                        <a href="/projects">
+                                            <i className="fas fa-briefcase"></i>
+                                            <span className="nav-item">Proyectos</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/materials">
+                                            <i className="fas fa-shapes"></i>
+                                            <span className="nav-item">Materiales</span>
+                                        </a>
+                                    </li>
+                                </>
+                            );
+                        } else if(user.rol === "admin") {
+                            return (
+                                <>
+                                    <li>
+                                        <a href="/projects">
+                                            <i className="fas fa-briefcase"></i>
+                                            <span className="nav-item">Proyectos</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/materials">
                                             <i className="fas fa-shapes"></i>
                                             <span className="nav-item">Materiales</span>
                                         </a>
@@ -148,10 +177,10 @@ const Navbar = () =>{
                                     </li>
                                 </>
                             );
-                        } else {
+                        }else {
                             return (
                                 <li>
-                                    <a href="/">
+                                    <a href="/materials">
                                         <i className="fas fa-shapes"></i>
                                         <span className="nav-item">Materiales</span>
                                     </a>

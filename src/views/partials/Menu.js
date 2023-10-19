@@ -10,7 +10,8 @@ import {
     Metrics,
     Login,
     Profile,
-    Sigup
+    Sigup,
+    Materials
 } from '../pages';
 
 import Footer from "./Footer";
@@ -25,12 +26,10 @@ import {
 } from './Tools'
 
 
-import { useDispatch, useSelector } from "react-redux";
-// import { getUser } from "../../store/slices/UserSlices/userThunks";
+import { useSelector } from "react-redux";
 
 const Menu = () =>{
 
-    const dispatch = useDispatch();
     const { user } = useSelector( state => state.user );
 
     const session = localStorage.getItem('session');
@@ -46,7 +45,7 @@ const Menu = () =>{
         <div>
             <Navbar/>
             <Routes>
-                <Route path="/" element={<Home/>}/>
+                <Route index element={<Home/>}/>
                 <Route path="/calculation" element={validarSesion() ? <Calculation/> : <Navigate to='/login'/>}/>
                 <Route path="/tools" element={validarSesion() ? <Tools/> : <Navigate to='/login'/>}/>
                 <Route path="/wall" element={validarSesion() ? <Pared/> : <Navigate to='/login'/>}/>
@@ -56,9 +55,24 @@ const Menu = () =>{
                 <Route path="/login" element={validarSesion() ?  <Navigate to='/'/> : <Login/>}/>
                 <Route path="/sigup" element={validarSesion() ?  <Navigate to='/'/> : <Sigup/>}/>
                 <Route path="/profile" element={validarSesion() ?  <Profile/> : <Navigate to='/login'/>}/>
-                <Route path="/users" element={validarSesion() ?  <Users/> : <Navigate to='/'/>}/>
-                <Route path="/metrics" element={validarSesion() ?  <Metrics/> : <Navigate to='/'/>}/>
-                <Route path="/projects" element={validarSesion() ?  <Projects/> : <Navigate to='/'/>}/>
+                <Route path="/materials" element={validarSesion() ?  <Materials/> : <Navigate to='/login'/>}/>
+
+                {/* premium router */}
+                {(() =>{
+                    if (user.rol === "premium") {
+                        return(
+                            <Route path="/projects" element={validarSesion() ? <Projects/> : <Navigate to='/'/>}/>
+                        );
+                    }else if(user.rol === "admin"){
+                        return(
+                            <>
+                                <Route path="/projects" element={validarSesion() ? <Projects/> : <Navigate to='/'/>}/>  
+                                <Route path="/users" element={validarSesion() ?  <Users/> : <Navigate to='/'/>}/>
+                                <Route path="/metrics" element={validarSesion() ?  <Metrics/> : <Navigate to='/'/>}/>
+                            </>
+                        );
+                    }
+                })()}
             </Routes>
             {validarSesion() ? <BtnChat/> : null}
             <Footer/>

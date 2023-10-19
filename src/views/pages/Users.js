@@ -5,7 +5,13 @@ import { Btn2, Input } from "../../components";
 import axios from "axios";
 import '../../css/users.css';
 
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../store/slices/UsersSlices/usersThunks";
+
 const Users = () =>{
+
+    const dispatch = useDispatch();
+    const { Users , isLoading } = useSelector( state => state.users );
 
     const [carga, setCarga] = useState(true);
     const [vista, setVista] = useState(true);
@@ -151,6 +157,7 @@ const Users = () =>{
 
     useEffect(() =>{
         obtenerRol();
+        dispatch( getUsers() );
         if (!vista) {
             obtenerUsuarios();
         }
@@ -212,8 +219,8 @@ const Users = () =>{
                                     </tr>
                                 </thead>
                                 <tbody className="table-body">
-                                {users.length > 0 ? (
-                                    users.map((user, i) => (
+                                {Users.length > 0 ? (
+                                    Users.map((user, i) => (
                                     <tr key={user._id} className="tbody">
                                         <td>{i + 1}</td>
                                         <td>{user.nombre}</td>

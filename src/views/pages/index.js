@@ -7,6 +7,7 @@ import Metrics from './Metrics';
 import Login from './Login';
 import Sigup from './Sigup';
 import Profile from './Profile';
+import Materials from './Materials';
 
 export {
     Home,
@@ -17,5 +18,6 @@ export {
     Metrics,
     Login,
     Sigup,
-    Profile
+    Profile,
+    Materials
 };

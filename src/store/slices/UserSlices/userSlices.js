@@ -16,6 +16,9 @@ export const userSlice = createSlice({
             state.isSession = action.payload.isSession;
             state.isLoading = action.payload.isLoading;
         },
+        setUsuario: (state, action) =>{
+            
+        }
     },
 });
 
