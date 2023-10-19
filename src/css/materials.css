@@ -1,0 +1,58 @@
+.cont-Mate{
+    width: 98%;
+    margin: 0 auto;
+}
+
+.cont-Mate h2{
+    text-align: center;
+    font-family: 'cunia', serif;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.cont-Mate h3{
+    color: #4d82bc;
+    margin-left: 20px;
+}
+
+.cont-mate-base{
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.card-mate{
+    width: 250px;
+    padding: 5px 10px;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.116);
+    box-shadow: 0 5px 10px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2px);
+}
+
+.card-mate h3{
+    text-align: center;
+    margin-left: 0;
+}
+
+.card-mateG{
+    width: 250px;
+    padding: 5px 10px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.116);
+    box-shadow: 0 5px 10px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(2px);
+}
+
+.card-mateG h3{
+    margin-left: 0;
+    text-align: center;
+}
+
+.mate-img{
+    width: 50px;
+    height: 50px;
+}
