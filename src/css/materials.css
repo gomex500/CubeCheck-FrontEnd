@@ -30,6 +30,7 @@
     background-color: rgba(255, 255, 255, 0.116);
     box-shadow: 0 5px 10px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(2px);
+    border: 1px solid #4d83bc42;
 }
 
 .card-mate h3{
@@ -45,6 +46,7 @@
     background-color: rgba(255, 255, 255, 0.116);
     box-shadow: 0 5px 10px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(2px);
+    border: 1px solid #4d83bc42;
 }
 
 .card-mateG h3{
@@ -52,7 +54,46 @@
     text-align: center;
 }
 
+.cont-mateG{
+    padding-top: 30px;
+}
+
 .mate-img{
     width: 50px;
     height: 50px;
+}
+
+.mateG{
+    width: 98%;
+    margin: 0 auto;
+}
+
+.card-mateG .mate-img{
+    width: 60px;
+    height: 60px;
+}
+
+.cont-ver{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #252525ec;
+    width: 100%;
+    padding-bottom: 20%;
+    z-index: 10000;
+}
+
+.cont-ver .btn1{
+    position: absolute;
+    right: 0;
+    width: 80px;
+    margin-right: 20px;
+    margin-top: 20px;
+    /* background-color: #ff9900;
+    font-weight: 900;
+    border: #ff9900;
+    height: 40px;
+    font-size: 20px;
+    color: #252525;
+    border: 1px solid #ff9900; */
 }
