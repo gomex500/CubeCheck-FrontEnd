@@ -56,7 +56,10 @@
 
 .cont-mateG{
     padding-top: 30px;
+    width: 98%;
+    margin: 0 auto;
 }
+
 
 .mate-img{
     width: 50px;
@@ -77,10 +80,21 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #252525ec;
+    background-image: url('../img/fodo.png');
     width: 100%;
-    padding-bottom: 20%;
+    height: 100%;
     z-index: 10000;
+}
+
+.mater{
+    width: 98%;
+    margin: 0 auto;
+    margin-top: 90px;
+}
+
+.mater h2{
+    color: #4d82bc;
+    text-align: center;
 }
 
 .cont-ver .btn1{
@@ -89,11 +103,42 @@
     width: 80px;
     margin-right: 20px;
     margin-top: 20px;
-    /* background-color: #ff9900;
-    font-weight: 900;
-    border: #ff9900;
-    height: 40px;
-    font-size: 20px;
-    color: #252525;
-    border: 1px solid #ff9900; */
+}
+
+.com-mateV{
+    display: none;
+}
+
+.body-mate{
+    width: 98%;
+    margin: 0 auto;
+}
+
+
+.img-detalle{
+    width: 110px;
+    background-color: #ffffff7e;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.cont-mate1{
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    color: #4d82bc;
+}
+
+.cont-mate1{
+    text-align: justify;
+}
+
+/* .cont-img-de{
+    background-color: aqua;
+} */
+
+.cont-tb{
+    width: 90%;
+    margin: 0 auto;
 }

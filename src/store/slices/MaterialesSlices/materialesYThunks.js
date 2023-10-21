@@ -16,7 +16,6 @@ export const getMaterialY = () =>{
                 },
             }
             const {data} = await configApi('/materialy', config);
-            
             dispatch( getMaterialesY({
                 MaterialesY: data,
                 isLoading: false

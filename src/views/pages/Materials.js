@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from "react";
 import '../../css/materials.css'
-import bloque from '../../img/bloque.png'
-import piedra from '../../img/piedra.png'
-import ladrillo from '../../img/ladrillo.png'
-import cemento from '../../img/cemento.png'
+import {Piedra, Cemento, Bloque, Ladrillo} from '../../img/materials'
 
 import { useDispatch, useSelector } from "react-redux";
 import { Btn2 } from "../../components";
@@ -21,21 +18,13 @@ const Materials = () =>{
 
     const ValImg = (tipo) =>{
         if (tipo === "Piedra") {
-            return piedra;
+            return Piedra;
         } else if(tipo === "Bloque") {
-            return bloque;
-        }else{
-            return ladrillo;
-        }
-    }
-
-    const ValImg2 = (tipo) =>{
-        if (tipo === "Cemento") {
-            return cemento;
-        } else if(tipo === "Bloque") {
-            return bloque;
-        }else{
-            return ladrillo;
+            return Bloque;
+        }else if(tipo === "Ladrillo"){
+            return Ladrillo;
+        }else if (tipo === "Cemento"){
+            return Cemento;
         }
     }
 
@@ -55,7 +44,7 @@ const Materials = () =>{
 
     return(
         <div className="seccion">
-            <div className="cont-Mate">
+            <div className={ver ? "com-mateV" : "cont-Mate"}>
                 <h2>Materiales de Contruccion</h2>
                 <h3>Materiales Base</h3>
                 <div className="cont-mate-base">
@@ -90,7 +79,7 @@ const Materials = () =>{
                                 <div className="card-mateG col-md-4" key={mate._id}>
                                     <h3>{mate.nombre}</h3>
                                     <center>
-                                        <img src={ValImg2(mate.tipo)} className="mate-img" alt="img-mate"/>
+                                        <img src={ValImg(mate.tipo)} className="mate-img" alt="img-mate"/>
                                     </center>
                                     <div className="card-body">
                                         <p>Marca: {mate.marca}</p>
@@ -123,9 +112,71 @@ const Materials = () =>{
                     {(() =>{
                         console.log(mate.marca);
                         if (mate.marca === undefined) {
-                            return <p>Tipo: {mate.tipo}</p>
+                            return <div className="body-mate">
+                                <div className="cont-mate1 row">
+                                    <div className="col-md-4 cont-img-de">
+                                        <center>
+                                            <img src={ValImg(mate.tipo)} alt="material" className="img-detalle"/>
+                                        </center>
+                                    </div>
+                                    <div className="col-md-8">
+                                        <p>{mate.description}</p>
+                                    </div>
+                                </div>
+                                <table className="table cont-tb table-bordered">
+                                    <thead className="table-head">
+                                        <tr>
+                                            <th>Tipo</th>
+                                            <th>Alto</th>
+                                            <th>Ancho</th>
+                                            <th>Largo</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="table-body">
+                                        <tr>
+                                            <td>{mate.tipo}</td>
+                                            <td>{mate.y}</td>
+                                            <td>{mate.x}</td>
+                                            <td>{mate.z}</td>
+                                            <td>{mate.precio} C$</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         } else {
-                            return <p>Tipo: {mate.tipo}</p>
+                            return <div className="body-mate">
+                                <div className="cont-mate1 row">
+                                    <div className="col-md-4 cont-img-de">
+                                        <center>
+                                            <img src={ValImg(mate.tipo)} alt="material" className="img-detalle"/>
+                                        </center>
+                                    </div>
+                                    <div className="col-md-8">
+                                        <p>{mate.description}</p>
+                                    </div>
+                                </div>
+                                <table className="table cont-tb table-bordered">
+                                    <thead className="table-head">
+                                        <tr>
+                                            <th>Tipo</th>
+                                            <th>Marca</th>
+                                            <th>Medida</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="table-body">
+                                        <tr>
+                                            <td>{mate.tipo}</td>
+                                            <td>{mate.marca}</td>
+                                            <td>{mate.medida}</td>
+                                            <td>{mate.cantidad}</td>
+                                            <td>{mate.precio} C$</td>   
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         }
                     })()}
                 </div>
