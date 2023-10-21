@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {TransformControls} from 'three/examples/jsm/controls/TransformControls';
 
-const Esquema = () =>{
+const Esquema = ({contruccion}) =>{
 
     const mountRef = useRef(null);
 
@@ -51,12 +51,16 @@ const Esquema = () =>{
         const axesHelper = new THREE.AxesHelper(2);
         scene.add(axesHelper);
 
-        const size = 20;
-        const divisions = 20;
+        const size = contruccion.embaldosado[0] +5;
+        const divisions = contruccion.embaldosado[2] + 5;
         const gridHelper = new THREE.GridHelper(size, divisions);
         scene.add(gridHelper);
 
-        const geometry = new THREE.BoxGeometry(10,1,10);
+        let x = 10;
+        let y = 1;
+        let z = 10;
+
+        const geometry = new THREE.BoxGeometry(contruccion.embaldosado[0],y,contruccion.embaldosado[2]);
         const geometry2 = new THREE.BoxGeometry(1,7,1);
         
         const material = new THREE.MeshPhongMaterial({ color: 0x4d82bc });
@@ -85,7 +89,7 @@ const Esquema = () =>{
         // tcontrols.attach(cube3);
         // scene.add(tcontrols);
 
-        // tcontrols.setMode('translate');
+        // tcontrols.setMode('rotate');
 
         const ambientLight = new THREE.AmbientLight(0x4d82bc, 10);
         scene.add(ambientLight);

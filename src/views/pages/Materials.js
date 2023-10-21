@@ -162,6 +162,7 @@ const Materials = () =>{
                                         <p>{mate.description}</p>
                                     </div>
                                 </div>
+                                <div className="table-responsive">
                                 <table className="table cont-tb table-bordered">
                                     <thead className="table-head">
                                         <tr>
@@ -182,6 +183,7 @@ const Materials = () =>{
                                         </tr>
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
                         }
                     })()}
