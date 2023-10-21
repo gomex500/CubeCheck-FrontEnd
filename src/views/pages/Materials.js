@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import '../../css/materials.css'
-import {Piedra, Cemento, Bloque, Ladrillo} from '../../img/materials'
+import {Piedra, Cemento, Bloque, Ladrillo, Arena, Piedrin, Hierro} from '../../img/materials'
 
 import { useDispatch, useSelector } from "react-redux";
 import { Btn2 } from "../../components";
@@ -25,6 +25,12 @@ const Materials = () =>{
             return Ladrillo;
         }else if (tipo === "Cemento"){
             return Cemento;
+        }else if(tipo === "Arena") {
+            return Arena;
+        }else if(tipo === "Piedrin"){
+            return Piedrin;
+        }else if (tipo === "Hierro"){
+            return Hierro;
         }
     }
 

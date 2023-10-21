@@ -8,8 +8,11 @@ const Projects = () =>{
         <div className="seccion">
             <div className="cont-Projects">
                 <h1>Proyectos</h1>
-                <div className="esquema">
+                {/* <div className="esquema">
                     <Esquema/>
+                </div> */}
+                <div className="">
+
                 </div>
             </div>
         </div>
