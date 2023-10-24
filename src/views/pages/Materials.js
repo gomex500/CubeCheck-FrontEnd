@@ -82,7 +82,7 @@ const Materials = () =>{
                     <div className="mateG row">
                         {MaterialesX.length > 0 ? (
                             MaterialesX.map((mate) =>(
-                                <div className="card-mateG col-md-4" key={mate._id}>
+                                <div className="card-mateG col-md-3" key={mate._id}>
                                     <h3>{mate.nombre}</h3>
                                     <center>
                                         <img src={ValImg(mate.tipo)} className="mate-img" alt="img-mate"/>
@@ -116,7 +116,6 @@ const Materials = () =>{
                 <div className="mater">
                     <h2>{mate.nombre}</h2>
                     {(() =>{
-                        console.log(mate.marca);
                         if (mate.marca === undefined) {
                             return <div className="body-mate">
                                 <div className="cont-mate1 row">
