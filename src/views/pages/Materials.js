@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Btn2 } from "../../components";
 import { getMaterialX } from "../../store/slices/MaterialesSlices/materialesXThunks";
 import { getMaterialY } from "../../store/slices/MaterialesSlices/materialesYThunks";
+import { getUser } from "../../store/slices/UserSlices/userThunks";
 
 const Materials = () =>{
 
     const dispatch = useDispatch();
     const { MaterialesX } = useSelector( state => state.materialesx);
     const { MaterialesY } = useSelector( state => state.materialesy);
+    const { user } = useSelector( state => state.user );
 
     const [ver, setVer] = useState(false);
     const [mate, setMate] = useState(null);
@@ -46,13 +48,21 @@ const Materials = () =>{
     useEffect(() => {
         dispatch( getMaterialX() );
         dispatch( getMaterialY() );
+        dispatch( getUser() );
     }, [])
 
     return(
         <div className="seccion">
             <div className={ver ? "com-mateV" : "cont-Mate"}>
                 <h2>Materiales de Contruccion</h2>
-                <h3>Materiales Base</h3>
+                <div className="BtnGestionMateriales">
+                    <h3 className="title1">Materiales Base</h3>
+                    {user.rol === "admin" ? <Btn2
+                        cls={"btn btn-primary btnE"}
+                        text={<i class="fa-solid fa-pencil"></i>}
+                    /> : null}
+                </div>
+                <hr/>
                 <div className="cont-mate-base">
                     {MaterialesY.length > 0 ? (
                         MaterialesY.map((mate) =>(
@@ -78,7 +88,14 @@ const Materials = () =>{
                     </div>)}
                 </div>
                 <div className="cont-mateG">
-                    <h3>Materiales</h3>
+                    <div className="BtnGestionMateriales">
+                        <h3 className="title1">Materiales</h3>
+                        {user.rol === "admin" ? <Btn2
+                        cls={"btn btn-primary btnE"}
+                        text={<i class="fa-solid fa-pencil"></i>}
+                    /> : null}
+                    </div>
+                    <hr/>
                     <div className="mateG row">
                         {MaterialesX.length > 0 ? (
                             MaterialesX.map((mate) =>(

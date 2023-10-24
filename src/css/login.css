@@ -45,7 +45,7 @@
     font-family: 'cunia', serif;
 }
 
-.form .input{
+.login-form .form .input{
     width: 80%;
     margin-bottom: 20px;
     border: 2px solid #4d82bc;
@@ -57,7 +57,7 @@
     background-color: rgba(252, 255, 255, 0.1);
 }
 
-.form .input:hover{
+.login-form .form .input:hover{
     cursor: text;
     border: 3px solid #4d82bc;
     border-left: none;
@@ -66,7 +66,7 @@
     border-radius: none;
 }
 
-.form .input:focus{
+.login-form .form .input:focus{
     cursor: text;
     border: 2px solid #4d82bc;
     transition: all 0.3s ease;
