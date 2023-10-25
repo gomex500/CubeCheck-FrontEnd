@@ -26,6 +26,8 @@ import {
 } from './Tools'
 
 
+import { MaterialBase, MaterialGeneral } from './Materials'
+
 import { useSelector } from "react-redux";
 
 const Menu = () =>{
@@ -69,6 +71,8 @@ const Menu = () =>{
                                 <Route path="/projects" element={validarSesion() ? <Projects/> : <Navigate to='/'/>}/>  
                                 <Route path="/users" element={validarSesion() ?  <Users/> : <Navigate to='/'/>}/>
                                 <Route path="/metrics" element={validarSesion() ?  <Metrics/> : <Navigate to='/'/>}/>
+                                <Route path="/MaterialBase" element={validarSesion() ?  <MaterialBase/> : <Navigate to='/login'/>}/>
+                                <Route path="/MaterialGeneral" element={validarSesion() ?  <MaterialGeneral/> : <Navigate to='/login'/>}/>
                             </>
                         );
                     }

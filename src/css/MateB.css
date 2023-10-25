@@ -1,0 +1,125 @@
+.cont-materialbase{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.cont-materialbase h2{
+    font-family: 'cunia', serif;
+    text-align:  center;
+    margin-bottom: 30px;
+}
+
+.cont-materialbase .btn1{
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    display: inline;
+    margin: 5px;
+    background-color: #4dbc56;
+    border: 1px solid #4dbc56;
+}
+
+.cont-materialbase .btn1:hover{
+    background-color: #fcffff;
+    color: #4dbc56;
+    border: 1px solid #4dbc56;
+}
+
+.cont-materialbase .btn2{
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    display: inline;
+    margin: 5px;
+    background-color: #c94040;
+    border: 1px solid #c94040;
+}
+
+.cont-materialbase .btn2:hover{
+    background-color: #fcffff;
+    color: #c94040;
+    border: 1px solid #c94040;
+}
+
+.cont-materialbase .cont-btn-add{
+    width: 90%;
+    margin: 0 auto;
+    height: 50px;
+    text-align: right;
+}
+
+.cont-btn-add .btnA{
+    background-color: #4b82dc;
+    border: 1px solid #4b82dc;
+}
+
+.cont-btn-add .btnA:hover{
+    background-color: #fcffff;
+    color: #4b82dc;
+}
+
+.cont-btn-add .btnC{
+    background-color: #c94040;
+    border: 1px solid #c94040;
+}
+
+.cont-btn-add .btnC:hover{
+    background-color: #fcffff;
+    color: #c94040;
+}
+
+.form-add-mate{
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+
+.form-add-mate h4{
+    color: #4d82bc;
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.form-add-mate .contI label{
+    color: #4d82bc;
+    font-weight: bold;
+    font-size: 17px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.form-add-mate .contI{
+    margin-top: 10px;
+}
+
+.textA{
+    resize: none;
+}
+
+.table-head, .table-body{
+    text-align: center;
+}
+
+.form-add-mate .form-mate .cont-btnA{
+    text-align: center;
+    margin-left: 0;
+}
+
+.form-add-mate .form-mate .cont-btnA .btn1{
+    width: 100px;
+    background: #4b82dc;
+    color: #fcffff;
+    border: 1px solid #4b82dc;
+}   
+
+.form-add-mate .form-mate .cont-btnA .btn1:hover{
+    background-color: #fcffff;
+    color: #4b82dc;
+}
+
+.tableNone{
+    display: none;
+}

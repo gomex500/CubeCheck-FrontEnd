@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { Carga, Carga2 } from "../partials/Loading";
+import { configApi } from "../../apis/configApi";
 import Swal from 'sweetalert2';
 import { Btn2, Input } from "../../components";
-import axios from "axios";
 import '../../css/users.css';
 
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +13,8 @@ const Users = () =>{
     const dispatch = useDispatch();
     const { Users , isLoading } = useSelector( state => state.users );
 
-    const [carga, setCarga] = useState(true);
-    const [vista, setVista] = useState(true);
     const [carga2, setCarga2] = useState(false);
-    const [users, setUsers] = useState([]);
+    const [buscando, setBuscando] = useState(false);
     const [user, setUser] = useState([]);
     const [email, setEmail] = useState("");
 
@@ -30,64 +28,6 @@ const Users = () =>{
           });
     }
 
-    const obtenerRol = () =>{
-        setCarga(true);
-        const datos = localStorage.getItem('data');
-        if (datos) {
-            const data = JSON.parse(datos);
-            const config = {
-                headers: {
-                  Authorization: `Bearer ${data.token}`,
-                },
-            }
-            axios.get(`https://cubecheck.onrender.com/user/${data.id}`,config)
-            .then((response) =>{
-                if (response.data.rol === "admin") {
-                    setCarga(false);
-                    // setCarga2(true);
-                    obtenerUsuarios();
-                    setVista(false);
-                }else{
-                    window.location = '/';
-                }
-            })
-            .catch((error) =>{
-                console.log(error);
-                setCarga(false);
-                window.location = '/';
-            })
-        } else {
-            setCarga(false);
-            window.location = '/';
-        }
-    }
-
-    const obtenerUsuarios = () =>{
-        if (!carga) {
-            setCarga2(true);
-        }
-        const datos = localStorage.getItem('data');
-        if (datos) {
-            const data = JSON.parse(datos);
-            const config = {
-                headers: {
-                  Authorization: `Bearer ${data.token}`,
-                },
-            }
-            axios.get(`https://cubecheck.onrender.com/users`,config)
-            .then((response) =>{
-                setUsers(response.data);
-                setCarga2(false);
-            })
-            .catch((error) =>{
-                console.log(error);
-                setCarga(false);
-            })
-        } else {
-            setCarga(false);
-        }
-    }
-
     const buscarUsuario = (e) =>{
         e.preventDefault();
         setCarga2(true);
@@ -99,9 +39,9 @@ const Users = () =>{
                   Authorization: `Bearer ${data.token}`,
                 },
             }
-            axios.get(`https://cubecheck.onrender.com/email/${email}`,config)
+            configApi.get(`/email/${email}`,config)
             .then((response) =>{
-                setUsers([]);
+                setBuscando(true);
                 setUser(response.data);
                 setCarga2(false);
             })
@@ -111,14 +51,15 @@ const Users = () =>{
                 setCarga2(false);
             })
         }else{
-        alertas('error', 'campo vacio');
-        setCarga2(false);
+            alertas('error', 'campo vacio');
+            setCarga2(false);
         }
     }
 
     const cancelar = () =>{
         setEmail('');
-        obtenerUsuarios();
+        dispatch( getUsers() );
+        setBuscando(false);
     }
 
     const cambiarR = (id, rol) =>{
@@ -131,10 +72,11 @@ const Users = () =>{
             },
         }
         if (rol === "user") {
-            axios.put(`https://cubecheck.onrender.com/rol/${id}`, {"rol":"admin"}, config)
+            configApi.put(`/rol/${id}`, {"rol":"admin"}, config)
             .then((response) =>{
-                obtenerUsuarios();
+                dispatch( getUsers() );
                 alertas('success',response.data.message);
+                setCarga2(false);
             })
             .catch((error) =>{
                 console.log(error);
@@ -142,10 +84,11 @@ const Users = () =>{
                 setCarga2(false);
             })
         } else {
-            axios.put(`https://cubecheck.onrender.com/rol/${id}`, {"rol":"user"}, config)
+            configApi.put(`/rol/${id}`, {"rol":"user"}, config)
             .then((response) =>{
-                obtenerUsuarios();
+                dispatch( getUsers() );
                 alertas('success',response.data.message);
+                setCarga2(false);
             })
             .catch((error) =>{
                 console.log(error);
@@ -156,14 +99,10 @@ const Users = () =>{
     }
 
     useEffect(() =>{
-        obtenerRol();
         dispatch( getUsers() );
-        if (!vista) {
-            obtenerUsuarios();
-        }
     }, []);
 
-    if (carga && vista) {
+    if (isLoading) {
         return(
             <Carga/>
         );
@@ -219,7 +158,7 @@ const Users = () =>{
                                     </tr>
                                 </thead>
                                 <tbody className="table-body">
-                                {Users.length > 0 ? (
+                                {!buscando ? (
                                     Users.map((user, i) => (
                                     <tr key={user._id} className="tbody">
                                         <td>{i + 1}</td>

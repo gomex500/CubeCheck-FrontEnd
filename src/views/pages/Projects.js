@@ -21,7 +21,7 @@ const Projects = () =>{
     const [verNew, setVerNew] = useState(false);
 
         const contruccion = {
-            "embaldosado": [10,1,10]
+            "embaldosado": [20,1,20]
         }
 
     const ver = () =>{
