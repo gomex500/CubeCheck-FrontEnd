@@ -110,7 +110,7 @@ const MaterialBase = () =>{
     const obtenerDatos = (e) =>{
         const {name, value} = e.target
         if (!isNaN(value)) {
-            const integerValue = parseInt(value); // Convierte el valor a un entero (base 10)
+            const integerValue = parseInt(value);
             setMate({
                 ...mate,
                 [name]: integerValue
@@ -258,7 +258,7 @@ const MaterialBase = () =>{
                                         <div className="cont-btnA">
                                             <Btn2
                                                 cls={"btn btn1 btn-primary"}
-                                                text={update ? "Agregar" : "Actualizar"}
+                                                text={update ? "Actualizar" : "Agregar"}
                                                 tp={"submit"}
                                             />
                                         </div>
