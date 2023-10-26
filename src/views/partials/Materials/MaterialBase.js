@@ -1,21 +1,35 @@
 import React, {useEffect, useState} from "react";
 import Swal from "sweetalert2";
+
 import '../../../css/MateB.css'
+import { Btn2, Input } from "../../../components";
+import { Carga2 } from "../Loading";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Btn2, Input } from "../../../components";
-
 import { getMaterialY } from "../../../store/slices/MaterialesSlices/materialesYThunks";
 import { Carga } from "../Loading";
+import { configApi } from "../../../apis/configApi";
 
 const MaterialBase = () =>{
 
     const dispatch = useDispatch();
     const { MaterialesY, isLoading } = useSelector( state => state.materialesy);
     const [add, setAdd] = useState(false);
+    const [update, setUpdate] = useState(false);
+    const [carga2, setCarga2] = useState(false);
     const [mate, setMate] = useState({
         "nombre": "",
-        "tipo": "",
+        "tipo": "Ladrillo",
+        "x":0,
+        "y":0,
+        "z":0,
+        "precio": 0.0,
+        "description" :""
+    });
+
+    const [mate2, setMate2] = useState({
+        "nombre": "",
+        "tipo": "Ladrillo",
         "x":0,
         "y":0,
         "z":0,
@@ -37,10 +51,10 @@ const MaterialBase = () =>{
         if (
             mate.nombre === "" ||
             mate.tipo === "" ||
-            mate.x < 0 ||
-            mate.y < 0 ||
-            mate.precio < 0 ||
-            mate.z < 0 ||
+            mate.x <= 0 ||
+            mate.y <= 0 ||
+            mate.precio === 0 ||
+            mate.z <= 0 ||
             mate.description === ""
           ){
             return false;
@@ -49,19 +63,71 @@ const MaterialBase = () =>{
         }
     }
 
+    const ingresarMate = () =>{
+        setCarga2(true);
+        const datos = localStorage.getItem('data');
+        const data = JSON.parse(datos);
+        const config = {
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+            },
+        }
+        configApi.post('/materialy', mate, config)
+        .then((response) =>{
+            dispatch( getMaterialY() );
+            setCarga2(false);
+            alertas('success',"Material insertado");
+            setAdd(false);
+        })
+        .catch((error) =>{
+            console.log(error);
+            setCarga2(false);
+            alertas('error', error.response.data.message);
+        })
+    }
+
+    const deleteMate = (id) =>{
+        const datos = localStorage.getItem('data');
+        if (datos) {
+            const data = JSON.parse(datos);
+            const config = {
+                headers: {
+                  Authorization: `Bearer ${data.token}`,
+                },
+            }
+            configApi.delete(`/materialy/${id}`,config)
+            .then((response) =>{
+                dispatch(getMaterialY());
+                alertas('success',response.data.menssage);
+            })
+            .catch((error) =>{
+                alertas('error',"Error al eliminar");
+                console.log(error);
+            })
+        }
+    }
+
     const obtenerDatos = (e) =>{
         const {name, value} = e.target
-        setMate({
-            ...mate,
-            [name]:value
-        })
+        if (!isNaN(value)) {
+            const integerValue = parseInt(value); // Convierte el valor a un entero (base 10)
+            setMate({
+                ...mate,
+                [name]: integerValue
+            });
+        } else {
+            setMate({
+                ...mate,
+                [name]: value
+            });
+        }
     }
 
     const limpiardatos = () =>{
         setAdd(!add);
         setMate({
             "nombre": "",
-            "tipo": "",
+            "tipo": "Ladrillo",
             "x":0,
             "y":0,
             "z":0,
@@ -73,10 +139,18 @@ const MaterialBase = () =>{
     const enviardatos = (e) =>{
         e.preventDefault()
         if (validarDatos()) {
-            alertas('success', 'Listo');
-            console.log(mate);
+            ingresarMate();
         } else {
             alertas('error', 'Campos vacios');
+        }
+    }
+
+    const tomarMate = (mat) =>{
+        setMate2(mat);
+        if (mate2 !== null) {
+            setUpdate(true);
+            setAdd(true);
+            console.log(mate2);
         }
     }
 
@@ -90,6 +164,7 @@ const MaterialBase = () =>{
     } else {
         return(
             <div className="seccion">
+                {carga2 ? <Carga2/> : null}
                 <div className="cont-materialbase">
                     <h2>Gestion de Materiales Base</h2>
                     <div className="cont-btn-add">
@@ -98,13 +173,13 @@ const MaterialBase = () =>{
                             func={limpiardatos}
                             tp={"button"}
                             cls={"btn btnC btn-primary"}
-                            text={<i class="fa-solid fa-ban"> Cancelar</i>}
+                            text={<i className="fa-solid fa-ban"> Cancelar</i>}
                         />: 
                         <Btn2
                             func={limpiardatos}
                             tp={"button"}
                             cls={"btn btnA btn-primary"}
-                            text={<i class="fa-solid fa-square-plus"> Add</i>}
+                            text={<i className="fa-solid fa-square-plus"> Add</i>}
                         />}
                     </div>
                     {(() =>{
@@ -120,15 +195,16 @@ const MaterialBase = () =>{
                                                 cls={'input1'}
                                                 ph={'Nombre'}
                                                 nm={'nombre'}
+                                                val={mate2.nombre}
                                                 fuc={obtenerDatos}
                                             />
                                         </div>
                                         <div className="contI col-md-4">
                                             <label htmlFor="tipo">Tipo de Material:</label>
-                                            <select name="tipo" onChange={obtenerDatos} className='form-select'>
+                                            <select name="tipo" onChange={obtenerDatos} value={mate2.tipo} className='form-select'>
                                                 <option value="Ladrillo">Ladrillo</option>
                                                 <option value="Bloque">Bloque</option>
-                                                <option value="Piedra">Piedra Cantera</option>
+                                                <option value="Piedra">Piedra</option>
                                             </select>
                                         </div>
                                         <div className="contI col-md-4">
@@ -137,8 +213,9 @@ const MaterialBase = () =>{
                                                 tp={'number'}
                                                 cls={'input1'}
                                                 ph={'Alto'}
+                                                val={mate2.y}
                                                 nm={'y'}
-                                                fuc={() => parseInt(obtenerDatos)}
+                                                fuc={obtenerDatos}
                                             />
                                         </div>
                                         <div className="contI col-md-4">
@@ -147,8 +224,9 @@ const MaterialBase = () =>{
                                                 tp={'number'}
                                                 cls={'input1'}
                                                 ph={'Ancho'}
+                                                val={mate2.x}
                                                 nm={'x'}
-                                                fuc={() => parseInt(obtenerDatos)}
+                                                fuc={obtenerDatos}
                                             />
                                         </div>
                                         <div className="contI col-md-4">
@@ -157,8 +235,9 @@ const MaterialBase = () =>{
                                                 tp={'number'}
                                                 cls={'input1'}
                                                 ph={'Largo'}
+                                                val={mate2.z}
                                                 nm={'z'}
-                                                fuc={() => parseInt(obtenerDatos)}
+                                                fuc={obtenerDatos}
                                             />
                                         </div>
                                         <div className="contI col-md-4">
@@ -166,19 +245,20 @@ const MaterialBase = () =>{
                                             <Input
                                                 tp={'number'}
                                                 cls={'input1'}
+                                                val={mate2.precio}
+                                                fuc={obtenerDatos}
                                                 ph={'Precio'}
                                                 nm={'precio'}
-                                                fuc={() => parseInt(obtenerDatos)}
                                             />
                                         </div>
                                         <div className="contI col-md-12">
                                             <label htmlFor='description'>Ingrese Descripcion:</label>
-                                            <textarea className="input1 textA form-control" name="description"  placeholder="Descripcion" rows="4" cols="80" onChange={obtenerDatos}/>
+                                            <textarea className="input1 textA form-control" value={mate2.description} name="description"  placeholder="Descripcion" rows="4" cols="80" onChange={obtenerDatos}/>
                                         </div>
                                         <div className="cont-btnA">
                                             <Btn2
                                                 cls={"btn btn1 btn-primary"}
-                                                text={"Agregar"}
+                                                text={update ? "Agregar" : "Actualizar"}
                                                 tp={"submit"}
                                             />
                                         </div>
@@ -199,33 +279,33 @@ const MaterialBase = () =>{
                                     <th>Ancho</th>
                                     <th>Largo</th>
                                     <th>Precio</th>
-                                    <th colspan="2">Accciones</th>
+                                    <th colSpan={"2"}>Accciones</th>
                                 </tr>
                             </thead>
                             <tbody className="table-body">
                                 {MaterialesY.length > 0 ? (
-                                    MaterialesY.map((mate) =>(
-                                    <tr key={mate._id}>
-                                        <td>{mate.nombre}</td>
-                                        <td>{mate.tipo}</td>
-                                        <td>{mate.y} cm</td>
-                                        <td>{mate.x} cm</td>
-                                        <td>{mate.z} cm</td>
-                                        <td>{mate.precio} C$</td>
+                                    MaterialesY.map((mat) =>(
+                                    <tr key={mat._id}>
+                                        <td>{mat.nombre}</td>
+                                        <td>{mat.tipo}</td>
+                                        <td>{mat.y} cm</td>
+                                        <td>{mat.x} cm</td>
+                                        <td>{mat.z} cm</td>
+                                        <td>{mat.precio} C$</td>
                                         <td>
                                             <Btn2
                                                 tp={"button"}
                                                 cls={"btn btn1 btn-primary"}
-                                                text={<i class="fa-solid fa-pencil"></i>}
-                                                func={console.log('')}
+                                                text={<i className="fa-solid fa-pencil"></i>}
+                                                func={() => {tomarMate(mat)}}
                                             />
                                         </td>
                                         <td>
                                             <Btn2
                                                 tp={"button"}
                                                 cls={"btn btn2 btn-primary"}
-                                                text={<i class="fa-solid fa-trash"></i>}
-                                                func={console.log('')}
+                                                text={<i className="fa-solid fa-trash"></i>}
+                                                func={() => deleteMate(mat._id)}
                                             />
                                         </td>
                                     </tr>
