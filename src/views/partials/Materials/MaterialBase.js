@@ -18,17 +18,7 @@ const MaterialBase = () =>{
     const [update, setUpdate] = useState(false);
     const [carga2, setCarga2] = useState(false);
     const [mate, setMate] = useState({
-        "nombre": "",
-        "tipo": "Ladrillo",
-        "x":0,
-        "y":0,
-        "z":0,
-        "precio": 0.0,
-        "description" :""
-    });
-
-    const [mate2, setMate2] = useState({
-        "nombre": "",
+        "nombre": "no se",
         "tipo": "Ladrillo",
         "x":0,
         "y":0,
@@ -61,6 +51,30 @@ const MaterialBase = () =>{
         } else {
             return true;
         }
+    }
+
+    const updateMate = () =>{
+        setCarga2(true);
+        const datos = localStorage.getItem('data');
+        const data = JSON.parse(datos);
+        const config = {
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+            },
+        }
+        configApi.put(`/materialy/${mate._id}`, mate, config)
+        .then((response) =>{
+            dispatch( getMaterialY() );
+            setCarga2(false);
+            alertas('success',response.data.message);
+            setUpdate(false);
+            setAdd(false);
+        })
+        .catch((error) =>{
+            console.log(error);
+            setCarga2(false);
+            alertas('error', error.response.data.menssage);
+        })
     }
 
     const ingresarMate = () =>{
@@ -98,7 +112,7 @@ const MaterialBase = () =>{
             configApi.delete(`/materialy/${id}`,config)
             .then((response) =>{
                 dispatch(getMaterialY());
-                alertas('success',response.data.menssage);
+                alertas('success',response.data.mensaje);
             })
             .catch((error) =>{
                 alertas('error',"Error al eliminar");
@@ -145,12 +159,20 @@ const MaterialBase = () =>{
         }
     }
 
+    const actualizarDatos = (e) =>{
+        e.preventDefault()
+        if (validarDatos()) {
+            updateMate();
+        } else {
+            alertas('error', 'Campos vacios');
+        }
+    }
+
     const tomarMate = (mat) =>{
-        setMate2(mat);
-        if (mate2 !== null) {
+        setMate(mat);
+        if (mate !== null) {
             setUpdate(true);
             setAdd(true);
-            console.log(mate2);
         }
     }
 
@@ -187,7 +209,7 @@ const MaterialBase = () =>{
                             return (
                                 <div className="form-add-mate animate__animated animate__fadeInLeft ">
                                     <h4>Agregar Nuevo Material</h4>
-                                    <form className="form-mate row" onSubmit={enviardatos}>
+                                    <form className="form-mate row" onSubmit={update ? actualizarDatos : enviardatos}>
                                         <div className="contI col-md-4">
                                             <label htmlFor='nombre'>Ingrese Nombre:</label>
                                             <Input
@@ -195,13 +217,13 @@ const MaterialBase = () =>{
                                                 cls={'input1'}
                                                 ph={'Nombre'}
                                                 nm={'nombre'}
-                                                val={mate2.nombre}
+                                                val={mate.nombre}
                                                 fuc={obtenerDatos}
                                             />
                                         </div>
                                         <div className="contI col-md-4">
                                             <label htmlFor="tipo">Tipo de Material:</label>
-                                            <select name="tipo" onChange={obtenerDatos} value={mate2.tipo} className='form-select'>
+                                            <select name="tipo" onChange={obtenerDatos} value={mate.tipo} className='form-select'>
                                                 <option value="Ladrillo">Ladrillo</option>
                                                 <option value="Bloque">Bloque</option>
                                                 <option value="Piedra">Piedra</option>
@@ -213,7 +235,7 @@ const MaterialBase = () =>{
                                                 tp={'number'}
                                                 cls={'input1'}
                                                 ph={'Alto'}
-                                                val={mate2.y}
+                                                val={mate.y}
                                                 nm={'y'}
                                                 fuc={obtenerDatos}
                                             />
@@ -224,7 +246,7 @@ const MaterialBase = () =>{
                                                 tp={'number'}
                                                 cls={'input1'}
                                                 ph={'Ancho'}
-                                                val={mate2.x}
+                                                val={mate.x}
                                                 nm={'x'}
                                                 fuc={obtenerDatos}
                                             />
@@ -235,7 +257,7 @@ const MaterialBase = () =>{
                                                 tp={'number'}
                                                 cls={'input1'}
                                                 ph={'Largo'}
-                                                val={mate2.z}
+                                                val={mate.z}
                                                 nm={'z'}
                                                 fuc={obtenerDatos}
                                             />
@@ -245,7 +267,7 @@ const MaterialBase = () =>{
                                             <Input
                                                 tp={'number'}
                                                 cls={'input1'}
-                                                val={mate2.precio}
+                                                val={mate.precio}
                                                 fuc={obtenerDatos}
                                                 ph={'Precio'}
                                                 nm={'precio'}
@@ -253,7 +275,7 @@ const MaterialBase = () =>{
                                         </div>
                                         <div className="contI col-md-12">
                                             <label htmlFor='description'>Ingrese Descripcion:</label>
-                                            <textarea className="input1 textA form-control" value={mate2.description} name="description"  placeholder="Descripcion" rows="4" cols="80" onChange={obtenerDatos}/>
+                                            <textarea className="input1 textA form-control" value={mate.description} name="description"  placeholder="Descripcion" rows="4" cols="80" onChange={obtenerDatos}/>
                                         </div>
                                         <div className="cont-btnA">
                                             <Btn2
