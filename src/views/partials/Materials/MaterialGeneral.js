@@ -27,16 +27,6 @@ const MaterialGeneral = () =>{
         "description" :""
     });
 
-    const [mate2, setMate2] = useState({
-        "nombre": "",
-        "marca": "",
-        "tipo": "Cemento",
-        "medida": "",
-        "cantidad": 0,
-        "precio": 0.0,
-        "description" :""
-    });
-
     const alertas = (icono, texto) =>{
         Swal.fire({
             // position: 'top-end',
@@ -62,6 +52,30 @@ const MaterialGeneral = () =>{
         } else {
             return true;
         }
+    }
+
+    const updateMate = () =>{
+        setCarga2(true);
+        const datos = localStorage.getItem('data');
+        const data = JSON.parse(datos);
+        const config = {
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+            },
+        }
+        configApi.put(`/materialx/${mate._id}`, mate, config)
+        .then((response) =>{
+            dispatch( getMaterialX() );
+            setCarga2(false);
+            alertas('success',response.data.message);
+            setUpdate(false);
+            setAdd(false);
+        })
+        .catch((error) =>{
+            console.log(error);
+            setCarga2(false);
+            alertas('error', error.response.data.menssage);
+        })
     }
 
     const ingresarMate = () =>{
@@ -146,12 +160,20 @@ const MaterialGeneral = () =>{
         }
     }
 
+    const actualizardatos = (e) =>{
+        e.preventDefault()
+        if (validarDatos()) {
+            updateMate();
+        } else {
+            alertas('error', 'Campos vacios');
+        }
+    }
+
     const tomarMate = (mat) =>{
-        setMate2(mat);
-        if (mate2 !== null) {
+        setMate(mat);
+        if (mate !== null) {
             setUpdate(true);
             setAdd(true);
-            console.log(mate2);
         }
     }
 
@@ -187,7 +209,7 @@ const MaterialGeneral = () =>{
                             return (
                                 <div className="form-add-mate animate__animated animate__fadeInLeft ">
                                     <h4>Agregar Nuevo Material</h4>
-                                    <form className="form-mate row" onSubmit={enviardatos}>
+                                    <form className="form-mate row" onSubmit={update ? actualizardatos : enviardatos}>
                                         <div className="contI col-md-4">
                                             <label htmlFor='nombre'>Ingrese Nombre:</label>
                                             <Input
@@ -195,12 +217,13 @@ const MaterialGeneral = () =>{
                                                 cls={'input1'}
                                                 ph={'Nombre'}
                                                 nm={'nombre'}
+                                                val={mate.nombre}
                                                 fuc={obtenerDatos}
                                             />
                                         </div>
                                         <div className="contI col-md-4">
                                             <label htmlFor="tipo">Tipo de Material:</label>
-                                            <select name="tipo" onChange={obtenerDatos} className='form-select'>
+                                            <select name="tipo" onChange={obtenerDatos} value={mate.tipo} className='form-select'>
                                                 <option value="Cemento">Cemento</option>
                                                 <option value="Arena">Arena</option>
                                                 <option value="Piedrin">Piedrin</option>
@@ -214,6 +237,7 @@ const MaterialGeneral = () =>{
                                                 cls={'input1'}
                                                 ph={'Marca'}
                                                 nm={'marca'}
+                                                val={mate.marca}
                                                 fuc={obtenerDatos}
                                             />
                                         </div>
@@ -224,6 +248,7 @@ const MaterialGeneral = () =>{
                                                 cls={'input1'}
                                                 ph={'Cantidad'}
                                                 nm={'cantidad'}
+                                                val={mate.cantidad}
                                                 fuc={obtenerDatos}
                                             />
                                         </div>
@@ -234,6 +259,7 @@ const MaterialGeneral = () =>{
                                                 cls={'input1'}
                                                 ph={'ejemplo kg, m3, etc'}
                                                 nm={'medida'}
+                                                val={mate.medida}
                                                 fuc={obtenerDatos}
                                             />
                                         </div>
@@ -242,6 +268,7 @@ const MaterialGeneral = () =>{
                                             <Input
                                                 tp={'number'}
                                                 cls={'input1'}
+                                                val={mate.precio}
                                                 fuc={obtenerDatos}
                                                 ph={'Precio'}
                                                 nm={'precio'}
@@ -249,7 +276,7 @@ const MaterialGeneral = () =>{
                                         </div>
                                         <div className="contI col-md-12">
                                             <label htmlFor='description'>Ingrese Descripcion:</label>
-                                            <textarea className="input1 textA form-control" name="description"  placeholder="Descripcion" rows="4" cols="80" onChange={obtenerDatos}/>
+                                            <textarea className="input1 textA form-control" name="description"  placeholder="Descripcion" value={mate.description} rows="4" cols="80" onChange={obtenerDatos}/>
                                         </div>
                                         <div className="cont-btnA">
                                             <Btn2
