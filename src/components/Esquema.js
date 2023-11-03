@@ -77,7 +77,7 @@ const Esquema = ({contruccion}) =>{
         const cube4 = new THREE.Mesh(geometry2, material);
         const cube5 = new THREE.Mesh(geometry, material);
         const cube6 = new THREE.Mesh(geometry, material);
-        // scene.add(cube, cube1, cube2, cube3, cube4, cube5, cube6);
+        scene.add(cube, cube1, cube2, cube3, cube4, cube5, cube6);
         cube.position.set(1,0.5,1);
         cube1.position.set(-3.5,3,-3.5);
         cube2.position.set(-3.5,3,5.5);

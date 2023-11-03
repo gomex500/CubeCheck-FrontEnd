@@ -1,0 +1,40 @@
+.cont-contruccion{
+    width: 98%;
+    margin: 0 auto;
+}
+
+.cont-contruccion h2{
+    text-align: center;
+    font-family: 'cunia', serif;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    color: #4d83bc;
+}
+
+.form-contruccion .titulo{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-contruccion .cont-descripcion{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.form-contruccion .cont-descripcion span{
+    color: #4d83bc;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.form-contruccion .titulo span{
+    color: #4d83bc;
+    font-weight: bold;
+}
+
+.form-contruccion .titulo h3{
+    color: #252525;
+}

@@ -83,13 +83,7 @@ const Navbar = () =>{
                                                 </li>
                                             </>
                                         );
-                                    } else{
-                                        return (
-                                            <li className="nav-item">
-                                                <a className="nav-link" href="/materials"> <i className="fa-solid fa-shapes"></i> Materiales</a>
-                                            </li>
-                                        );
-                                    }
+                                    } 
                                 })()}
                                 <li className="nav-item">
                                     <a className="nav-link" href="/info"> <i className="fa-solid fa-circle-info"></i> Acerca de</a>
@@ -176,15 +170,6 @@ const Navbar = () =>{
                                         </a>
                                     </li>
                                 </>
-                            );
-                        }else {
-                            return (
-                                <li>
-                                    <a href="/materials">
-                                        <i className="fas fa-shapes"></i>
-                                        <span className="nav-item">Materiales</span>
-                                    </a>
-                                </li>
                             );
                         }
                     })()}
