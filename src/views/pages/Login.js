@@ -49,8 +49,8 @@ const Login = () =>{
         setCarga(true);
         axios.post('https://cubecheck.onrender.com/login', user)
         .then((response) => {
-            console.log(response.data)
             const datos = response.data
+            // console.log(response);
             const data = {
                 'id':datos.id,
                 "token":datos.token,

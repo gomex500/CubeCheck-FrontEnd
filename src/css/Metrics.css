@@ -7,21 +7,29 @@
 }
 
 .contM{
-    width: 100%;
+    width: 98%;
     margin: 0 auto;
 }
 
 .cong{
-    margin: 0 auto;
-    width: 300px;
-    background-color: #fcffff71;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 20px;
-    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
 }
 
-.grafico{
+.grafico1{
     width: 100%;
-    height: 200px;
+    height: 300px;
+}
+
+.grafico2{
+    width: 100%;
+    height: 300px;
+}
+
+.contM p{
+    color: #4d82bc;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
 }

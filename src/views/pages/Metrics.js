@@ -50,23 +50,27 @@ const Metrics = () =>{
         return(
             <div className="seccion">
                 <h1 className="t">Dashboard</h1>
-                <div className="contM row">
-                    <div className="col-md-3 cong animate__animated animate__zoomIn">
-                        <p>Suscripciones Mesuales</p>
-                        <div className="grafico">
-                            <GraficoLine/>
+                <div className="contM">
+                    <div className="row">
+                        <div className="col-md-5 cong">
+                            <p>Cantidad de Usuarios por Roles</p>
+                            <div className="grafico1">
+                                <GraficoPaste/>
+                            </div>
+                        </div>
+                        <div className="col-md-7 cong">
+                            <p>Suscripciones Mesuales</p>
+                            <div className="grafico1">
+                                <GraficoBar/>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-md-3 cong animate__animated animate__zoomIn">
-                        <p>Candidad de Usuarios</p>
-                        <div className="grafico">
-                            <GraficoBar/>
-                        </div>
-                    </div>
-                    <div className="col-md-3 cong animate__animated animate__zoomIn">
-                        <p>Herrameintas Mas utilizadas</p>
-                        <div className="grafico">
-                            <GraficoPaste/>
+                    <div className="row">
+                        <div className="col-md-6 cong">
+                            <p>Candidad de Usuarios</p>
+                            <div className="grafico2">
+                                <GraficoLine/>
+                            </div>
                         </div>
                     </div>
                 </div>

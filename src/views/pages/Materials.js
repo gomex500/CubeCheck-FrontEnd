@@ -201,7 +201,7 @@ const Materials = () =>{
                                                 <td>{mate.marca}</td>
                                                 <td>{mate.medida}</td>
                                                 <td>{mate.cantidad}</td>
-                                                <td>{mate.precio} C$</td>   
+                                                <td>{mate.precio} C$</td>
                                             </tr>
                                         </tbody>
                                     </table>
