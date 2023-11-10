@@ -9,7 +9,7 @@ const Esquema = ({contruccion}) =>{
 
 
     useEffect(() =>{
-
+        console.log(contruccion);
         const currentRef = mountRef.current;
         const {clientWidth: width, clientHeight: height} = currentRef;
 
@@ -56,36 +56,43 @@ const Esquema = ({contruccion}) =>{
         const gridHelper = new THREE.GridHelper(size, divisions);
         scene.add(gridHelper);
 
-        let x = 10;
-        let y = 1;
-        let z = 10;
+        // let x = 10;
+        // let y = 1;
+        // let z = 10;
 
-        const geometry = new THREE.BoxGeometry(contruccion.embaldosado[0],y,contruccion.embaldosado[2]);
-        const geometry2 = new THREE.BoxGeometry(1,7,1);
+        const geometry = new THREE.BoxGeometry(contruccion.embaldosado[0],contruccion.embaldosado[1],contruccion.embaldosado[2]);
+        const geometry2 = new THREE.BoxGeometry(0.4,contruccion.altura+0.5,0.4);
         
         const material = new THREE.MeshPhongMaterial({ color: 0x4d82bc });
         // const material = new THREE.MeshBasicMaterial({
         //     color: 0xc1c1c1
         // });
-        // const material2 = new THREE.MeshBasicMaterial({
-        //     color: 0xfcffff
-        // });
+        const material2 = new THREE.MeshBasicMaterial({
+            color: 0xfcffff
+        });
         const cube = new THREE.Mesh(geometry, material);
-        const cube1 = new THREE.Mesh(geometry2, material);
-        const cube2 = new THREE.Mesh(geometry2, material);
-        const cube3 = new THREE.Mesh(geometry2, material);
-        const cube4 = new THREE.Mesh(geometry2, material);
-        const cube5 = new THREE.Mesh(geometry, material);
-        const cube6 = new THREE.Mesh(geometry, material);
-        scene.add(cube, cube1, cube2, cube3, cube4, cube5, cube6);
-        cube.position.set(1,0.5,1);
-        cube1.position.set(-3.5,3,-3.5);
-        cube2.position.set(-3.5,3,5.5);
-        cube3.position.set(5.5,3,5.5);
-        cube4.position.set(5.5,3,-3.5);
-        cube5.position.set(1,6,1);
-        cube6.position.set(1,6,1);
+        const cube1 = new THREE.Mesh(geometry2, material2);
+        const cube2 = new THREE.Mesh(geometry2, material2);
+        const cube3 = new THREE.Mesh(geometry2, material2);
+        const cube4 = new THREE.Mesh(geometry2, material2);
+        const cube5 = new THREE.Mesh(geometry2, material);
+        const cube6 = new THREE.Mesh(geometry2, material);
+        scene.add(cube, cube1, cube2,cube3, cube4, cube5, cube6);
+        cube.position.set(0,0.2,0);
+        cube1.position.set(contruccion.pilaresEsquinas[0].x,contruccion.pilaresEsquinas[0].y,contruccion.pilaresEsquinas[0].z);
+        cube2.position.set(contruccion.pilaresEsquinas[1].x,contruccion.pilaresEsquinas[1].y,contruccion.pilaresEsquinas[1].z);
+        cube3.position.set(contruccion.pilaresEsquinas[2].x,contruccion.pilaresEsquinas[2].y,contruccion.pilaresEsquinas[2].z);
+        cube4.position.set(contruccion.pilaresEsquinas[3].x,contruccion.pilaresEsquinas[3].y,contruccion.pilaresEsquinas[3].z);
 
+        //pilares centrales z
+        for (let z = 0; z < contruccion.pilaresZ.length; z++) {
+            console.log(contruccion.pilaresZ);
+            const pilarz = new THREE.Mesh(geometry2, material);
+            pilarz.position.set(contruccion.pilaresZ[z].x, contruccion.pilaresZ[z].y,contruccion.pilaresZ[z].z);
+            scene.add(pilarz);
+        }
+        // cube5.position.set((contruccion.embaldosado[0]/2)-3.2,1.6,(contruccion.embaldosado[2]/2)-0.25);
+        // cube6.position.set(((contruccion.embaldosado[0]/2)-3.2)*-1,1.6,(contruccion.embaldosado[2]/2)-0.25);
         // tcontrols.attach(cube3);
         // scene.add(tcontrols);
 
