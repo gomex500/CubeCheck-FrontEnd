@@ -6,7 +6,7 @@
 .cont-contruccion h2{
     text-align: center;
     font-family: 'cunia', serif;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-top: 50px;
     color: #4d83bc;
 }
@@ -37,4 +37,42 @@
 
 .form-contruccion .titulo h3{
     color: #252525;
+}
+
+.form-contruccion .tituloE{
+    text-align: center;
+    text-transform: uppercase;
+    color: #4d83bc;
+    font-family: 'cunia', serif;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.cont-chekbox-movi{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cont-chekbox-movi p{
+    text-align: center;
+    text-transform: uppercase;
+    color: #4d83bc;
+    font-family: 'cunia', serif;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.form-check-label{
+    color: #4d83bc;
+    font-weight: bold;
+    margin-left: 5px;
+    display: inline;
+}
+
+.form-check-input{
+    margin-left: 10px;
 }
