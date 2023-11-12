@@ -1,4 +1,5 @@
 import React, {useState, useRef, useEffect} from "react";
+import {configApi} from '../apis/configApi'
 import axios from "axios";
 import '../css/chatBot.css'
 import Btn2 from "./Btn2";
@@ -15,6 +16,17 @@ const BtnChat = () =>{
     const btnVisible = () =>{
         setVisible(!visible);
     }
+
+    const enviarTools = async (tool) =>{
+        configApi.put(`/tools/${tool}`)
+        .then(response =>{
+            console.log(response.data);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
+    
 
     const conversacion = async (e) =>{
         e.preventDefault();
@@ -38,6 +50,7 @@ const BtnChat = () =>{
             ]);
       
             setInput('');
+            enviarTools('chatbot')
       
           } catch (error) {
           }

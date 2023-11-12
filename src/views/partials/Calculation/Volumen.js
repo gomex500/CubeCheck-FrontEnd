@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import '../../../css/Volumen.css'
 import { Btn2, Input } from "../../../components";
 import Swal from "sweetalert2";
+import { configApi } from "../../../apis/configApi";
 
 const Volumen = () =>{
 
@@ -23,10 +24,21 @@ const Volumen = () =>{
     const calcular = () =>{
         if (longitud > 0 && ancho > 0 && alto > 0) {
             setResultado((longitud*ancho)*alto);
+            enviarTools('volumen')
             alertas('success','Listo');
         } else {
             alertas('error','Campos Vacios');
         }
+    }
+
+    const enviarTools = async (tool) =>{
+        configApi.put(`/tools/${tool}`)
+        .then(response =>{
+            console.log(response.data);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
     }
 
     const eliminarDatos = () =>{

@@ -3,6 +3,7 @@ import '../../css/Calculation.css';
 import { Btn2, Input } from '../../components';
 import Swal from 'sweetalert2';
 import { Volumen, Area, Perimetro } from '../partials/Calculation';
+import { configApi } from '../../apis/configApi';
 
 const Calculation = () =>{
 
@@ -18,8 +19,19 @@ const Calculation = () =>{
         setBtnC(!btnC);
     }
 
+    const enviarTools = async (tool) =>{
+        configApi.put(`/tools/${tool}`)
+        .then(response =>{
+            console.log(response.data);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
+
     const convertir = () =>{
         if(val1 > 0){
+            enviarTools('conversion')
             switch (seleccion) {
                 case 1:
                     switch (seleccion2) {

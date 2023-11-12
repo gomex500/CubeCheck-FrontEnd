@@ -53,6 +53,16 @@ const Pared = () =>{
         configApi.post('/calculoPared', data)
         .then(response =>{
             setPresupuesto(response.data);
+            enviarTools('pared')
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
+
+    const enviarTools = async (tool) =>{
+        configApi.put(`/tools/${tool}`)
+        .then(response =>{
             console.log(response.data);
         })
         .catch(error =>{

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Btn2, Input } from "../../../components";
 import Swal from "sweetalert2";
 import '../../../css/Perimetro.css';
+import { configApi } from "../../../apis/configApi";
 
 const Perimetro = () => {
   const [lados, setLados] = useState([]);
@@ -50,11 +51,22 @@ const Perimetro = () => {
             suma += lados[i];
         }
         setResultado(suma);
+        enviarTools('perimetro');
         alertas('success',`Perimetro es: ${suma}`);
       } else {
         alertas('error','Faltas datos');
       }
   }
+
+  const enviarTools = async (tool) =>{
+    configApi.put(`/tools/${tool}`)
+    .then(response =>{
+        console.log(response.data);
+    })
+    .catch(error =>{
+        console.log(error);
+    })
+}
 
   return (
     <div className="contP animate__animated animate__fadeInUp row">

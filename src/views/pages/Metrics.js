@@ -58,16 +58,14 @@ const Metrics = () =>{
                                 <GraficoPaste/>
                             </div>
                         </div>
-                        <div className="col-md-7 cong">
+                        {/* <div className="col-md-7 cong">
                             <p>Suscripciones Mesuales</p>
                             <div className="grafico1">
                                 <GraficoBar/>
                             </div>
-                        </div>
-                    </div>
-                    <div className="row">
+                        </div> */}
                         <div className="col-md-6 cong">
-                            <p>Candidad de Usuarios</p>
+                            <p>Herramientas mas Utilizadas</p>
                             <div className="grafico2">
                                 <GraficoLine/>
                             </div>

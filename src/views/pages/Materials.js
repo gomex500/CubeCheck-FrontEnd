@@ -8,9 +8,9 @@ import { getMaterialX } from "../../store/slices/MaterialesSlices/materialesXThu
 import { getMaterialY } from "../../store/slices/MaterialesSlices/materialesYThunks";
 import { getUser } from "../../store/slices/UserSlices/userThunks";
 import { Carga } from "../partials/Loading";
+import { configApi } from "../../apis/configApi";
 
 const Materials = () =>{
-
     const dispatch = useDispatch();
     const { MaterialesX } = useSelector( state => state.materialesx);
     const { MaterialesY, isLoading } = useSelector( state => state.materialesy);
@@ -46,10 +46,21 @@ const Materials = () =>{
         setVer(false);
     }
 
+    const enviarTools = async (tool) =>{
+        configApi.put(`/tools/${tool}`)
+        .then(response =>{
+            console.log(response.data);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
+
     useEffect(() => {
         dispatch( getMaterialX() );
         dispatch( getMaterialY() );
         dispatch( getUser() );
+        enviarTools('materiales')
     }, [])
 
     if (isLoading) {

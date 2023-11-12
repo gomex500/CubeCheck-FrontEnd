@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Btn2, Input } from "../../../components";
 import '../../../css/Area.css';
 import Swal from "sweetalert2";
+import { configApi } from "../../../apis/configApi";
 
 const Area = () =>{
 
@@ -19,9 +20,11 @@ const Area = () =>{
           })
     }
 
+
     const calcular = () =>{
         if (base > 0 && altura > 0) {
             setResultado(base*altura);
+            enviarTools('area');
             alertas('success','Listo');
         } else {
             alertas('error','Campos Vacios');
@@ -33,6 +36,16 @@ const Area = () =>{
         setAltura(0);
         setResultado(0);
         alertas('success','Datos Eliminados');
+    }
+
+    const enviarTools = async (tool) =>{
+        configApi.put(`/tools/${tool}`)
+        .then(response =>{
+            console.log(response.data);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
     }
 
     return(

@@ -54,7 +54,7 @@ const Esquema = ({contruccion}) =>{
 
         const geometry3 = new THREE.BoxGeometry(0.25,contruccion.alturaParedes,contruccion.embaldosado[2]);
         const geometry4 = new THREE.BoxGeometry(contruccion.embaldosado[0],contruccion.alturaParedes,0.25);
-        const geometry5 = new THREE.BoxGeometry(contruccion.embaldosado[0]-2,contruccion.alturaParedes,0.25);
+        const geometry5 = new THREE.BoxGeometry(contruccion.embaldosado[0]-1,contruccion.alturaParedes,0.25);
         const geometry6 = new THREE.BoxGeometry(contruccion.embaldosado[0],1,0.25);
         const material = new THREE.MeshPhongMaterial({ color: 0x4d82bc });
         // const material = new THREE.MeshBasicMaterial({
@@ -119,7 +119,7 @@ const Esquema = ({contruccion}) =>{
             scene.add(tcontrolsP3);
             tcontrolsP3.setMode('translate');
         }
-        pared4.position.set(0-1,contruccion.pilaresEsquinas[3].y,contruccion.pilaresEsquinas[1].z-0.01);
+        pared4.position.set(-0.5,contruccion.pilaresEsquinas[3].y,contruccion.pilaresEsquinas[1].z-0.01);
         pared5.position.set(0,contruccion.pilaresEsquinas[3].y+1,contruccion.pilaresEsquinas[1].z-0.01);
         if (contruccion.moverPared) {
             const tcontrolsP4 = new TransformControls(camera, renderer.domElement);

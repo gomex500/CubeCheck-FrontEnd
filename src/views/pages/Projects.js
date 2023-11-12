@@ -36,6 +36,16 @@ const Projects = () =>{
         })
     }
 
+    const enviarTools = async (tool) =>{
+        configApi.put(`/tools/${tool}`)
+        .then(response =>{
+            console.log(response.data);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
+
     const alertas = (icono, texto) =>{
         Swal.fire({
             // position: 'top-end',
@@ -92,6 +102,7 @@ const Projects = () =>{
                     setIdP(response.data.id);
                     setVistaC(true);
                     setVerNew(false);
+                    enviarTools('proyecto')
                 })
                 .catch((error) =>{
                     console.log(error);
