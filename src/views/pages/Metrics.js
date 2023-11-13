@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Carga } from "../partials/Loading";
 import '../../css/Metrics.css'
 import axios from "axios";
-import { GraficoBar, GraficoLine, GraficoPaste } from "../partials/Metrics"
+import { GraficoBar, GraficoPaste } from "../partials/Metrics"
 
 
 const Metrics = () =>{
@@ -58,18 +58,18 @@ const Metrics = () =>{
                                 <GraficoPaste/>
                             </div>
                         </div>
-                        {/* <div className="col-md-7 cong">
+                        <div className="col-md-7 cong">
                             <p>Suscripciones Mesuales</p>
                             <div className="grafico1">
                                 <GraficoBar/>
                             </div>
-                        </div> */}
-                        <div className="col-md-6 cong">
+                        </div>
+                        {/* <div className="col-md-6 cong">
                             <p>Herramientas mas Utilizadas</p>
                             <div className="grafico2">
                                 <GraficoLine/>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

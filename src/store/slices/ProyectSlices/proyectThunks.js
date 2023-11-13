@@ -15,7 +15,7 @@ export const getProjects = () =>{
                   Authorization: `Bearer ${dato.token}`,
                 },
             }
-            const {data} = await configApi('/proyectos', config);
+            const {data} = await configApi(`/proyecto/${dato.id}`, config);
             
             dispatch( getProyecto({
                 proyectos: data,

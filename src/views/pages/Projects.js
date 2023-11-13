@@ -16,6 +16,7 @@ const Projects = () =>{
     const [proyecto, setProyecto] = useState({
         "nombre": "",
         "descripcion": "",
+        "user":"",
         "presupuesto": {},
         "construccion": {}
     });
@@ -94,6 +95,10 @@ const Projects = () =>{
                     Authorization: `Bearer ${data.token}`,
                     },
                 }
+                setProyecto({
+                    ...proyecto,
+                    user:data.id
+                });
                 configApi.post(`/proyectos`,proyecto,config)
                 .then((response) =>{
                     alertas('success',response.data.mensaje);
