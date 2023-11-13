@@ -174,7 +174,7 @@ const Navbar = () =>{
                         }
                     })()}
                     <li>
-                        <a href="/">
+                        <a href="/info">
                             <i className="fas fa-circle-info"></i>
                             <span className="nav-item">Acerca de</span>
                         </a>

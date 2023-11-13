@@ -11,6 +11,13 @@
     box-shadow: 0 5px 10px rgba(27, 27, 27, 0.5);
 }
 
+.texto{
+    text-align: justify;
+    margin-top: 50px;
+    font-size: 18px;
+    color: #005187;
+}
+
 @font-face {
     font-family: 'cunia';
     src: url('../fonts//cunia/Cunia.ttf');

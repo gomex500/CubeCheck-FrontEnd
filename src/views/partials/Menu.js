@@ -11,7 +11,8 @@ import {
     Login,
     Profile,
     Sigup,
-    Materials
+    Materials,
+    Info
 } from '../pages';
 
 import Footer from "./Footer";
@@ -58,6 +59,7 @@ const Menu = () =>{
                 <Route path="/sigup" element={validarSesion() ?  <Navigate to='/'/> : <Sigup/>}/>
                 <Route path="/profile" element={validarSesion() ?  <Profile/> : <Navigate to='/login'/>}/>
                 <Route path="/materials" element={validarSesion() ?  <Materials/> : <Navigate to='/login'/>}/>
+                <Route path="/info" element={<Info/>}/>
 
                 {/* premium router */}
                 {(() =>{

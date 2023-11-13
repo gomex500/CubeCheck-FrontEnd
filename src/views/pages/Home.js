@@ -22,8 +22,12 @@ const Home = () =>{
                     </div>
                 </div>
             </div>
-            <div>
-                <p>lore</p>
+            <div className="container texto">
+                <p>La "cubicación" en la construcción se refiere al proceso de calcular o medir el volumen de un objeto tridimensional, como un sólido o una estructura. Este término se utiliza comúnmente en la industria de la construcción para determinar la cantidad de material necesario para llevar a cabo un proyecto.</p>
+
+                <p>En el contexto de la construcción, la cubicación implica medir y calcular los volúmenes de los diferentes elementos estructurales, como cimientos, columnas, vigas, losas y otros componentes. Esto es esencial para estimar la cantidad de materiales de construcción necesarios, como concreto, acero, madera, etc.</p>
+
+                <p>Para realizar la cubicación, se pueden utilizar diversas técnicas y herramientas, como planos arquitectónicos detallados, software de modelado tridimensional (BIM), y métodos de medición directa en el sitio de construcción. La precisión en la cubicación es fundamental para evitar desperdicios de materiales y para garantizar que se tenga la cantidad adecuada para completar el proyecto de construcción de manera eficiente.</p>
             </div>
         </div>
     );

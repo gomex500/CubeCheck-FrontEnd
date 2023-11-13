@@ -8,6 +8,7 @@ import Login from './Login';
 import Sigup from './Sigup';
 import Profile from './Profile';
 import Materials from './Materials';
+import Info from './Info';
 
 export {
     Home,
@@ -19,5 +20,6 @@ export {
     Login,
     Sigup,
     Profile,
-    Materials
+    Materials,
+    Info
 };

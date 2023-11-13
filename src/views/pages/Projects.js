@@ -14,7 +14,6 @@ const Projects = () =>{
     const dispatch = useDispatch();
     const { proyectos, isLoading } = useSelector( state => state.proyectos);
     const { user } = useSelector( state => state.user);
-    // const {user, setUser} = useState("");
     const [proyecto, setProyecto] = useState({
         "nombre": "",
         "descripcion": "",
@@ -26,6 +25,7 @@ const Projects = () =>{
     const [verNew, setVerNew] = useState(false);
     const [vistaC, setVistaC] = useState(false);
     const [idP, setIdP] = useState("");
+    const [pro,setPro] = useState(null);
 
     const ver = () =>{
         setVerNew(!verNew);
@@ -59,8 +59,8 @@ const Projects = () =>{
           });
     }
 
-    const verProyecto = (id) =>{
-        setIdP(id);
+    const verProyecto = (pro) =>{
+        setPro(pro);
         setVistaC(true);
         setVerNew(false);
     }
@@ -157,7 +157,7 @@ const Projects = () =>{
                 </div>
             )
         } else if(vistaC){
-            return(<Contruccion id={idP}/>);
+            return(<Contruccion proyect={pro}/>);
         } else{
             return(
                 <div className="seccion">
@@ -186,7 +186,7 @@ const Projects = () =>{
                                             tp={"button"}
                                             cls={"btn1"}
                                             text={<i className="fa-solid fa-eye"></i>}
-                                            func={() => verProyecto(pro._id)}
+                                            func={() => verProyecto(pro)}
                                         />
                                         <Btn2
                                             tp={"button"}
