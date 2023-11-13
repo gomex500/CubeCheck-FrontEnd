@@ -133,7 +133,7 @@ const Embaldosado = () =>{
                         </tr>
                         <tr>
                             <td>{presupuesto.cemento.cantidad}</td>
-                            <td>Kg</td>
+                            <td>Bolsas</td>
                             <td>Cemento</td>
                             <td>{presupuesto.cemento.precio} C$</td>
                         </tr>

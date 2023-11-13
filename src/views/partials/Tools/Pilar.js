@@ -123,19 +123,19 @@ const Pilar = () =>{
                         </tr>
                         <tr>
                             <td>{presupuesto.arena.cantidad}</td>
-                            <td>m3</td>
+                            <td>Latas</td>
                             <td>Arena</td>
                             <td>{presupuesto.arena.precio} C$</td>
                         </tr>
                         <tr>
                             <td>{presupuesto.grava.cantidad}</td>
-                            <td>m3</td>
+                            <td>Latas</td>
                             <td>Grava</td>
                             <td>{presupuesto.grava.precio} C$</td>
                         </tr>
                         <tr>
                             <td>{presupuesto.cemento.cantidad}</td>
-                            <td>Quintales</td>
+                            <td>Bolsas</td>
                             <td>Cemento</td>
                             <td>{presupuesto.cemento.precio} C$</td>
                         </tr>

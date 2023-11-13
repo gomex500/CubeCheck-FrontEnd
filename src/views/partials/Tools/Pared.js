@@ -238,13 +238,13 @@ const Pared = () =>{
                         </tr>
                         <tr>
                             <td>{presupuesto.Arena.cantidad}</td>
-                            <td>m3</td>
+                            <td>Latas</td>
                             <td>Arena</td>
                             <td>{presupuesto.Arena.precio} C$</td>
                         </tr>
                         <tr>
                             <td>{presupuesto.Cemento.cantidad}</td>
-                            <td>Kg</td>
+                            <td>Bolsas</td>
                             <td>Cemento</td>
                             <td>{presupuesto.Cemento.precio} C$</td>
                         </tr>
