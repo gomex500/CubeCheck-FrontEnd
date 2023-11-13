@@ -13,10 +13,12 @@ const Projects = () =>{
 
     const dispatch = useDispatch();
     const { proyectos, isLoading } = useSelector( state => state.proyectos);
+    const { user } = useSelector( state => state.user);
+    // const {user, setUser} = useState("");
     const [proyecto, setProyecto] = useState({
         "nombre": "",
         "descripcion": "",
-        "user":"",
+        "user":user._id,
         "presupuesto": {},
         "construccion": {}
     });
@@ -95,10 +97,8 @@ const Projects = () =>{
                     Authorization: `Bearer ${data.token}`,
                     },
                 }
-                setProyecto({
-                    ...proyecto,
-                    user:data.id
-                });
+                console.log(proyecto);
+
                 configApi.post(`/proyectos`,proyecto,config)
                 .then((response) =>{
                     alertas('success',response.data.mensaje);
