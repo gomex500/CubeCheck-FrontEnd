@@ -12,7 +12,12 @@ import 'jspdf-autotable';
 const Contruccion = ({proyect}) =>{
 
     const [carga, setCarga] = useState(false);
-    const [proyecto, setProyecto] = useState(proyect);
+    const [proyecto, setProyecto] = useState({
+        "construccion": {},
+        "descripcion": "una casita",
+        "nombre": "mi primer proyecto",
+        "presupuesto": {}
+      });
 
     const [base, setBase] = useState(0);
     const [largo, setLargo] = useState(0);
@@ -206,7 +211,7 @@ const Contruccion = ({proyect}) =>{
               Authorization: `Bearer ${data.token}`,
             },
         }
-        await configApi.get(`/proyectos/${proyecto._id}`, config)
+        await configApi.get(`/proyectos/${proyect}`, config)
         .then((response) =>{
             setProyecto(response.data);
             setCarga(false);
@@ -367,6 +372,7 @@ const Contruccion = ({proyect}) =>{
 
     useEffect(() => {
         obtenerProyecto();
+        console.log(proyect);
     }, [])
     
 
@@ -487,10 +493,10 @@ const Contruccion = ({proyect}) =>{
                         </div>
                     </div>
                     <div className='presupuesto'>
-                        {proyecto.presupuesto === null ? <h2>Presupuesto</h2> :
+                        {Object.keys(proyecto.presupuesto).length === 0 ? <h2>Presupuesto</h2> :
                         <div cont-tablas>
                             <h2>Presupuesto paredes</h2>
-                            <p>Numero de Paredes: {proyecto.presupuesto.cantidadParedes}</p>
+                            <p className='ppp'>Numero de Paredes: {proyecto.presupuesto.cantidadParedes}</p>
                             <table className="table cont-tb table-bordered">
                                 <thead className="table-head">
                                     <tr>
@@ -534,7 +540,7 @@ const Contruccion = ({proyect}) =>{
                                 </tbody>
                             </table>
                             <h2>Presupuesto pilares</h2>
-                            <p>Numero de Pilares: {proyecto.presupuesto.cantidadPilares}</p>
+                            <p className='ppp'>Numero de Pilares: {proyecto.presupuesto.cantidadPilares}</p>
                             <table className="table cont-tb table-bordered">
                                 <thead className="table-head">
                                     <tr>
@@ -589,7 +595,7 @@ const Contruccion = ({proyect}) =>{
                                     </tr>
                                 </tbody>
                             </table>
-                            <h2>Presupuesto Embaldosado</h2>
+                            <h2 className='ppp'>Presupuesto Embaldosado</h2>
                             <table className="table cont-tb table-bordered">
                                 <thead className="table-head">
                                     <tr>
@@ -632,7 +638,7 @@ const Contruccion = ({proyect}) =>{
                                     </tr>
                                 </tbody>
                             </table>
-                            <h2>Presupuesto Total</h2>
+                            <h2>Total Presupuesto</h2>
                             <table className="table cont-tb table-bordered">
                                 <thead className="table-head">
                                     <tr>
@@ -672,7 +678,7 @@ const Contruccion = ({proyect}) =>{
                     </div>
                     <div className='lienzo'>
                         <h2>Renderizado 3D</h2>
-                        {proyecto.construccion === null ? <h2>3D</h2> :
+                        {Object.keys(proyecto.construccion).length === 0 ? <h2>3D</h2> :
                             <Esquema className="esquema" contruccion={proyecto.construccion}/>
                         }
                     </div>

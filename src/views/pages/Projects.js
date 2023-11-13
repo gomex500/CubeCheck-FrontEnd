@@ -25,7 +25,6 @@ const Projects = () =>{
     const [verNew, setVerNew] = useState(false);
     const [vistaC, setVistaC] = useState(false);
     const [idP, setIdP] = useState("");
-    const [pro,setPro] = useState(null);
 
     const ver = () =>{
         setVerNew(!verNew);
@@ -59,8 +58,8 @@ const Projects = () =>{
           });
     }
 
-    const verProyecto = (pro) =>{
-        setPro(pro);
+    const verProyecto = (id) =>{
+        setIdP(id);
         setVistaC(true);
         setVerNew(false);
     }
@@ -97,8 +96,6 @@ const Projects = () =>{
                     Authorization: `Bearer ${data.token}`,
                     },
                 }
-                console.log(proyecto);
-
                 configApi.post(`/proyectos`,proyecto,config)
                 .then((response) =>{
                     alertas('success',response.data.mensaje);
@@ -157,7 +154,7 @@ const Projects = () =>{
                 </div>
             )
         } else if(vistaC){
-            return(<Contruccion proyect={pro}/>);
+            return(<Contruccion proyect={idP}/>);
         } else{
             return(
                 <div className="seccion">
@@ -186,7 +183,7 @@ const Projects = () =>{
                                             tp={"button"}
                                             cls={"btn1"}
                                             text={<i className="fa-solid fa-eye"></i>}
-                                            func={() => verProyecto(pro)}
+                                            func={() => verProyecto(pro._id)}
                                         />
                                         <Btn2
                                             tp={"button"}
