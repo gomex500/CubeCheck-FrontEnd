@@ -12,10 +12,45 @@
 }
 
 .texto{
+    position: absolute;
+    margin: 0 auto;
     text-align: justify;
     margin-top: 50px;
     font-size: 18px;
     color: #005187;
+}
+
+.texto .row{
+    width: 93%;
+    margin: 0 auto;
+}
+
+.texto .cardH h3{
+    font-size: 100px;
+    text-align: center;
+}
+
+.cardH{
+    width: 30%;
+    margin: 0 auto;
+    background-color: rgba(252, 255, 255, 0.745);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.3);
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.lienzo2{
+    width: 100%;
+    height: 100vh;
+}
+
+.esquema2{
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 @font-face {
@@ -101,6 +136,9 @@
     .cont .eslogan{
         font-size: 18px;
         padding-top: 0px;
+    }
+    .cardH{
+        width: 100%;
     }
 }
 

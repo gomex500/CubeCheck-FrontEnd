@@ -5,6 +5,7 @@ import Card from './Card';
 import Checkbox from './Checkbox';
 import Esquema from './Esquema';
 import Input from './Input';
+import EsquemaHome from './EsquemaHome';
 
 export {
     Btn1,
@@ -13,5 +14,6 @@ export {
     Card,
     Checkbox,
     Esquema,
-    Input
+    Input,
+    EsquemaHome
 };

@@ -4,7 +4,6 @@ footer{
     background: linear-gradient(to bottom, rgba(57, 108, 184, 0.9) ,rgba(151, 181, 226, 0.9));
     color: #fcffff;
     text-align: center;
-    margin-top: 100px;
     border-radius: 0 10px 0 0;
     font-weight: bold;
 }
