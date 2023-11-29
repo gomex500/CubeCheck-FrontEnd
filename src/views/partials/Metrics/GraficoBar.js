@@ -74,7 +74,7 @@ export default function GraficoBar() {
         labels: mes,
         datasets: [
             {
-                label: 'benefciones',
+                label: 'Numero de usos',
                 data: ben,
                 tension: 0.5,
                 backgroundColor: 'rgb(54, 162, 235)',

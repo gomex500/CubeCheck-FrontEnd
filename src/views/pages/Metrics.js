@@ -59,7 +59,7 @@ const Metrics = () =>{
                             </div>
                         </div>
                         <div className="col-md-7 cong">
-                            <p>Suscripciones Mesuales</p>
+                            <p>Herramientas mas Utilizadas</p>
                             <div className="grafico1">
                                 <GraficoBar/>
                             </div>

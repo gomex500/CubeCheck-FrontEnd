@@ -112,7 +112,7 @@ const Users = () =>{
                 {carga2 ? <Carga2/> : null}
                 <div className="cont-users">
                     <center>
-                        <h2>Administracion de Usuarios</h2>
+                        <h2>Administración de Usuarios</h2>
                         <div className="cont-search">
                             <form onSubmit={buscarUsuario}>
                                 <div className="form-cont">

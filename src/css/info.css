@@ -1,0 +1,50 @@
+.cardTI{
+    background-color: rgba(252, 255, 255, 0.9);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(27, 27, 27, 0.3);
+    padding: 20px;
+    margin-top: 30px;
+    color: #4d82bc;
+}
+
+.cardTI .foto{
+    width: 70%;
+    height: 180px;
+    border-radius: 50%;
+}
+
+.medida1{
+    width: 48%;
+    margin-left: 1%;
+    margin-top: 30px;
+}
+
+.medida2{
+    width: 28%;
+    margin-left: 3%;
+    margin-top: 30px;
+    color: #4d82bc;
+}
+
+.medida2 .enlaces{
+    width: 90%;
+    text-align: center;
+}
+
+.medida2 .enlaces a{
+    text-decoration: none;
+    color: #4d82bc;
+    font-size: 20px;
+    margin: 10px;
+}
+
+@media screen and (max-width:767px){
+    .medida1{
+        width: 100%;
+        margin-left: 0;
+    }
+    .medida2{
+        width: 100%;
+        margin-left: 0;
+    }
+}

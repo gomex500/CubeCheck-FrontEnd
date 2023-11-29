@@ -53,10 +53,10 @@ const EsquemaHome = () =>{
         // const gridHelper = new THREE.GridHelper(size, divisions);
         // scene.add(gridHelper);
 
-        const geometry = new THREE.BoxGeometry(1,1,1,2,2,2);
+        const geometry = new THREE.DodecahedronGeometry(1);
 
         const material = new THREE.MeshPhongMaterial({ color: 0x4d82bc, wireframe:true});
-        material.wireframeLinewidth = 5;
+        material.wireframeLinewidth = 4;
 
         const cube = new THREE.Mesh(geometry, material);
 
@@ -91,7 +91,7 @@ const EsquemaHome = () =>{
     
 
     return <div>
-        <div ref={mountRef} style={{width: "100%", height: "100vh"}}></div>
+        <div ref={mountRef} className={"esquema2"}></div>
     </div>
 }
 

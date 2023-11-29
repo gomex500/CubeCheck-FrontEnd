@@ -36,10 +36,10 @@ const Home = () =>{
 
                 <div className="cardH col-md-4">
                     <h3><i class="fa-solid fa-trowel"></i></h3>
-                <p>Para realizar la cubicación, se pueden utilizar diversas técnicas y herramientas, como planos arquitectónicos detallados, software de modelado tridimensional (BIM), y métodos de medición directa en el sitio de construcción. La precisión en la cubicación es fundamental para evitar desperdicios de materiales y para garantizar que se tenga la cantidad adecuada para completar el proyecto de construcción de manera eficiente.</p>
+                <p>Para realizar la cubicación, se pueden utilizar diversas técnicas y herramientas, como planos arquitectónicos detallados, software de modelado tridimensional (BIM), y métodos de medición directa en el sitio de construcción. La cubicación es fundamental para evitar desperdicios y para garantizar la cantidad adecuada para el proyecto.</p>
                 </div>
                 </div>
-            </div> 
+            </div>
             <div className="lienzo2">
                 <EsquemaHome className="esquema2"/>
             </div>

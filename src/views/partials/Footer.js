@@ -34,7 +34,7 @@ const Footer = () =>{
                         url={'/'}
                     />
                 </div>
-                <p className="p">Terminos de use - Politicas de Privacidad</p>
+                <p className="p">Terminos de uso - Politicas de Privacidad</p>
                 <p>&copy; 2023 CubeCheck </p>
             </footer>
         </div>

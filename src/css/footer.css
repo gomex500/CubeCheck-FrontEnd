@@ -1,11 +1,13 @@
 footer{
+    display: block;
     width: 100%;
     height: 250px;
-    background: linear-gradient(to bottom, rgba(57, 108, 184, 0.9) ,rgba(151, 181, 226, 0.9));
+    background: linear-gradient(to bottom, rgb(57, 108, 184) ,rgb(151, 181, 226));
     color: #fcffff;
     text-align: center;
     border-radius: 0 10px 0 0;
     font-weight: bold;
+    margin-top: 50px;
 }
 
 .cuadro{
