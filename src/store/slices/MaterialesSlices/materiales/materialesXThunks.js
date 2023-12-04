@@ -1,4 +1,4 @@
-import { configApi } from "../../../apis/configApi";
+import { configApi } from "../../../../apis/configApi";
 import {getMaterialesX, startIsLoadingMaterialX} from "./materialesXSlices"
 
 const datos = localStorage.getItem('data');

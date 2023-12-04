@@ -6,7 +6,7 @@ import { Btn2, Input } from "../../../components";
 import { Carga2 } from "../Loading";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getMaterialY } from "../../../store/slices/MaterialesSlices/materialesYThunks";
+import { getMaterialY } from "../../../store/slices/MaterialesSlices/materiales/materialesYThunks";
 import { Carga } from "../Loading";
 import { configApi } from "../../../apis/configApi";
 
