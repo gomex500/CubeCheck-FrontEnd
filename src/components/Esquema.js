@@ -2,6 +2,7 @@ import React, {useRef, useEffect} from "react";
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {TransformControls} from 'three/examples/jsm/controls/TransformControls';
+import {Bloque, Ladrillo, Concreto} from '../img/texturas/index'
 
 const Esquema = ({contruccion}) =>{
 
@@ -52,20 +53,48 @@ const Esquema = ({contruccion}) =>{
         const geometry = new THREE.BoxGeometry(contruccion.embaldosado[0],contruccion.embaldosado[1],contruccion.embaldosado[2]);
         const geometry2 = new THREE.BoxGeometry(0.25,contruccion.alturaPilares+0.5,0.25);
 
-        const geometry3 = new THREE.BoxGeometry(0.25,contruccion.alturaParedes,contruccion.embaldosado[2]);
-        const geometry4 = new THREE.BoxGeometry(contruccion.embaldosado[0],contruccion.alturaParedes,0.25);
-        const geometry5 = new THREE.BoxGeometry(contruccion.embaldosado[0]-1,contruccion.alturaParedes,0.25);
-        const geometry6 = new THREE.BoxGeometry(contruccion.embaldosado[0],1,0.25);
-        const material = new THREE.MeshPhongMaterial({ color: 0x4d82bc });
+        const geometry3 = new THREE.BoxGeometry(0.25,contruccion.alturaParedes,contruccion.embaldosado[2]-0.45);
+        const geometry4 = new THREE.BoxGeometry(contruccion.embaldosado[0]-0.45,contruccion.alturaParedes,0.25);
+        const geometry5 = new THREE.BoxGeometry((contruccion.embaldosado[0]-1)-0.45,contruccion.alturaParedes,0.25);
+        const geometry6 = new THREE.BoxGeometry(contruccion.embaldosado[0]-0.45,1,0.25);
+
+
+        //textura pilares
+        const textureLoader = new THREE.TextureLoader();
+        const texture1 = textureLoader.load(Concreto);
+
+        //textura paredes
+        const textures = [
+            textureLoader.load(contruccion.materialBase === "Ladrillo" ? Ladrillo : Bloque),
+            textureLoader.load(contruccion.materialBase === "Ladrillo" ? Ladrillo : Bloque),
+            textureLoader.load(contruccion.materialBase === "Ladrillo" ? Ladrillo : Bloque),
+            textureLoader.load(contruccion.materialBase === "Ladrillo" ? Ladrillo : Bloque),
+            textureLoader.load(contruccion.materialBase === "Ladrillo" ? Ladrillo : Bloque),
+            textureLoader.load(contruccion.materialBase === "Ladrillo" ? Ladrillo : Bloque),
+        ];
+
+        // Configurar repetición para cada textura
+        textures.forEach(texture => {
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+            // Número de repeticiones en los ejes S y T
+            texture.repeat.set(contruccion.embaldosado[0]/2, contruccion.alturaParedes/2);
+        });
+        // const material = new THREE.MeshPhongMaterial({ color: 0x4d82bc });
+        const material = new THREE.MeshBasicMaterial({ map: texture1 });
         // const material = new THREE.MeshBasicMaterial({
         //     color: 0xc1c1c1
         // });
-        const material2 = new THREE.MeshPhongMaterial({
-            color: 0x2E4BCD
-        });
-        const material3 = new THREE.MeshPhongMaterial({
-            color: 0x4B2ECD
-        });
+        // const material2 = new THREE.MeshPhongMaterial({
+        //     color: 0x2E4BCD
+        // });
+        const material2 = new THREE.MeshBasicMaterial({ map: texture1 });
+        // const material3 = new THREE.MeshPhongMaterial({
+        //     color: 0x4B2ECD
+        // });
+
+        const material3 = textures.map(texture => new THREE.MeshBasicMaterial({ map: texture }));
+
         const cube = new THREE.Mesh(geometry, material);
         const cube1 = new THREE.Mesh(geometry2, material2);
         const cube2 = new THREE.Mesh(geometry2, material2);
