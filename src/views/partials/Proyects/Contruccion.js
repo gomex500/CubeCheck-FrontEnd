@@ -29,6 +29,10 @@ const Contruccion = ({proyect}) =>{
 
     const [moverPared, setMoverPared] = useState(false);
     const [moverPilar, setMoverPilar] = useState(false);
+    const [ventanasF, setVentanasF] = useState(false);
+    const [ventanasT, setVentanasT] = useState(false);
+    const [ventanasD, setVentanasD] = useState(false);
+    const [ventanasI, setVentanasI] = useState(false);
     const [validar, setValidar] = useState(true);
     
     const [contruccion, setContruccion] = useState(null);
@@ -55,6 +59,10 @@ const Contruccion = ({proyect}) =>{
                     "alturaParedes":alturaPardes,
                     "moverpilar":moverPilar,
                     "moverPared":moverPared,
+                    "ventanasF":ventanasF,
+                    "ventanasT":ventanasT,
+                    "ventanasD":ventanasD,
+                    "ventanasI":ventanasI,
                     "materialBase":material,
                     "numeroParedes":4,
                     "numeroPilares":4,
@@ -157,6 +165,10 @@ const Contruccion = ({proyect}) =>{
                     "alturaParedes":alturaPardes,
                     "moverPilar":moverPilar,
                     "moverPared":moverPared,
+                    "ventanasF":ventanasF,
+                    "ventanasT":ventanasT,
+                    "ventanasD":ventanasD,
+                    "ventanasI":ventanasI,
                     "numeroParedes":(CPPX+CPPZ)*2,
                     "numeroPilares":((CPZ+CPX)*2)+4,
                     "materialBase":material,
@@ -460,6 +472,46 @@ const Contruccion = ({proyect}) =>{
                                     </select>
                                 </div>
                             </div>
+                            <div className='cont-chekbox-movi'>
+                                    <p>Paredes con ventanas</p>
+                                    <Checkbox
+                                        cls={"form-check-input"}
+                                        val={ventanasF}
+                                        id={"ventanaf"}
+                                        func={() => setVentanasF(!ventanasF)}
+                                        />
+                                    <label className="form-check-label" htmlFor="ventanaf">
+                                        Pared Frontal
+                                    </label>
+                                    <Checkbox
+                                        cls={"form-check-input"}
+                                        val={ventanasT}
+                                        id={"ventanat"}
+                                        func={() => setVentanasT(!ventanasT)}
+                                        />
+                                    <label className="form-check-label" htmlFor="ventanat">
+                                        Pared Trasera
+                                    </label>
+                                    <Checkbox
+                                        cls={"form-check-input"}
+                                        val={ventanasD}
+                                        id={"ventanad"}
+                                        func={() => setVentanasD(!ventanasD)}
+                                        />
+                                    <label className="form-check-label" htmlFor="ventanad">
+                                        Pared Derecha
+                                    </label>
+                                    <Checkbox
+                                        cls={"form-check-input"}
+                                        val={ventanasI}
+                                        id={"ventanasi"}
+                                        func={() => setVentanasI(!ventanasI)}
+                                        />
+                                    <label className="form-check-label" htmlFor="ventanasi">
+                                        Pared Izquierda
+                                    </label>
+                            </div>
+                            <hr/>
                             <div className='cont-chekbox-movi'>
                                     <p>Ajustes 3D</p>
                                     <Checkbox

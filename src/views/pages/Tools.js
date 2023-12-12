@@ -32,14 +32,14 @@ const Tools = () =>{
                         url={'/tiling'}
                     />
                 </div>
-                <div className="card-losa animate__animated animate__zoomIn col-md-3">
+                {/* <div className="card-losa animate__animated animate__zoomIn col-md-3">
                     <p className="cardT">Calcular Materiales de una Losa </p>
                     <Btn1
                         text={"Go"}
                         cls={"btn1"}
                         url={'/slab'}
                     />
-                </div>
+                </div> */}
             </div>
         </div>
     );
