@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Swal from "sweetalert2";
 
 import '../../../css/MateB.css'
 import { Btn2, Input } from "../../../components";
 
 import { configApi } from "../../../apis/configApi";
-
+import { useSelector } from "react-redux";
 const AddMateBase = () =>{
 
-    const [add, setAdd] = useState(false);
-    const [carga2, setCarga2] = useState(false);
+    const { user } = useSelector( state => state.user );
     const [mate, setMate] = useState({
         "nombre": "",
         "tipo": "Ladrillo",
@@ -17,7 +16,8 @@ const AddMateBase = () =>{
         "y":0,
         "z":0,
         "precio": 0.0,
-        "description" :""
+        "description" :"",
+        "creador": user._id
     });
 
     const alertas = (icono, texto) =>{
@@ -47,7 +47,6 @@ const AddMateBase = () =>{
     }
 
     const ingresarMate = () =>{
-        setCarga2(true);
         const datos = localStorage.getItem('data');
         const data = JSON.parse(datos);
         const config = {
@@ -57,13 +56,11 @@ const AddMateBase = () =>{
         }
         configApi.post('/materialy', mate, config)
         .then((response) =>{
-            setCarga2(false);
             alertas('success',"Material insertado");
-            setAdd(false);
+            window.location = "/materials";
         })
         .catch((error) =>{
             console.log(error);
-            setCarga2(false);
             alertas('error', error.response.data.message);
         })
     }
@@ -84,19 +81,6 @@ const AddMateBase = () =>{
         }
     }
 
-    const limpiardatos = () =>{
-        setAdd(!add);
-        setMate({
-            "nombre": "",
-            "tipo": "Ladrillo",
-            "x":0,
-            "y":0,
-            "z":0,
-            "precio": 0.0,
-            "description" :""
-        });
-    }
-
     const enviardatos = (e) =>{
         e.preventDefault()
         if (validarDatos()) {
@@ -105,15 +89,6 @@ const AddMateBase = () =>{
             alertas('error', 'Campos vacios');
         }
     }
-
-
-    const tomarMate = (mat) =>{
-        setMate(mat);
-        if (mate !== null) {
-            setAdd(true);
-        }
-    }
-
 
     return(
         <div className="form-add-mate animate__animated animate__fadeInLeft ">

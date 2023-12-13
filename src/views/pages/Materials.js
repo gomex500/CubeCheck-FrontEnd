@@ -6,16 +6,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { Btn2, Btn1 } from "../../components";
 import { getMaterialX } from "../../store/slices/MaterialesSlices/materiales/materialesXThunks";
 import { getMaterialY } from "../../store/slices/MaterialesSlices/materiales/materialesYThunks";
+import { getMisMaterialX } from "../../store/slices/MaterialesSlices/misMateriales/misMaterialesXThunks";
+import { getMisMaterialY } from "../../store/slices/MaterialesSlices/misMateriales/misMaterialesYThunks";
 import { getUser } from "../../store/slices/UserSlices/userThunks";
 import { Carga } from "../partials/Loading";
 import { configApi } from "../../apis/configApi";
 import { AddMateBase } from "../partials/Materials";
+import AddMateGeneral from "../partials/Materials/AddMateGeneral";
 
 const Materials = () =>{
     const dispatch = useDispatch();
     const { MaterialesX } = useSelector( state => state.materialesx);
     const { MaterialesY, isLoading } = useSelector( state => state.materialesy);
     const { user } = useSelector( state => state.user );
+    const {MisMaterialesX} = useSelector( state => state.mismaterialesx);
+    const {MisMaterialesY} = useSelector( state => state.mismaterialesy);
 
     const [ver, setVer] = useState(false);
     const [mate, setMate] = useState(null);
@@ -26,6 +31,7 @@ const Materials = () =>{
 
     const [addMB, setAddMB] = useState(false);
     const [addMG, setAddMG] = useState(false);
+    const [verF, setVerF] = useState(false);
 
     const ValImg = (tipo) =>{
         if (tipo === "Piedra") {
@@ -64,10 +70,30 @@ const Materials = () =>{
         })
     }
 
+    const verFormulario = (n) => {
+        setVerF(true);
+        if (n === 1) {
+            setAddMG(true);
+        } else {
+            setAddMB(true);
+        }
+    }
+
+    const cancelarFormulario = (n) =>{
+        setVerF(false);
+        if (n === 1) {
+            setAddMG(false);
+        } else {
+            setAddMB(false);
+        }
+    }
+
     useEffect(() => {
         dispatch( getMaterialX() );
         dispatch( getMaterialY() );
         dispatch( getUser() );
+        dispatch(getMisMaterialX());
+        dispatch( getMisMaterialY() );
         enviarTools('materiales')
     }, [])
 
@@ -205,35 +231,98 @@ const Materials = () =>{
                             )
                         }else if(misMate){
                             return(
-                                <div className={addMB ? "cont-addMB" : "cont-addMB1"}>
+                                <div className={verF ? "cont-addMB" : "cont-addMB1"}>
                                     <div className="BtnGestionMateriales">
                                         <h3 className="title1">Materiales Base</h3>
                                     </div>
                                     <hr/>
                                     <div className="cont-mate-base">
-                                        <div className="card-mate" >
-                                        <h3>Nuevo Material</h3>
+                                        <div className="card-mate2" >
+                                            <h3>Nuevo Material</h3>
                                             <Btn2
                                                 tp={"button"}
                                                 cls={"btnMate4"}
                                                 text={<i className="fa-solid fa-folder-plus"></i>}
-                                                func={() => setAddMB(true)}
+                                                func={() => verFormulario(0)}
                                             />
                                         </div>
+                                        {MisMaterialesY.length > 0 ? (
+                                            MisMaterialesY.map((mate) =>(
+                                                <div className="card-mate" key={mate._id}>
+                                                    <h3>{mate.nombre}</h3>
+                                                    <center>
+                                                    <img src={ValImg(mate.tipo)} className="mate-img" alt="img-mate"/>
+                                                    </center>
+                                                    <div className="card-body">
+                                                        <p>Tipo: {mate.tipo}</p>
+                                                        <p>Precio: C$ {mate.precio}</p>
+                                                        <div className="grupo_btn1">
+                                                            <Btn2
+                                                                func={() => verDetalle(mate)}
+                                                                tp={"button"}
+                                                                cls={"btnMate3"}
+                                                                text={"Ver"}
+                                                            />
+                                                            <Btn2
+                                                                func={() => verDetalle(mate)}
+                                                                tp={"button"}
+                                                                cls={"btnMate3"}
+                                                                text={"Usar"}
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        ): (<div>
+                                            <h3>No hay Materiales Base</h3>
+                                        </div>)}
                                     </div>
                                     <div className="BtnGestionMateriales">
                                         <h3 className="title1">Materiales General</h3>
                                     </div>
                                     <hr/>
-                                    <div className="card-mate" >
-                                        <h3>Nuevo Material</h3>
+                                    <div className="mateG row">
+                                        <div className="card-mateG col-md-3" >
+                                            <h3>Nuevo Material</h3>
                                             <Btn2
                                                 tp={"button"}
                                                 cls={"btnMate4"}
                                                 text={<i className="fa-solid fa-folder-plus"></i>}
-                                                func={() => setAddMB(true)}
+                                                func={() => verFormulario(1)}
                                             />
                                         </div>
+                                        {MisMaterialesX.length > 0 ? (
+                                            MisMaterialesX.map((mate) =>(
+                                                <div className="card-mateG col-md-3" key={mate._id}>
+                                                        <h3>{mate.nombre}</h3>
+                                                        <center>
+                                                            <img src={ValImg(mate.tipo)} className="mate-img" alt="img-mate"/>
+                                                        </center>
+                                                        <div className="card-body">
+                                                            <p>Marca: {mate.marca}</p>
+                                                            <p>Medida: {mate.medida}</p>
+                                                            <p>Precio: C$ {mate.precio}</p>
+                                                            <div className="grupo_btn1">
+                                                                <Btn2
+                                                                    cls={"btnMate3"}
+                                                                    text={"Ver"}
+                                                                    func={() => verDetalle(mate)}
+                                                                    tp={"button"}
+                                                                />
+                                                                <Btn2
+                                                                    cls={"btnMate3"}
+                                                                    text={"Usar"}
+                                                                    func={() => verDetalle(mate)}
+                                                                    tp={"button"}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            ))
+                                        ):(<div>
+                                                <h3>No hay Materiales Base</h3>
+                                            </div>)}
+                                    </div>
                                 </div>
                             )
                         }else{
@@ -414,13 +503,23 @@ const Materials = () =>{
             :null}
             {addMB ? <div>
                 <div className="cont-btn2">
-                <Btn2
-                        cls={"btnMate5"}
-                        text={"Cancelar"}
-                        func={() => setAddMB(false)}
+                    <Btn2
+                            cls={"btnMate5"}
+                            text={"Cancelar"}
+                            func={() => cancelarFormulario(0)}
                     />
                 </div>
                 <AddMateBase/>
+            </div> : null}
+            {addMG ? <div>
+                <div className="cont-btn2">
+                    <Btn2
+                            cls={"btnMate5"}
+                            text={"Cancelar"}
+                            func={() => cancelarFormulario(1)}
+                    />
+                </div>
+                <AddMateGeneral/>
             </div> : null}
             </div>
         );
